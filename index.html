@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>系统架构设计师练题台</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark">SA</span>
+          <div>
+            <h1>系统架构设计师练题台</h1>
+            <p>本地题库 · 浏览器数据库 · AI 诊断导出</p>
+          </div>
+        </div>
+        <nav class="nav" aria-label="主导航">
+          <button class="nav-button active" data-view="practice" type="button">选择题</button>
+          <button class="nav-button" data-view="wrong" type="button">错题</button>
+          <button class="nav-button" data-view="stats" type="button">统计</button>
+          <button class="nav-button" data-view="cases" type="button">案例</button>
+          <button class="nav-button" data-view="essays" type="button">论文</button>
+          <button class="nav-button" data-view="data" type="button">数据</button>
+        </nav>
+        <div class="side-stat">
+          <span>题库</span>
+          <strong id="bankCount">加载中</strong>
+        </div>
+        <div class="side-stat">
+          <span>作答</span>
+          <strong id="attemptCount">0</strong>
+        </div>
+        <a class="sidebar-github" href="https://github.com/AndyNull/ruankao-architect-practice" target="_blank" rel="noreferrer" aria-label="GitHub：AndyNull/ruankao-architect-practice">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.49c-2.23.49-2.7-.95-2.7-.95-.36-.93-.89-1.18-.89-1.18-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.87.87 2.33.67.07-.51.28-.87.51-1.07-1.78-.2-3.65-.88-3.65-3.93 0-.87.31-1.58.82-2.14-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 3.87c.68 0 1.36.09 2 .26 1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.14 0 3.06-1.87 3.73-3.66 3.93.29.25.54.73.54 1.48v2.2c0 .21.14.45.55.38A8 8 0 0 0 8 0Z" /></svg>
+          <span>AndyNull/ruankao-architect-practice</span>
+        </a>
+      </aside>
+
+      <main class="main">
+        <header class="toolbar">
+          <div>
+            <p class="eyebrow">Ruankao Architect</p>
+            <h2 id="viewTitle">选择题</h2>
+          </div>
+          <div class="toolbar-actions">
+            <button id="importProgressTop" type="button">导入进度</button>
+            <button id="exportProgressTop" class="primary" type="button">导出进度</button>
+          </div>
+        </header>
+
+        <section id="notice" class="notice" hidden></section>
+
+        <section id="practiceView" class="view active-view">
+          <div class="mode-board">
+            <button class="mode-button active" data-mode="continue" type="button">
+              <b>继续练习</b>
+              <strong id="continueModeCount">加载中</strong>
+              <span>按题库顺序推进</span>
+            </button>
+            <button class="mode-button" data-mode="review" type="button">
+              <b>记忆复习</b>
+              <strong id="reviewModeCount">加载中</strong>
+              <span>错题和到期题优先</span>
+            </button>
+            <button class="mode-button" data-mode="special" type="button">
+              <b>章节练习</b>
+              <strong id="specialModeCount">加载中</strong>
+              <span>按模块突破</span>
+            </button>
+            <button class="mode-button" data-mode="exam" type="button">
+              <b>真题套卷</b>
+              <strong id="examModeCount">加载中</strong>
+              <span>同一年份刷题</span>
+            </button>
+            <button class="mode-button" data-mode="wrong" type="button">
+              <b>错题重刷</b>
+              <strong id="wrongModeCount">加载中</strong>
+              <span>只看错题</span>
+            </button>
+            <button class="mode-button" data-mode="favorite" type="button">
+              <b>收藏题</b>
+              <strong id="favoriteModeCount">加载中</strong>
+              <span>主动标记重点题</span>
+            </button>
+            <button class="mode-button" data-mode="all" type="button">
+              <b>题库浏览</b>
+              <strong id="allModeCount">加载中</strong>
+              <span>自由筛选</span>
+            </button>
+          </div>
+
+          <details class="chapter-drawer">
+            <summary>
+              <span>章节进度</span>
+              <strong>展开模块进度和章节练习</strong>
+            </summary>
+            <div id="chapterList" class="chapter-list"></div>
+          </details>
+
+          <details class="filter-drawer">
+            <summary>筛选、复习题数与关键词</summary>
+            <div class="panel filters">
+              <label>
+                复习题数
+                <input id="dailyCount" type="number" min="5" max="75" step="5" value="20" />
+              </label>
+              <label>
+                来源
+                <select id="sourceFilter"></select>
+              </label>
+              <label>
+                年份/卷
+                <select id="termFilter"></select>
+              </label>
+              <label>
+                模块
+                <select id="moduleFilter"></select>
+              </label>
+              <label>
+                状态
+                <select id="statusFilter">
+                  <option value="all">全部</option>
+                  <option value="unanswered">未做</option>
+                  <option value="due">待复习</option>
+                  <option value="wrong">错题</option>
+                </select>
+              </label>
+              <label class="search-box">
+                关键词
+                <input id="keywordFilter" type="search" placeholder="架构、Redis、网络..." />
+              </label>
+              <button id="applyFilters" type="button">筛题</button>
+            </div>
+          </details>
+
+          <div class="practice-layout">
+            <section class="question-panel">
+              <div class="question-paper">
+                <div class="question-topline">
+                  <div>
+                    <div class="question-meta" id="questionMeta">题目加载中</div>
+                    <h3 id="questionStem"></h3>
+                  </div>
+                  <div class="question-progress" id="questionProgress">0/0</div>
+                </div>
+                <div id="questionFigure" class="question-figure" hidden></div>
+                <div id="optionList" class="option-list"></div>
+                <div class="answer-row">
+                  <button id="prevQuestion" type="button">上一题</button>
+                  <button id="nextQuestion" class="primary" type="button">下一题</button>
+                  <button id="toggleFavorite" type="button">收藏本题</button>
+                </div>
+                <div id="answerResult" class="answer-result" hidden></div>
+              </div>
+              <div class="source-box" id="sourceBox"></div>
+            </section>
+
+            <aside class="panel queue-panel">
+              <h3 id="modeLabel">继续练习</h3>
+              <p id="queueSummary">0 道题</p>
+              <div class="queue-toolbar">
+                <button id="queuePrevPage" type="button" aria-label="上一段题号">‹</button>
+                <span id="queuePageLabel">0 / 0</span>
+                <button id="queueNextPage" type="button" aria-label="下一段题号">›</button>
+              </div>
+              <div id="queueLegend" class="queue-legend"></div>
+              <div id="questionQueue" class="question-queue"></div>
+            </aside>
+          </div>
+
+          <details class="study-drawer">
+          <summary>
+            <span>备考计划与题库说明</span>
+            <strong id="sourceSummary">加载中</strong>
+          </summary>
+          <section class="overview-board">
+            <div class="plan-card">
+              <div class="section-kicker">学习计划</div>
+              <h3>先稳综合知识，再用错题决定补哪块基础</h3>
+              <div id="studyPlanList" class="plan-list"></div>
+            </div>
+            <div class="site-card">
+              <div class="section-kicker">网站功能</div>
+              <h3>这里能做什么</h3>
+              <ul class="feature-list">
+                <li>继续练习：按题库顺序接着上次位置往后做</li>
+                <li>记忆复习：错题和到期题优先，连续做对后降低频率</li>
+                <li>章节练习：按架构、数据库、网络、安全等模块刷</li>
+                <li>真题套卷：按年份/批次练同一套真题</li>
+                <li>答题卡分段：所有题都能按页切换，不截断题号</li>
+                <li>AI 诊断：导出 JSON 给 Codex 做复盘</li>
+              </ul>
+            </div>
+            <div class="source-card">
+              <div class="section-kicker">题目来源</div>
+              <h3>可追溯题库</h3>
+              <p id="sourceDetail">每道题都会显示来源年份、真题/模拟、题号和模块。</p>
+            </div>
+          </section>
+          </details>
+        </section>
+
+        <section id="wrongView" class="view">
+          <div class="panel">
+            <h3>错题本</h3>
+            <div id="wrongList" class="item-list"></div>
+          </div>
+        </section>
+
+        <section id="statsView" class="view">
+          <div class="stats-grid">
+            <div class="metric"><span>总作答</span><strong id="metricTotal">0</strong></div>
+            <div class="metric"><span>正确率</span><strong id="metricAccuracy">0%</strong></div>
+            <div class="metric"><span>错题</span><strong id="metricWrong">0</strong></div>
+            <div class="metric"><span>已覆盖题目</span><strong id="metricAnswered">0</strong></div>
+          </div>
+          <div class="panel">
+            <h3>模块表现</h3>
+            <div id="moduleStats" class="stat-table"></div>
+          </div>
+        </section>
+
+        <section id="casesView" class="view">
+          <div class="panel">
+            <h3>案例分析题库</h3>
+            <div id="caseList" class="item-list"></div>
+          </div>
+        </section>
+
+        <section id="essaysView" class="view">
+          <div class="panel">
+            <h3>论文题库</h3>
+            <p class="muted">可按题生成 AI 范文示例；生成完成后保存到当前浏览器，可重读、重新生成或删除。</p>
+            <div id="essayList" class="item-list"></div>
+          </div>
+        </section>
+
+        <section id="dataView" class="view">
+          <div class="data-grid">
+            <div class="panel">
+              <h3>进度存档</h3>
+              <p>导出的 JSON 包含作答记录和收藏题。换电脑、换浏览器时，先读取文件摘要，再确认导入替换当前进度。</p>
+              <div id="progressPreview" class="progress-preview">
+                <p class="muted">还没有读取进度 JSON。</p>
+              </div>
+              <div class="button-row">
+                <button id="exportProgress" class="primary" type="button">导出进度 JSON</button>
+                <button id="selectProgressFile" type="button">读取进度 JSON</button>
+                <button id="applyProgressImport" type="button" disabled>应用读取的进度</button>
+              </div>
+              <input id="importProgress" type="file" accept="application/json" hidden />
+            </div>
+            <div class="panel">
+              <h3>AI 友好诊断</h3>
+              <p>诊断 JSON 包含题库来源、模块统计、近期错题和全部作答轨迹。发给 Codex 就能继续复盘。</p>
+              <button id="exportDiagnosis" class="primary" type="button">下载 ai-diagnosis.json</button>
+            </div>
+            <div class="panel">
+              <h3>AI 错题解读</h3>
+              <p>答错后优先显示随题库提供的本地 AI 解析；仅在本地缺失或手动重新解读时调用 glm-5.2。当前接口无需密钥，API Key 为可选项。</p>
+              <p id="localExplanationStatus" class="muted">本地 AI 解析：加载中…</p>
+              <p id="caseExplanationStatus" class="muted">本地案例解题：加载中…</p>
+              <label class="ai-key-field">
+                API Key（可选）
+                <input id="aiApiKey" type="password" autocomplete="off" placeholder="接口启用鉴权时填写" />
+              </label>
+              <p class="muted">接口：https://glm.996986.xyz</p>
+            </div>
+            <div class="panel">
+              <h3>清空本地记录</h3>
+              <p>只清空当前浏览器里的作答记录和收藏题，不影响你已经导出的 JSON 文件。</p>
+              <div class="button-row">
+                <button id="clearProgress" class="danger" type="button">清空记录</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      if (location.protocol === "file:") {
+        const notice = document.getElementById("notice");
+        notice.hidden = false;
+        notice.className = "notice error";
+        notice.textContent = "不能直接打开 index.html，请双击项目目录中的 start.cmd。";
+      }
+    </script>
+    <script type="module" src="./src/app.mjs"></script>
+  </body>
+</html>

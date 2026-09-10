@@ -1,0 +1,3 @@
+data/*-generation*.log
+data/*-recovery*.log
+data/local-server*.log
