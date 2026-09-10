@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { copyFileSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -37,7 +37,7 @@ function createMaterial(group, groupLabel, folder, filename) {
   const localPath = `study-materials/${group}/${filename}`;
   const target = path.join(materialRoot, group, filename);
   mkdirSync(path.dirname(target), { recursive: true });
-  copyFileSync(file, target);
+  writeFileSync(target, markdown.replace(/(?:\r?\n){2,}$/, "\n"));
   const title = markdown.match(/^#\s+(.+)$/m)?.[1]?.trim() || filename.replace(/\.md$/, "");
   return {
     id: `${group}-${filename.replace(/\.md$/, "")}`,
