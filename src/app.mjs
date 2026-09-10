@@ -317,7 +317,10 @@ function renderPractice() {
     });
   });
   if (gradedForDisplay) {
-    renderAnswerResult(display, gradedForDisplay, { review: Boolean(latestAttempt) && !state.submitted });
+    renderAnswerResult(display, gradedForDisplay, {
+      review: Boolean(latestAttempt) && !state.submitted,
+      cacheQuestion: questionWithFigure(question),
+    });
   } else {
     $("answerResult").hidden = true;
     $("answerResult").innerHTML = "";
@@ -416,7 +419,7 @@ function renderAnswerResult(question, graded, options = {}) {
       <span>你的答案 ${escapeHtml(graded.answer)} · 正确答案 ${escapeHtml(graded.correctAnswer)}</span>
     </div>
     <div class="analysis-body ${question.analysisKind !== "available" ? "analysis-muted" : ""}"><h5>题库原解析</h5>${renderRichText(question.analysis || "暂无解析")}</div>
-    ${renderLocalQuestionExplanation(question)}
+    ${renderLocalQuestionExplanation(options.cacheQuestion || question)}
     ${graded.correct ? "" : renderAiExplanation(question)}
     ${options.review ? `<button class="retry-answer" type="button">再次作答</button>` : ""}
   `;

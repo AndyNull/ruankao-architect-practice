@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { formatQuestionForDisplay } from "../src/core.mjs";
 import {
   aiEndpoint,
   aiModel,
@@ -100,6 +101,17 @@ test("uses a local explanation only when it still matches the current question",
   assert.equal(getLocalExplanation(question, explanations)?.content, content);
   assert.equal(getLocalExplanation({ ...question, answer: "A" }, explanations), null);
   assert.notEqual(getQuestionExplanationSignature(question), getQuestionExplanationSignature({ ...question, stem: "新题干" }));
+});
+
+test("keeps cache matching on the raw question when display text is normalized", () => {
+  const rawQuestion = {
+    ...question,
+    analysis: "本题为历史真题 PDF 自动抽取，保留正确答案；完整长解析和图表请回看来源 PDF。",
+  };
+  const record = createExplanationRecord(rawQuestion, "核心考点\n定义。\n错误原因\n混淆。\n选项辨析\nB 正确。\n记忆方法\n记关键词。");
+  const displayQuestion = formatQuestionForDisplay(rawQuestion);
+  assert.equal(getLocalExplanation(rawQuestion, { [rawQuestion.id]: record })?.content, record.content);
+  assert.equal(getLocalExplanation(displayQuestion, { [rawQuestion.id]: record }), null);
 });
 
 test("generates a non-streaming local explanation with the GLM completion endpoint", async () => {
