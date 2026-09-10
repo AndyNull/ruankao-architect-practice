@@ -102,7 +102,9 @@ function renderInline(value, baseUrl) {
 function safeUrl(value, baseUrl) {
   try {
     const url = new URL(value, baseUrl || "https://example.invalid/");
-    return url.protocol === "https:" ? url.href : "";
+    if (url.protocol === "https:") return url.href;
+    const base = baseUrl ? new URL(baseUrl) : null;
+    return url.protocol === "http:" && url.origin === base?.origin ? url.href : "";
   } catch {
     return "";
   }

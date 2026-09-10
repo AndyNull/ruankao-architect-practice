@@ -176,6 +176,9 @@ function bindEvents() {
     state.materialKeyword = event.target.value.trim();
     renderMaterials();
   });
+  $("materialSelect").addEventListener("change", (event) => {
+    void selectMaterial(event.target.value);
+  });
 }
 
 function initFilters() {
@@ -627,6 +630,8 @@ function renderMaterials() {
   const keyword = state.materialKeyword.toLocaleLowerCase();
   const visible = state.materials.filter((item) => `${item.groupLabel} ${item.title}`.toLocaleLowerCase().includes(keyword));
   $("materialSearch").value = state.materialKeyword;
+  $("materialSelect").innerHTML = materialSelectOptions(state.materials);
+  $("materialSelect").value = selected?.id || "";
   $("materialList").innerHTML = visible.length ? visible.map((item) => `
     <button class="material-item ${item.id === selected?.id ? "active" : ""}" data-material-id="${escapeHtml(item.id)}" type="button">
       <span>${escapeHtml(item.groupLabel)}</span>
@@ -637,12 +642,18 @@ function renderMaterials() {
   $("materialContent").innerHTML = materialContent(selected);
 }
 
+function materialSelectOptions(materials) {
+  const groups = new Map();
+  materials.forEach((item) => groups.set(item.groupLabel, [...(groups.get(item.groupLabel) || []), item]));
+  return [...groups.entries()].map(([label, items]) => `<optgroup label="${escapeHtml(label)}">${items.map((item) => `<option value="${escapeHtml(item.id)}">${escapeHtml(item.title)}</option>`).join("")}</optgroup>`).join("");
+}
+
 function materialHeader(material) {
   return `
     <div>
       <p class="section-kicker">${escapeHtml(material.groupLabel)} · ${material.charCount} 字</p>
       <h3>${escapeHtml(material.title)}</h3>
-      <p>正文按需从来源仓库读取，不作为本站题库内容重新发布。</p>
+      <p>正文为当前项目中的同步资料副本，保留原始来源链接。</p>
     </div>
     <a href="${escapeHtml(material.sourceUrl)}" target="_blank" rel="noreferrer">在来源仓库阅读</a>
   `;
@@ -650,10 +661,10 @@ function materialHeader(material) {
 
 function materialContent(material) {
   if (!material) return `<p class="muted">资料目录未加载。</p>`;
-  if (state.materialStatus === "loading") return `<p class="muted">正在从来源仓库加载 Markdown…</p>`;
+  if (state.materialStatus === "loading") return `<p class="muted">正在读取本地 Markdown…</p>`;
   if (state.materialError) return `<p class="ai-error">${escapeHtml(state.materialError)}</p>`;
   const content = state.materialCache.get(material.id);
-  return content ? renderMarkdown(content, material.rawUrl) : `<p class="muted">选择资料后开始阅读。</p>`;
+  return content ? renderMarkdown(content, new URL(material.localUrl, window.location.href).href) : `<p class="muted">选择资料后开始阅读。</p>`;
 }
 
 function handleMaterialAction(event) {
@@ -677,8 +688,8 @@ async function selectMaterial(materialId = state.materialId) {
   state.materialStatus = "loading";
   renderMaterials();
   try {
-    const response = await fetch(material.rawUrl);
-    if (!response.ok) throw new Error(`来源资料读取失败（${response.status}）`);
+    const response = await fetch(material.localUrl);
+    if (!response.ok) throw new Error(`本地资料读取失败（${response.status}）`);
     const content = await response.text();
     if (requestId !== state.materialRequestId) return;
     state.materialCache.set(material.id, content);
@@ -686,7 +697,7 @@ async function selectMaterial(materialId = state.materialId) {
   } catch (error) {
     if (requestId !== state.materialRequestId) return;
     state.materialStatus = "error";
-    state.materialError = error.message || "来源资料读取失败，请在来源仓库打开。";
+    state.materialError = error.message || "本地资料读取失败，请在来源仓库打开。";
   }
   renderMaterials();
 }
@@ -1223,10 +1234,10 @@ function normalizeMaterials(value) {
     const groupLabel = String(material?.groupLabel || "").trim();
     const title = String(material?.title || "").trim();
     const sourceUrl = safeHttpsUrl(material?.sourceUrl);
-    const rawUrl = safeHttpsUrl(material?.rawUrl);
+    const localUrl = safeLocalMaterialUrl(material?.localUrl);
     const charCount = Number(material?.charCount);
-    if (id && groupLabel && title && sourceUrl && rawUrl && Number.isFinite(charCount) && charCount > 0) {
-      items.push({ id, groupLabel, title, sourceUrl, rawUrl, charCount: Math.floor(charCount) });
+    if (id && groupLabel && title && sourceUrl && localUrl && Number.isFinite(charCount) && charCount > 0) {
+      items.push({ id, groupLabel, title, sourceUrl, localUrl, charCount: Math.floor(charCount) });
     }
     return items;
   }, []);
@@ -1239,6 +1250,11 @@ function safeHttpsUrl(value) {
   } catch {
     return "";
   }
+}
+
+function safeLocalMaterialUrl(value) {
+  const url = String(value || "").trim();
+  return /^\.\/data\/study-materials\/[^?#]+\.md$/.test(url) && !url.includes("..") ? url : "";
 }
 
 function renderInlineText(value) {

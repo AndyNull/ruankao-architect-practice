@@ -21,9 +21,9 @@ following projects:
 - Upstream note: exam questions, answers, explanations, and derived cleaned
   content have no open-source license granted by that repository. They remain
   third-party content and are not covered by this project's MIT License.
-- Study-material reading keeps only document metadata in
-  `data/study-materials.json`; the browser reads Markdown from the upstream
-  repository on demand and always retains a source link.
+- Study-material reading stores a traceable local snapshot in
+  `data/study-materials/`, generated from the upstream repository by
+  `scripts/sync_study_materials.mjs`; every entry retains its source link.
 
 If you believe any content should be removed or attributed differently, please
 open an issue with the source file, term, and question number.

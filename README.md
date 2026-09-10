@@ -104,9 +104,9 @@ node scripts/sync_reference_bank.mjs
 
 ## 资料阅读
 
-- 目录：`data/study-materials.json` 仅保存来源路径、标题、字数和 HTTPS 地址，不内置或重新发布教程、大纲正文。
-- 来源：`YoungHong1992/ruankao-senior-architecture-designer` 的清洗版考试大纲与教程资料；页面点击后才读取对应 Markdown，并提供“在来源仓库阅读”回退链接。
-- 适配：桌面端采用资料目录与正文双栏；窄屏切换为单栏，目录横向滚动，正文、代码与表格保持可读。
+- 目录：`data/study-materials.json` 保存来源路径、标题、字数、本地资料路径和原始来源地址；正文同步至 `data/study-materials/`，由页面按需读取。
+- 来源：`YoungHong1992/ruankao-senior-architecture-designer` 的清洗版考试大纲与教程资料；同步脚本为 `node scripts/sync_study_materials.mjs`，页面保留“在来源仓库阅读”链接。
+- 适配：桌面端采用资料目录与正文双栏；窄屏切换为单栏与原生下拉选择，正文、代码与表格保持可读。
 
 ## AI 错题解读
 
@@ -173,3 +173,5 @@ node scripts/sync_reference_bank.mjs
 本项目 [AndyNull/ruankao-architect-practice](https://github.com/AndyNull/ruankao-architect-practice) 是直接 Fork 自 [Zhang-986/ruankao-architect-practice](https://github.com/Zhang-986/ruankao-architect-practice) 的项目，并在其基础上持续维护和扩展。
 
 题库主来源为 [wujiaming88/awesome-ruankao](https://github.com/wujiaming88/awesome-ruankao)，系统架构设计师清洗交叉校对题材及资料阅读目录参考 [YoungHong1992/ruankao-senior-architecture-designer](https://github.com/YoungHong1992/ruankao-senior-architecture-designer)。感谢两个仓库的整理与维护；第三方题面、答案、解析、大纲和教程内容的权利仍归相应权利人所有，具体边界见 [NOTICE.md](NOTICE.md)。
+
+本项目积极参与并认可 [linux.do 社区](https://linux.do/)。

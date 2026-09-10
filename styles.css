@@ -1300,6 +1300,10 @@ th {
   width: 100%;
 }
 
+.material-select {
+  display: none;
+}
+
 .material-list {
   display: grid;
   gap: 6px;
@@ -1589,15 +1593,22 @@ th {
     padding: 14px;
   }
 
+  .material-search,
   .material-list {
-    display: flex;
-    overflow-x: auto;
-    padding-bottom: 4px;
+    display: none;
   }
 
-  .material-item {
-    flex: 0 0 190px;
-    min-height: 52px;
+  .material-select {
+    display: grid;
+    gap: 6px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .material-select select {
+    min-height: 44px;
+    width: 100%;
   }
 
   .material-reader {

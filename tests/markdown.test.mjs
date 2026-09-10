@@ -17,10 +17,16 @@ test("escapes raw HTML and rejects unsafe Markdown links", () => {
   assert.doesNotMatch(html, /href=/);
 });
 
-test("ships a traceable study-material index without bundled document content", () => {
+test("keeps same-origin local Markdown links readable in development", () => {
+  const html = renderMarkdown("[下一章](next.md)", "http://localhost:4173/data/study-materials/outline/current.md");
+  assert.match(html, /href="http:\/\/localhost:4173\/data\/study-materials\/outline\/next.md"/);
+});
+
+test("ships a traceable local study-material snapshot", () => {
   const materials = JSON.parse(readFileSync(new URL("../data/study-materials.json", import.meta.url), "utf8"));
   assert.equal(materials.materials.length, 27);
   assert.equal(new Set(materials.materials.map((item) => item.id)).size, 27);
-  assert.ok(materials.materials.every((item) => item.rawUrl.startsWith("https://raw.githubusercontent.com/YoungHong1992/")));
+  assert.ok(materials.materials.every((item) => item.localUrl.startsWith("./data/study-materials/")));
+  assert.ok(materials.materials.every((item) => readFileSync(new URL(`../${item.localUrl.slice(2)}`, import.meta.url), "utf8").startsWith("#")));
   assert.ok(materials.materials.every((item) => !Object.hasOwn(item, "content")));
 });

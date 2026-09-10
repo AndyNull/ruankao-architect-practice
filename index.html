@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>系统架构设计师练题台</title>
-    <link rel="stylesheet" href="./styles.css?v=20260910.3" />
+    <link rel="stylesheet" href="./styles.css?v=20260910.4" />
   </head>
   <body>
     <div id="app">
@@ -244,6 +244,10 @@
                 查找资料
                 <input id="materialSearch" type="search" placeholder="章节、关键词..." />
               </label>
+              <label class="material-select">
+                当前资料
+                <select id="materialSelect" aria-label="当前资料"></select>
+              </label>
               <div id="materialList" class="material-list"></div>
             </aside>
             <article class="panel material-reader">
@@ -304,6 +308,6 @@
         notice.textContent = "不能直接打开 index.html，请双击项目目录中的 start.cmd。";
       }
     </script>
-    <script type="module" src="./src/app.mjs?v=20260910.3"></script>
+    <script type="module" src="./src/app.mjs?v=20260910.4"></script>
   </body>
 </html>
