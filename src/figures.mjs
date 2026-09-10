@@ -1,4 +1,4 @@
-const figureReferencePattern = /(?:如下图|下图所示|下图中|如图所示|见下图|图中[①②③④⑤⑥⑦⑧⑨⑩])/;
+const figureReferencePattern = /(?:如下图|下图(?:所示|中|为)|如图所示|见下图|图中[①②③④⑤⑥⑦⑧⑨⑩])/;
 
 export function extractMermaidFigure(value) {
   const source = String(value ?? "");

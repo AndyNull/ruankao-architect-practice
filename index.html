@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>系统架构设计师练题台</title>
-    <link rel="stylesheet" href="./styles.css?v=20260910.2" />
+    <link rel="stylesheet" href="./styles.css?v=20260910.3" />
   </head>
   <body>
     <div id="app">
@@ -21,6 +21,7 @@
           <button class="nav-button" data-view="stats" type="button">统计</button>
           <button class="nav-button" data-view="cases" type="button">案例</button>
           <button class="nav-button" data-view="essays" type="button">论文</button>
+          <button class="nav-button" data-view="materials" type="button">资料</button>
           <button class="nav-button" data-view="data" type="button">数据</button>
         </nav>
         <div class="side-stat">
@@ -236,6 +237,22 @@
           </div>
         </section>
 
+        <section id="materialsView" class="view">
+          <div class="materials-layout">
+            <aside class="panel material-index">
+              <label class="material-search">
+                查找资料
+                <input id="materialSearch" type="search" placeholder="章节、关键词..." />
+              </label>
+              <div id="materialList" class="material-list"></div>
+            </aside>
+            <article class="panel material-reader">
+              <header id="materialHeader" class="material-header"></header>
+              <div id="materialContent" class="markdown-content" aria-live="polite"></div>
+            </article>
+          </div>
+        </section>
+
         <section id="dataView" class="view">
           <div class="data-grid">
             <div class="panel">
@@ -287,6 +304,6 @@
         notice.textContent = "不能直接打开 index.html，请双击项目目录中的 start.cmd。";
       }
     </script>
-    <script type="module" src="./src/app.mjs?v=20260910.2"></script>
+    <script type="module" src="./src/app.mjs?v=20260910.3"></script>
   </body>
 </html>

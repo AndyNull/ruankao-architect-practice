@@ -39,6 +39,7 @@ import {
   validateEssaySample,
 } from "./ai.mjs";
 import { renderQuestionFigure } from "./figures.mjs";
+import { renderMarkdown } from "./markdown.mjs";
 
 const state = {
   bank: null,
@@ -68,6 +69,13 @@ const state = {
   essaySamples: new Map(),
   essayGeneration: null,
   essayRequestId: 0,
+  materials: [],
+  materialId: "",
+  materialKeyword: "",
+  materialCache: new Map(),
+  materialStatus: "idle",
+  materialError: "",
+  materialRequestId: 0,
 };
 
 let aiStreamFrame = 0;
@@ -81,22 +89,27 @@ const viewTitles = {
   stats: "统计",
   cases: "案例分析",
   essays: "论文",
+  materials: "资料阅读",
   data: "数据",
 };
 
 async function init() {
   try {
-    const [bankResponse, figuresResponse, explanationsResponse, caseExplanationsResponse] = await Promise.all([
+    const [bankResponse, figuresResponse, explanationsResponse, caseExplanationsResponse, materialsResponse] = await Promise.all([
       fetch("./data/bank.json"),
       fetch("./data/figures.json").catch(() => null),
       fetch("./data/ai-explanations.json", { cache: "no-store" }).catch(() => null),
       fetch("./data/ai-case-explanations.json", { cache: "no-store" }).catch(() => null),
+      fetch("./data/study-materials.json").catch(() => null),
     ]);
     if (!bankResponse.ok) throw new Error(`题库读取失败（${bankResponse.status}）`);
     state.bank = await bankResponse.json();
     state.figures = figuresResponse?.ok ? (await figuresResponse.json()).figures || {} : {};
     state.aiExplanations = explanationsResponse?.ok ? (await explanationsResponse.json()).explanations || {} : {};
     state.caseExplanations = caseExplanationsResponse?.ok ? (await caseExplanationsResponse.json()).explanations || {} : {};
+    const materialsPayload = materialsResponse?.ok ? await materialsResponse.json() : null;
+    state.materials = normalizeMaterials(materialsPayload?.materials);
+    state.materialId = state.materials[0]?.id || "";
     const [attempts, bookmarks, essaySamples] = await Promise.all([getAttempts(), getBookmarks(), getEssaySamples()]);
     state.attempts = attempts;
     state.bookmarks = bookmarks;
@@ -158,6 +171,11 @@ function bindEvents() {
   });
   $("essayList").addEventListener("click", handleEssayAction);
   $("caseList").addEventListener("click", handleCaseAction);
+  $("materialList").addEventListener("click", handleMaterialAction);
+  $("materialSearch").addEventListener("input", (event) => {
+    state.materialKeyword = event.target.value.trim();
+    renderMaterials();
+  });
 }
 
 function initFilters() {
@@ -213,6 +231,7 @@ function renderAll() {
   renderWrong();
   renderCases();
   renderEssays();
+  renderMaterials();
 }
 
 function renderOverview() {
@@ -603,6 +622,75 @@ function renderCases() {
   `).join("");
 }
 
+function renderMaterials() {
+  const selected = state.materials.find((item) => item.id === state.materialId) || null;
+  const keyword = state.materialKeyword.toLocaleLowerCase();
+  const visible = state.materials.filter((item) => `${item.groupLabel} ${item.title}`.toLocaleLowerCase().includes(keyword));
+  $("materialSearch").value = state.materialKeyword;
+  $("materialList").innerHTML = visible.length ? visible.map((item) => `
+    <button class="material-item ${item.id === selected?.id ? "active" : ""}" data-material-id="${escapeHtml(item.id)}" type="button">
+      <span>${escapeHtml(item.groupLabel)}</span>
+      <b>${escapeHtml(item.title)}</b>
+    </button>
+  `).join("") : `<p class="muted">没有匹配的资料。</p>`;
+  $("materialHeader").innerHTML = selected ? materialHeader(selected) : "";
+  $("materialContent").innerHTML = materialContent(selected);
+}
+
+function materialHeader(material) {
+  return `
+    <div>
+      <p class="section-kicker">${escapeHtml(material.groupLabel)} · ${material.charCount} 字</p>
+      <h3>${escapeHtml(material.title)}</h3>
+      <p>正文按需从来源仓库读取，不作为本站题库内容重新发布。</p>
+    </div>
+    <a href="${escapeHtml(material.sourceUrl)}" target="_blank" rel="noreferrer">在来源仓库阅读</a>
+  `;
+}
+
+function materialContent(material) {
+  if (!material) return `<p class="muted">资料目录未加载。</p>`;
+  if (state.materialStatus === "loading") return `<p class="muted">正在从来源仓库加载 Markdown…</p>`;
+  if (state.materialError) return `<p class="ai-error">${escapeHtml(state.materialError)}</p>`;
+  const content = state.materialCache.get(material.id);
+  return content ? renderMarkdown(content, material.rawUrl) : `<p class="muted">选择资料后开始阅读。</p>`;
+}
+
+function handleMaterialAction(event) {
+  const button = event.target.closest("[data-material-id]");
+  if (!button || button.dataset.materialId === state.materialId) return;
+  void selectMaterial(button.dataset.materialId);
+}
+
+async function selectMaterial(materialId = state.materialId) {
+  const material = state.materials.find((item) => item.id === materialId);
+  if (!material) return;
+  const requestId = state.materialRequestId + 1;
+  state.materialRequestId = requestId;
+  state.materialId = material.id;
+  state.materialError = "";
+  if (state.materialCache.has(material.id)) {
+    state.materialStatus = "ready";
+    renderMaterials();
+    return;
+  }
+  state.materialStatus = "loading";
+  renderMaterials();
+  try {
+    const response = await fetch(material.rawUrl);
+    if (!response.ok) throw new Error(`来源资料读取失败（${response.status}）`);
+    const content = await response.text();
+    if (requestId !== state.materialRequestId) return;
+    state.materialCache.set(material.id, content);
+    state.materialStatus = "ready";
+  } catch (error) {
+    if (requestId !== state.materialRequestId) return;
+    state.materialStatus = "error";
+    state.materialError = error.message || "来源资料读取失败，请在来源仓库打开。";
+  }
+  renderMaterials();
+}
+
 function renderCaseAiExplanation(item) {
   const current = state.caseExplanation?.caseId === item.id ? state.caseExplanation : null;
   const local = getLocalCaseExplanation(item, state.caseExplanations);
@@ -841,6 +929,7 @@ function switchView(view) {
   syncTypeButtons();
   document.querySelectorAll(".view").forEach((section) => section.classList.remove("active-view"));
   $(`${view}View`).classList.add("active-view");
+  if (view === "materials") void selectMaterial();
 }
 
 function currentQuestion() {
@@ -1125,6 +1214,31 @@ function escapeHtml(value) {
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+}
+
+function normalizeMaterials(value) {
+  if (!Array.isArray(value)) return [];
+  return value.reduce((items, material) => {
+    const id = String(material?.id || "").trim();
+    const groupLabel = String(material?.groupLabel || "").trim();
+    const title = String(material?.title || "").trim();
+    const sourceUrl = safeHttpsUrl(material?.sourceUrl);
+    const rawUrl = safeHttpsUrl(material?.rawUrl);
+    const charCount = Number(material?.charCount);
+    if (id && groupLabel && title && sourceUrl && rawUrl && Number.isFinite(charCount) && charCount > 0) {
+      items.push({ id, groupLabel, title, sourceUrl, rawUrl, charCount: Math.floor(charCount) });
+    }
+    return items;
+  }, []);
+}
+
+function safeHttpsUrl(value) {
+  try {
+    const url = new URL(String(value || ""));
+    return url.protocol === "https:" ? url.href : "";
+  } catch {
+    return "";
+  }
 }
 
 function renderInlineText(value) {

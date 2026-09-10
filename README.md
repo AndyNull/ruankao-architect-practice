@@ -2,8 +2,6 @@
 
 这是一个面向软考高级「系统架构设计师」的开源刷题练习站，适合周末碎片化备考、真题练习、错题复盘和阶段性诊断。
 
-框架 Fork 自 [Zhang-986/ruankao-architect-practice](https://github.com/Zhang-986/ruankao-architect-practice)，本仓库由 [AndyNull/ruankao-architect-practice](https://github.com/AndyNull/ruankao-architect-practice) 持续维护。
-
 - 覆盖综合知识选择题、案例分析和论文题。
 - 支持继续练习、记忆复习、章节练习、真题套卷、错题重刷和收藏题。
 - 不依赖后端服务，题库随代码发布，打开网页即可练习。
@@ -11,6 +9,7 @@
 - 每道选择题都内置 `glm-5.2` 生成的本地题目解析；答错后才额外提供流式错因重解读，也可导出 `ai-diagnosis.json` 做阶段复盘。
 - 每道案例都保留题库参考答案，并内置 `glm-5.2` 生成的解题思路与作答要点。
 - 论文页可按题调用 `glm-5.2` 流式生成 AI 范文示例，完成后保存在当前浏览器，支持重读、重新生成和删除。
+- 资料页可按需读取来源仓库的清洗版考试大纲和教程 Markdown，并在网页内自适应阅读。
 
 ## 在线使用
 
@@ -65,6 +64,7 @@ http://localhost:4173
 12. 数据页点击 `下载 ai-diagnosis.json`，可按模块、错因、408 是否需要补、下一周 6-8 小时计划做完整复盘。
 13. 在论文页点击 `使用 glm-5.2 生成范文`，范文会实时显示；完成后自动保存，可随时重新打开阅读。
 14. 案例页默认展示题库参考答案与本地 GLM 解题要点；可按需点击 `使用 glm-5.2 重新整理` 获取新的案例复习版本。
+15. 资料页可筛选考试大纲与教程章节；正文按需从来源仓库读取，离线或来源不可达时可直接跳转至原始文件。
 
 ## 练习模式
 
@@ -101,6 +101,12 @@ node scripts/sync_reference_bank.mjs
 - 论文题：76 道
 
 真题选择题覆盖 `2009年下半年` 到 `2025年下半年` 中可结构化的公开资料。`2016-2025` 的综合知识、案例分析和论文采用参考仓库的清洗交叉校对版，其中综合知识每套 75 题、案例每套 5 题、论文每套 4 题。题面和答案为第三方整理资料，不代表官方原卷或官方答案。
+
+## 资料阅读
+
+- 目录：`data/study-materials.json` 仅保存来源路径、标题、字数和 HTTPS 地址，不内置或重新发布教程、大纲正文。
+- 来源：`YoungHong1992/ruankao-senior-architecture-designer` 的清洗版考试大纲与教程资料；页面点击后才读取对应 Markdown，并提供“在来源仓库阅读”回退链接。
+- 适配：桌面端采用资料目录与正文双栏；窄屏切换为单栏，目录横向滚动，正文、代码与表格保持可读。
 
 ## AI 错题解读
 
@@ -161,3 +167,9 @@ node scripts/sync_reference_bank.mjs
 - 最近错题题干、选项、答案、解析
 - 全部作答轨迹
 - 给 AI 的诊断提示
+
+## 来源与致谢
+
+本项目 [AndyNull/ruankao-architect-practice](https://github.com/AndyNull/ruankao-architect-practice) 是直接 Fork 自 [Zhang-986/ruankao-architect-practice](https://github.com/Zhang-986/ruankao-architect-practice) 的项目，并在其基础上持续维护和扩展。
+
+题库主来源为 [wujiaming88/awesome-ruankao](https://github.com/wujiaming88/awesome-ruankao)，系统架构设计师清洗交叉校对题材及资料阅读目录参考 [YoungHong1992/ruankao-senior-architecture-designer](https://github.com/YoungHong1992/ruankao-senior-architecture-designer)。感谢两个仓库的整理与维护；第三方题面、答案、解析、大纲和教程内容的权利仍归相应权利人所有，具体边界见 [NOTICE.md](NOTICE.md)。
