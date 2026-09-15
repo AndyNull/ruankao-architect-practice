@@ -80,6 +80,15 @@ test("new supplements are visible in the subject manifests", () => {
   assert.equal(itpmPending.choices.length, 0);
 });
 
+test("network legacy case and essay papers remain imported", () => {
+  const network = banks.network;
+  const legacyCases = network.cases.filter((item) => /^20(?:0[9]|1[0-9])年/u.test(item.term));
+  const legacyEssays = network.essays.filter((item) => /^20(?:0[9]|1[0-9])年/u.test(item.term));
+  assert.ok(legacyCases.length >= 30);
+  assert.ok(legacyEssays.length >= 21);
+  assert.ok(legacyCases.every((item) => item.subQuestions.every((question) => question.reference_answer.length >= 20)));
+});
+
 test("supplement validation report is clean", () => {
   const report = JSON.parse(readFileSync(new URL("../data/banks/supplement-validation.json", import.meta.url), "utf8"));
   assert.equal(report.valid, true);

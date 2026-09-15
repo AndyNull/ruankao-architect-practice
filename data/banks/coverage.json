@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-15T12:20:32.960Z",
+  "generatedAt": "2026-09-15T12:43:06.799Z",
   "subjects": {
     "architect": {
       "generated_at": "2026-09-13T16:02:18.680Z",
@@ -112,7 +112,7 @@
       }
     },
     "planner": {
-      "generated_at": "2026-09-15T12:20:32.726Z",
+      "generated_at": "2026-09-15T12:43:06.568Z",
       "subject": {
         "id": "planner",
         "name": "系统规划与管理师"
@@ -181,7 +181,7 @@
       }
     },
     "itpm": {
-      "generated_at": "2026-09-15T12:20:32.859Z",
+      "generated_at": "2026-09-15T12:43:06.700Z",
       "subject": {
         "id": "itpm",
         "name": "信息系统项目管理师"
@@ -485,7 +485,7 @@
       }
     },
     "analyst": {
-      "generated_at": "2026-09-15T12:20:32.907Z",
+      "generated_at": "2026-09-15T12:43:06.743Z",
       "subject": {
         "id": "analyst",
         "name": "系统分析师"
@@ -973,7 +973,7 @@
       }
     },
     "network": {
-      "generated_at": "2026-09-15T12:20:32.954Z",
+      "generated_at": "2026-09-15T12:43:06.789Z",
       "subject": {
         "id": "network",
         "name": "网络规划设计师"
@@ -1015,8 +1015,8 @@
         "choice": 1496,
         "choice_real": 1346,
         "choice_mock": 150,
-        "case": 21,
-        "essay": 12,
+        "case": 51,
+        "essay": 33,
         "pending_choice_answers": 0
       },
       "choice_real_by_term": {

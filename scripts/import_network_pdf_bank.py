@@ -88,6 +88,76 @@ def parse_legacy_choice_pdf(path: Path, term: str, answers: dict[str, dict]) -> 
     return [records[number] for number in sorted(records)]
 
 
+def clean_paper_text(text: str) -> str:
+    """Remove repeated PDF headers and source watermarks."""
+    text = re.sub(r"20\d{2} 年(?:上|下)半年 网络规划设计师 .+?第 \d+页（共 \d+页）", "", text)
+    text = re.sub(r"手机端题库：微信搜索「软考达人」\s*/\s*PC端题库：www\.ruankaodaren\.com", "", text)
+    return re.sub(r"[ \t]+", " ", text).strip()
+
+
+def split_numbered_papers(text: str, max_number: int = 6) -> list[tuple[int, str]]:
+    """Split afternoon papers on Chinese numbered question headings."""
+    pattern = re.compile(r"(?m)^试题([一二三四五六])(?:\s|$)")
+    numbers = "一二三四五六"
+    cleaned = clean_paper_text(text)
+    matches = list(pattern.finditer(cleaned))
+    result = []
+    for index, match in enumerate(matches):
+        number = numbers.index(match.group(1)) + 1
+        if number > max_number:
+            continue
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(cleaned)
+        block = cleaned[match.end():end].strip()
+        if len(block) >= 80:
+            result.append((number, block))
+    return result
+
+
+def parse_case_pdf(path: Path, answer_path: Path | None, term: str) -> list[dict]:
+    """Parse complete legacy case prompts and matching answer sections."""
+    prompts = dict(split_numbered_papers(pdf_text(path)))
+    answer_text = clean_paper_text(pdf_text(answer_path)) if answer_path else ""
+    essay_start = re.search(r"(?m)^试题一\s+论", answer_text)
+    answers = dict(split_numbered_papers(answer_text[:essay_start.start()] if essay_start else answer_text))
+    records = []
+    for number, prompt in prompts.items():
+        question_marks = list(re.finditer(r"【问题\s*(\d+)】", prompt))
+        sub_questions = []
+        for index, marker in enumerate(question_marks):
+            end = question_marks[index + 1].start() if index + 1 < len(question_marks) else len(prompt)
+            sub_questions.append({
+                "question_label": f"问题{marker.group(1)}",
+                "prompt": prompt[marker.end():end].strip(),
+                "reference_answer": answers.get(number, "暂无参考答案"),
+            })
+        if not sub_questions:
+            sub_questions = [{"question_label": "问题", "prompt": prompt, "reference_answer": answers.get(number, "暂无参考答案")}]
+        records.append({
+            "id": f"network-case-real-{term}-{number}", "sourceType": "real", "term": term,
+            "paper": term, "module": "network", "title": f"试题{number}", "description": prompt,
+            "subQuestions": sub_questions,
+            "sourceFile": str(path.relative_to(ROOT)).replace("\\", "/"),
+        })
+    return records
+
+
+def parse_essay_pdf(path: Path, answer_path: Path | None, term: str) -> list[dict]:
+    """Parse complete legacy essay prompts and available writing points."""
+    prompts = split_numbered_papers(pdf_text(path), 4)
+    answer_text = clean_paper_text(pdf_text(answer_path)) if answer_path else ""
+    records = []
+    for number, prompt in prompts:
+        title = prompt.splitlines()[0].strip()
+        writing_match = re.search(rf"{re.escape(title)}[\s\S]*?写作要点([\s\S]*?)(?=\n试题[一二三四]|$)", answer_text)
+        records.append({
+            "id": f"network-essay-real-{term}-{number}", "sourceType": "real", "term": term,
+            "paper": term, "module": "network", "title": title, "prompt": prompt,
+            "writingPoints": writing_match.group(1).strip() if writing_match else "暂无写作要点",
+            "sourceFile": str(path.relative_to(ROOT)).replace("\\", "/"),
+        })
+    return records
+
+
 def parse_paper(year_dir: Path) -> dict[str, dict]:
     answer_file = None
     answers = []
@@ -120,6 +190,8 @@ def main() -> None:
         answers.update(parse_paper(answer_file.parent))
 
     supplements = []
+    cases = []
+    essays = []
     source_root = RAW_ROOT / "网络规划设计师" / "raw" / "xiaomabenten" / "真题"
     for year_dir in sorted(source_root.iterdir()):
         if not year_dir.is_dir() or not re.search(r"20\d{2}", year_dir.name):
@@ -135,10 +207,19 @@ def main() -> None:
         supplements.extend(parsed)
         print(f"{term}: {len(parsed)} network PDF choices")
 
+        answer_candidates = [file for file in year_dir.glob("*.pdf") if re.search(r"答案详解|下午真题（专业解析", file.name)]
+        answer_path = answer_candidates[0] if answer_candidates else None
+        case_candidates = [file for file in year_dir.glob("*.pdf") if re.search(r"案例分析|下午真题\.pdf", file.name) and "解析" not in file.name]
+        essay_candidates = [file for file in year_dir.glob("*.pdf") if "论文" in file.name and "解析" not in file.name]
+        if int(year) <= 2020 and case_candidates:
+            cases.extend(parse_case_pdf(case_candidates[0], answer_path, term))
+        if int(year) <= 2020 and essay_candidates:
+            essays.extend(parse_essay_pdf(essay_candidates[0], answer_path, term))
+
     SUPPLEMENT_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    SUPPLEMENT_OUTPUT.write_text(json.dumps({"choices": supplements, "cases": [], "essays": []}, ensure_ascii=False), encoding="utf-8")
+    SUPPLEMENT_OUTPUT.write_text(json.dumps({"choices": supplements, "cases": cases, "essays": essays}, ensure_ascii=False), encoding="utf-8")
     ANSWER_OUTPUT.write_text(json.dumps(answers, ensure_ascii=False), encoding="utf-8")
-    print(f"network PDF answer keys: {len(answers)}; supplement choices: {len(supplements)}")
+    print(f"network PDF answer keys: {len(answers)}; choices: {len(supplements)}; cases: {len(cases)}; essays: {len(essays)}")
 
 
 if __name__ == "__main__":
