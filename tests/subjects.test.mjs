@@ -81,7 +81,7 @@ test("new supplements are visible in the subject manifests", () => {
 });
 
 test("network legacy case and essay papers remain imported", () => {
-  const network = banks.network;
+  const network = JSON.parse(readFileSync(new URL("../data/banks/network.json", import.meta.url), "utf8"));
   const legacyCases = network.cases.filter((item) => /^20(?:0[9]|1[0-9])年/u.test(item.term));
   const legacyEssays = network.essays.filter((item) => /^20(?:0[9]|1[0-9])年/u.test(item.term));
   assert.ok(legacyCases.length >= 30);
