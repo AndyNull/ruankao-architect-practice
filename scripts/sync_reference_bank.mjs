@@ -181,6 +181,12 @@ bank.manifest.counts = {
   essay: bank.essays.length,
 };
 bank.manifest.choice_real_by_term = Object.fromEntries(bank.manifest.scope.real_terms.map((term) => [term, bank.choices.filter((item) => item.sourceType === "real" && item.term === term).length]));
+bank.manifest.choice_real_missing_by_term = Object.fromEntries(bank.manifest.scope.real_terms
+  .map((term) => {
+    const numbers = new Set(bank.choices.filter((item) => item.sourceType === "real" && item.term === term).map((item) => item.questionNo));
+    return [term, Array.from({ length: 75 }, (_, index) => index + 1).filter((number) => !numbers.has(number))];
+  })
+  .filter(([, missing]) => missing.length));
 bank.manifest.module_counts = Object.fromEntries([...new Set(bank.choices.map((item) => item.module))].map((module) => [module, bank.choices.filter((item) => item.module === module).length]));
 
 writeFileSync(bankPath, JSON.stringify(bank));

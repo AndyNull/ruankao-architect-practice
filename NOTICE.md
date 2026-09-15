@@ -24,6 +24,18 @@ following projects:
 - Study-material reading stores a traceable local snapshot in
   `data/study-materials/`, generated from the upstream repository by
   `scripts/sync_study_materials.mjs`; every entry retains its source link.
+- Additional senior-track raw materials are indexed in
+  `data/exam-materials/manifest.json` from `wujiaming88/awesome-ruankao`,
+  `xiaomabenten/system_planner`, `xiaomabenten/ruankao_itpm`,
+  `xiaomabenten/system-analysts`, `xiaomabenten/network_planner`, and
+  `xiaolidan00/ruankao-question`. Additional structured Information System
+  Project Manager data is indexed from `xmgzxmgz/ruankao-cli` and
+  `IHKYoung/RuanKao`. Binary scans and source images remain local and ignored by
+  Git. Their exam questions and third-party explanations are not covered by
+  this project's MIT License.
+- Public System Analyst PDFs for 2005-2007 were downloaded from
+  `https://www.educity.cn/rk/zhenti/xifen/`; they remain third-party exam
+  materials and are indexed only for personal study and source verification.
 
 If you believe any content should be removed or attributed differently, please
 open an issue with the source file, term, and question number.

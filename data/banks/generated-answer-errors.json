@@ -1,0 +1,207 @@
+{
+  "network|2023年下半年|4": {
+    "id": "network-real-2023年下半年-004",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T11:03:51.431Z"
+  },
+  "network|2023年下半年|46": {
+    "id": "network-real-2023年下半年-046",
+    "message": "答案不是 A-D",
+    "failedAt": "2026-09-15T11:04:03.556Z"
+  },
+  "network|2024年下半年|48": {
+    "id": "network-real-2024年下半年-048",
+    "message": "答案不是 A-D",
+    "failedAt": "2026-09-15T11:04:16.469Z"
+  },
+  "network|2022年下半年|50": {
+    "id": "network-real-2022年下半年-050",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:03:00.588Z"
+  },
+  "network|2023年下半年|18": {
+    "id": "network-real-2023年下半年-018",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:03.453Z"
+  },
+  "network|2023年下半年|56": {
+    "id": "network-real-2023年下半年-056",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:08.665Z"
+  },
+  "network|2023年下半年|64": {
+    "id": "network-real-2023年下半年-064",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:09.890Z"
+  },
+  "network|2023年下半年|71": {
+    "id": "network-real-2023年下半年-071",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:09.890Z"
+  },
+  "network|2024年下半年|6": {
+    "id": "network-real-2024年下半年-006",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:12.329Z"
+  },
+  "network|2024年下半年|57": {
+    "id": "network-real-2024年下半年-057",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:20.620Z"
+  },
+  "network|2024年下半年|68": {
+    "id": "network-real-2024年下半年-068",
+    "message": "Unexpected non-whitespace character after JSON at position 172 (line 4 column 1)",
+    "failedAt": "2026-09-15T10:44:52.720Z"
+  },
+  "network|2025年下半年|5": {
+    "id": "network-real-2025年下半年-005",
+    "message": "Unexpected non-whitespace character after JSON at position 198 (line 4 column 2)",
+    "failedAt": "2026-09-15T10:45:29.554Z"
+  },
+  "planner|2024年下半年|29": {
+    "id": "planner-real-2024年下半年-029",
+    "message": "答案不是 A-D",
+    "failedAt": "2026-09-15T09:46:04.804Z"
+  },
+  "network|2022年下半年|42": {
+    "id": "network-real-2022年下半年-042",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:03:00.588Z"
+  },
+  "network|2022年下半年|51": {
+    "id": "network-real-2022年下半年-051",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:43:59.171Z"
+  },
+  "network|2022年下半年|59": {
+    "id": "network-real-2022年下半年-059",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:43:59.171Z"
+  },
+  "network|2022年下半年|71": {
+    "id": "network-real-2022年下半年-071",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:00.935Z"
+  },
+  "network|2023年下半年|1": {
+    "id": "network-real-2023年下半年-001",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:01.026Z"
+  },
+  "network|2023年下半年|6": {
+    "id": "network-real-2023年下半年-006",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:02.244Z"
+  },
+  "network|2023年下半年|14": {
+    "id": "network-real-2023年下半年-014",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:02.245Z"
+  },
+  "network|2023年下半年|19": {
+    "id": "network-real-2023年下半年-019",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:03.454Z"
+  },
+  "network|2023年下半年|25": {
+    "id": "network-real-2023年下半年-025",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:04.668Z"
+  },
+  "network|2023年下半年|29": {
+    "id": "network-real-2023年下半年-029",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:04.668Z"
+  },
+  "network|2023年下半年|32": {
+    "id": "network-real-2023年下半年-032",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:06.078Z"
+  },
+  "network|2023年下半年|36": {
+    "id": "network-real-2023年下半年-036",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:06.079Z"
+  },
+  "network|2023年下半年|40": {
+    "id": "network-real-2023年下半年-040",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:07.440Z"
+  },
+  "network|2023年下半年|45": {
+    "id": "network-real-2023年下半年-045",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:07.439Z"
+  },
+  "network|2023年下半年|60": {
+    "id": "network-real-2023年下半年-060",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:08.666Z"
+  },
+  "network|2023年下半年|74": {
+    "id": "network-real-2023年下半年-074",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:11.117Z"
+  },
+  "network|2024年下半年|2": {
+    "id": "network-real-2024年下半年-002",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:11.117Z"
+  },
+  "network|2024年下半年|12": {
+    "id": "network-real-2024年下半年-012",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:12.330Z"
+  },
+  "network|2024年下半年|18": {
+    "id": "network-real-2024年下半年-018",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:13.544Z"
+  },
+  "network|2024年下半年|21": {
+    "id": "network-real-2024年下半年-021",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:13.543Z"
+  },
+  "network|2024年下半年|26": {
+    "id": "network-real-2024年下半年-026",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:14.759Z"
+  },
+  "network|2024年下半年|31": {
+    "id": "network-real-2024年下半年-031",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:14.760Z"
+  },
+  "network|2024年下半年|34": {
+    "id": "network-real-2024年下半年-034",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:15.972Z"
+  },
+  "network|2024年下半年|44": {
+    "id": "network-real-2024年下半年-044",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:15.973Z"
+  },
+  "network|2024年下半年|49": {
+    "id": "network-real-2024年下半年-049",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:17.179Z"
+  },
+  "network|2024年下半年|52": {
+    "id": "network-real-2024年下半年-052",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:17.180Z"
+  },
+  "network|2024年下半年|56": {
+    "id": "network-real-2024年下半年-056",
+    "message": "fetch failed",
+    "failedAt": "2026-09-15T10:44:20.622Z"
+  },
+  "network|2025年下半年|14": {
+    "id": "network-real-2025年下半年-014",
+    "message": "答案不是 A-D",
+    "failedAt": "2026-09-15T10:45:42.886Z"
+  }
+}

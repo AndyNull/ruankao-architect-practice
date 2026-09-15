@@ -42,7 +42,15 @@ import { renderQuestionFigure } from "./figures.mjs";
 import { renderMarkdown } from "./markdown.mjs";
 
 const state = {
+  catalog: [],
+  subjectId: "architect",
+  subject: null,
   bank: null,
+  architectFigures: {},
+  architectAiExplanations: {},
+  architectCaseExplanations: {},
+  subjectExplanationCache: new Map(),
+  subjectCaseExplanationCache: new Map(),
   figures: {},
   attempts: [],
   bookmarks: [],
@@ -65,6 +73,7 @@ const state = {
   aiExplanation: null,
   aiRequestId: 0,
   caseExplanation: null,
+  noticeTimer: 0,
   caseRequestId: 0,
   essaySamples: new Map(),
   essayGeneration: null,
@@ -95,25 +104,30 @@ const viewTitles = {
 
 async function init() {
   try {
-    const [bankResponse, figuresResponse, explanationsResponse, caseExplanationsResponse, materialsResponse] = await Promise.all([
-      fetch("./data/bank.json"),
+    const [catalogResponse, figuresResponse, explanationsResponse, caseExplanationsResponse, materialsResponse] = await Promise.all([
+      fetch("./data/banks/index.json"),
       fetch("./data/figures.json").catch(() => null),
       fetch("./data/ai-explanations.json", { cache: "no-store" }).catch(() => null),
       fetch("./data/ai-case-explanations.json", { cache: "no-store" }).catch(() => null),
       fetch("./data/study-materials.json").catch(() => null),
     ]);
-    if (!bankResponse.ok) throw new Error(`题库读取失败（${bankResponse.status}）`);
-    state.bank = await bankResponse.json();
-    state.figures = figuresResponse?.ok ? (await figuresResponse.json()).figures || {} : {};
-    state.aiExplanations = explanationsResponse?.ok ? (await explanationsResponse.json()).explanations || {} : {};
-    state.caseExplanations = caseExplanationsResponse?.ok ? (await caseExplanationsResponse.json()).explanations || {} : {};
+    if (!catalogResponse.ok) throw new Error(`科目目录读取失败（${catalogResponse.status}）`);
+    const catalogPayload = await catalogResponse.json();
+    state.catalog = Array.isArray(catalogPayload.subjects) ? catalogPayload.subjects : [];
+    state.subjectId = selectInitialSubject(catalogPayload.defaultSubject);
+    state.subject = subjectById(state.subjectId);
+    state.bank = await fetchBank(state.subject);
+    state.architectFigures = figuresResponse?.ok ? (await figuresResponse.json()).figures || {} : {};
+    state.architectAiExplanations = explanationsResponse?.ok ? (await explanationsResponse.json()).explanations || {} : {};
+    state.architectCaseExplanations = caseExplanationsResponse?.ok ? (await caseExplanationsResponse.json()).explanations || {} : {};
+    state.subjectExplanationCache.set("architect", state.architectAiExplanations);
+    state.subjectCaseExplanationCache.set("architect", state.architectCaseExplanations);
+    state.figures = state.subjectId === "architect" ? state.architectFigures : {};
+    await loadSubjectExplanations(state.subject);
     const materialsPayload = materialsResponse?.ok ? await materialsResponse.json() : null;
     state.materials = normalizeMaterials(materialsPayload?.materials);
     state.materialId = state.materials[0]?.id || "";
-    const [attempts, bookmarks, essaySamples] = await Promise.all([getAttempts(), getBookmarks(), getEssaySamples()]);
-    state.attempts = attempts;
-    state.bookmarks = bookmarks;
-    state.essaySamples = new Map(essaySamples.map((sample) => [sample.essayId, sample]));
+    await loadSubjectRecords();
     initFilters();
     applyFilters();
     bindEvents();
@@ -124,6 +138,9 @@ async function init() {
 }
 
 function bindEvents() {
+  $("subjectSelect").addEventListener("change", (event) => {
+    void switchSubject(event.target.value);
+  });
   document.querySelectorAll(".nav-button").forEach((button) => {
     button.addEventListener("click", () => switchView(button.dataset.view));
   });
@@ -222,7 +239,12 @@ function applyFilters() {
 }
 
 function renderAll() {
-  $("bankCount").textContent = `${state.bank.choices.length} 选择题`;
+  renderSubjectSelector();
+  document.title = `${state.subject.name}练题台`;
+  $("brandTitle").textContent = `${state.subject.shortName || state.subject.name}练题台`;
+  $("viewTitle").textContent = `${viewTitles[state.currentView] || "练题"} · ${state.subject.shortName || state.subject.name}`;
+  const pendingChoiceCount = state.bank.manifest.counts.pending_choice_answers || 0;
+  $("bankCount").textContent = `${state.bank.choices.length} 选择题${pendingChoiceCount ? ` · ${pendingChoiceCount} 待补答案` : ""}`;
   $("attemptCount").textContent = `${state.attempts.length}`;
   $("localExplanationStatus").textContent = `本地 AI 解析：${Object.keys(state.aiExplanations).length}/${state.bank.choices.length} 道`;
   $("caseExplanationStatus").textContent = `本地案例解题：${Object.keys(state.caseExplanations).length}/${state.bank.cases.length} 道`;
@@ -237,6 +259,82 @@ function renderAll() {
   renderMaterials();
 }
 
+function renderSubjectSelector() {
+  const select = $("subjectSelect");
+  select.innerHTML = state.catalog.map((subject) => `<option value="${escapeHtml(subject.id)}">${escapeHtml(subject.name)}</option>`).join("");
+  select.value = state.subjectId;
+}
+
+function selectInitialSubject(defaultSubject) {
+  const stored = localStorage.getItem("ruankao.subject");
+  return subjectById(stored)?.id || subjectById(defaultSubject)?.id || state.catalog[0]?.id || "architect";
+}
+
+function subjectById(subjectId) {
+  return state.catalog.find((subject) => subject.id === subjectId) || null;
+}
+
+async function fetchBank(subject) {
+  if (!subject?.bankUrl) throw new Error("科目题库地址缺失");
+  const response = await fetch(subject.bankUrl);
+  if (!response.ok) throw new Error(`${subject.name}题库读取失败（${response.status}）`);
+  return response.json();
+}
+
+async function loadSubjectRecords() {
+  const [attempts, bookmarks, essaySamples] = await Promise.all([getAttempts(), getBookmarks(), getEssaySamples()]);
+  state.attempts = attempts.filter((record) => recordSubject(record) === state.subjectId);
+  state.bookmarks = bookmarks.filter((record) => recordSubject(record) === state.subjectId);
+  state.essaySamples = new Map(essaySamples.filter((sample) => recordSubject(sample) === state.subjectId).map((sample) => [sample.essayId, sample]));
+}
+
+function recordSubject(record) {
+  if (record?.subjectId && subjectById(record.subjectId)) return record.subjectId;
+  const id = String(record?.questionId || record?.essayId || "");
+  return state.catalog.some((subject) => subject.id !== "architect" && id.startsWith(`${subject.id}-`)) ? id.split("-", 1)[0] : "architect";
+}
+
+async function switchSubject(subjectId) {
+  if (subjectId === state.subjectId) return;
+  const subject = subjectById(subjectId);
+  if (!subject) return;
+  try {
+    state.bank = await fetchBank(subject);
+    state.subjectId = subject.id;
+    state.subject = subject;
+    localStorage.setItem("ruankao.subject", subject.id);
+    state.figures = subject.id === "architect" ? state.architectFigures : {};
+    await loadSubjectExplanations(subject);
+    state.aiExplanation = null;
+    state.caseExplanation = null;
+    state.essayGeneration = null;
+    state.materialCache.clear();
+    await loadSubjectRecords();
+    initFilters();
+    applyFilters();
+    renderAll();
+    showNotice(`已切换到${subject.name}`, "ok");
+  } catch (error) {
+    showNotice(`切换科目失败：${error.message}`, "error");
+    $("subjectSelect").value = state.subjectId;
+  }
+}
+
+async function loadSubjectExplanations(subject) {
+  const explanationUrl = subject?.explanationUrl || (subject?.id === "architect" ? "./data/ai-explanations.json" : "");
+  const caseExplanationUrl = subject?.caseExplanationUrl || (subject?.id === "architect" ? "./data/ai-case-explanations.json" : "");
+  if (explanationUrl && !state.subjectExplanationCache.has(subject.id)) {
+    const response = await fetch(explanationUrl, { cache: "no-store" });
+    state.subjectExplanationCache.set(subject.id, response.ok ? (await response.json()).explanations || {} : {});
+  }
+  if (caseExplanationUrl && !state.subjectCaseExplanationCache.has(subject.id)) {
+    const response = await fetch(caseExplanationUrl, { cache: "no-store" });
+    state.subjectCaseExplanationCache.set(subject.id, response.ok ? (await response.json()).explanations || {} : {});
+  }
+  state.aiExplanations = state.subjectExplanationCache.get(subject.id) || {};
+  state.caseExplanations = state.subjectCaseExplanationCache.get(subject.id) || {};
+}
+
 function renderOverview() {
   $("studyPlanList").innerHTML = buildStudyPlan({ dailyCount: state.dailyCount }).map((item) => `
     <div class="plan-step">
@@ -248,9 +346,13 @@ function renderOverview() {
   const mockTerms = state.bank.manifest.scope.mock_terms || [];
   const realCount = state.bank.manifest.counts.choice_real || state.bank.choices.filter((item) => item.sourceType === "real").length;
   const mockCount = state.bank.manifest.counts.choice_mock || state.bank.choices.filter((item) => item.sourceType === "mock").length;
+  const pendingCount = state.bank.manifest.counts.pending_choice_answers || 0;
   const realRange = realTerms.length ? `${realTerms[0]} 至 ${realTerms.at(-1)}，共 ${realTerms.length} 个批次` : "暂无真题";
+  const missingByTerm = state.bank.manifest.choice_real_missing_by_term || {};
+  const missingText = Object.entries(missingByTerm).map(([term, numbers]) => `${term}缺第${numbers.join("、")}题`).join("；");
   $("sourceSummary").textContent = `${state.bank.choices.length} 道选择题，${state.bank.cases.length} 道案例，${state.bank.essays.length} 道论文`;
-  $("sourceDetail").textContent = `真题 ${realCount} 道：${realRange}；模拟 ${mockCount} 道：${mockTerms.length} 套。每题下方显示年份、题号、模块和来源文件。`;
+  const missingDetail = missingText ? `结构化题面缺口：${missingText}。` : "各套真题题号连续。";
+  $("sourceDetail").textContent = `真题 ${realCount} 道：${realRange}；模拟 ${mockCount} 道：${mockTerms.length} 套。${pendingCount ? `另有 ${pendingCount} 道题待补答案，暂不进入练习。` : "全部已提取题目均有答案。"}${missingDetail}每题下方显示年份、题号、模块和来源文件。`;
 }
 
 function renderModeCounts() {
@@ -262,7 +364,8 @@ function renderModeCounts() {
   $("examModeCount").textContent = `${terms.length} 套`;
   $("wrongModeCount").textContent = `${memory.wrong} 错题`;
   $("favoriteModeCount").textContent = `${state.bookmarks.length} 收藏`;
-  $("allModeCount").textContent = `${state.bank.choices.length} 题`;
+  const pendingChoiceCount = state.bank.manifest.counts.pending_choice_answers || 0;
+  $("allModeCount").textContent = `${state.bank.choices.length} 题${pendingChoiceCount ? ` · ${pendingChoiceCount} 待补` : ""}`;
 }
 
 function renderChapterBoard() {
@@ -408,6 +511,7 @@ async function submitCurrentAnswer(answer) {
   }
   const graded = gradeAnswer(question, state.selectedAnswer);
   const attempt = {
+    subjectId: state.subjectId,
     questionId: question.id,
     sourceType: question.sourceType,
     term: question.term,
@@ -420,7 +524,7 @@ async function submitCurrentAnswer(answer) {
     answeredAt: new Date().toISOString(),
   };
   await addAttempt(attempt);
-  state.attempts = await getAttempts();
+  await loadSubjectRecords();
   state.submitted = true;
   state.retryQuestionId = "";
   renderPractice();
@@ -435,12 +539,14 @@ function renderAnswerResult(question, graded, options = {}) {
   const result = $("answerResult");
   result.hidden = false;
   result.className = `answer-result ${graded.correct ? "correct" : "wrong"}`;
+  const sourceAnalysis = String(question.analysis || "");
+  const hasUsableSourceAnalysis = sourceAnalysis.length >= 20 && !/暂无详细解析|解析待补|\.\.\.|…{2,}/u.test(sourceAnalysis);
   result.innerHTML = `
     <div class="answer-title">
       <h4>${options.review ? "上次作答" : graded.correct ? "回答正确" : "回答错误"}</h4>
       <span>你的答案 ${escapeHtml(graded.answer)} · 正确答案 ${escapeHtml(graded.correctAnswer)}</span>
     </div>
-    <div class="analysis-body ${question.analysisKind !== "available" ? "analysis-muted" : ""}"><h5>题库原解析</h5>${renderRichText(question.analysis || "暂无解析")}</div>
+    ${hasUsableSourceAnalysis ? `<div class="analysis-body ${question.analysisKind !== "available" ? "analysis-muted" : ""}"><h5>题库原解析</h5>${renderRichText(sourceAnalysis)}</div>` : ""}
     ${renderLocalQuestionExplanation(options.cacheQuestion || question)}
     ${graded.correct ? "" : renderAiExplanation(question)}
     ${options.review ? `<button class="retry-answer" type="button">再次作答</button>` : ""}
@@ -835,6 +941,7 @@ async function handleEssayAction(event) {
     if (!generation?.draft) return;
     const sample = await saveEssaySample({
       essayId: essay.id,
+      subjectId: state.subjectId,
       title: essay.title,
       content: generation.draft,
       model: aiModel,
@@ -887,6 +994,7 @@ async function requestEssaySample(essay) {
     if (requestId !== state.essayRequestId || controller.signal.aborted) return;
     const sample = await saveEssaySample({
       essayId: essay.id,
+      subjectId: state.subjectId,
       title: essay.title,
       content,
       model: aiModel,
@@ -935,7 +1043,7 @@ function itemCard(question, extra = "") {
 
 function switchView(view) {
   state.currentView = view;
-  $("viewTitle").textContent = viewTitles[view] || "练题";
+  $("viewTitle").textContent = `${viewTitles[view] || "练题"} · ${state.subject.shortName || state.subject.name}`;
   document.querySelectorAll(".nav-button").forEach((button) => button.classList.toggle("active", button.dataset.view === view));
   syncTypeButtons();
   document.querySelectorAll(".view").forEach((section) => section.classList.remove("active-view"));
@@ -1065,8 +1173,8 @@ function shouldAnswerFresh(question) {
 async function toggleCurrentFavorite() {
   const question = currentQuestion();
   if (!question) return;
-  await toggleBookmark(question.id);
-  state.bookmarks = await getBookmarks();
+  await toggleBookmark(question.id, state.subjectId);
+  await loadSubjectRecords();
   if (state.mode === "favorite" && !isBookmarked(question.id)) {
     applyFilters();
   }
@@ -1134,8 +1242,8 @@ async function applyPendingProgress() {
     return;
   }
   if (!confirm("确定用这个 JSON 替换当前浏览器里的练习进度吗？")) return;
-  state.attempts = await importProgress(state.pendingProgress);
-  state.bookmarks = await getBookmarks();
+  await importProgress(state.pendingProgress);
+  await loadSubjectRecords();
   state.pendingProgress = null;
   $("applyProgressImport").disabled = true;
   applyFilters();
@@ -1162,6 +1270,7 @@ function renderProgressPreview(summary, filename = "") {
       <span><b>覆盖题目</b>${summary.answeredQuestions}</span>
       <span><b>错题</b>${summary.wrong}</span>
       <span><b>收藏题</b>${summary.bookmarks}</span>
+      <span><b>论文范文</b>${summary.essaySamples}</span>
       <span><b>最近作答</b>${summary.latestAt ? escapeHtml(formatDateTime(summary.latestAt)) : "暂无"}</span>
     </div>
   `;
@@ -1179,10 +1288,11 @@ function downloadJson(filename, payload) {
 
 function showNotice(message, kind = "ok") {
   const notice = $("notice");
+  window.clearTimeout(state.noticeTimer);
   notice.textContent = message;
   notice.className = `notice ${kind}`;
   notice.hidden = false;
-  window.setTimeout(() => {
+  state.noticeTimer = window.setTimeout(() => {
     notice.hidden = true;
   }, 2800);
 }
@@ -1196,6 +1306,7 @@ function moduleLabel(module) {
     network: "网络",
     security: "安全",
     project_management: "项目管理",
+    service_management: "服务管理",
     legal_ip: "知识产权",
     new_technology: "新技术",
     embedded: "嵌入式",

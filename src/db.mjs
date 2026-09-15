@@ -77,30 +77,32 @@ export async function deleteEssaySample(essayId) {
   return deleteOne(db, ESSAY_SAMPLES_STORE, essayId.trim());
 }
 
-export async function toggleBookmark(questionId) {
+export async function toggleBookmark(questionId, subjectId = "architect") {
   const db = await openPracticeDb();
   const existing = await readOne(db, BOOKMARKS_STORE, questionId);
   if (existing) {
     await deleteOne(db, BOOKMARKS_STORE, questionId);
     return { questionId, bookmarked: false };
   }
-  await put(db, BOOKMARKS_STORE, { questionId, createdAt: new Date().toISOString() });
+  await put(db, BOOKMARKS_STORE, { questionId, subjectId, createdAt: new Date().toISOString() });
   return { questionId, bookmarked: true };
 }
 
 export async function exportProgress() {
   const attempts = await getAttempts();
   const bookmarks = await getBookmarks();
+  const essaySamples = await getEssaySamples();
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     exportedAt: new Date().toISOString(),
     attempts,
     bookmarks,
+    essaySamples,
   };
 }
 
 export async function importProgress(payload) {
-  if (!payload || payload.schemaVersion !== 1 || !Array.isArray(payload.attempts)) {
+  if (!payload || ![1, 2].includes(payload.schemaVersion) || !Array.isArray(payload.attempts)) {
     throw new Error("导入文件格式不正确");
   }
   const db = await openPracticeDb();
@@ -112,6 +114,10 @@ export async function importProgress(payload) {
   }
   for (const bookmark of payload.bookmarks || []) {
     if (bookmark.questionId) await put(db, BOOKMARKS_STORE, bookmark);
+  }
+  if (payload.schemaVersion === 2) {
+    await clearStore(db, ESSAY_SAMPLES_STORE);
+    for (const sample of payload.essaySamples || []) await put(db, ESSAY_SAMPLES_STORE, normalizeEssaySample(sample));
   }
   return getAttempts();
 }
@@ -182,6 +188,7 @@ function normalizeEssaySample(sample) {
   if (!essayId || !content) throw new Error("范文数据不完整");
   return {
     essayId,
+    subjectId: typeof sample.subjectId === "string" ? sample.subjectId.trim() : "architect",
     title: typeof sample.title === "string" ? sample.title.trim() : "",
     content,
     model: typeof sample.model === "string" ? sample.model.trim() : "",

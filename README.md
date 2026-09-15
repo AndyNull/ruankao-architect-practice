@@ -1,6 +1,14 @@
 # 系统架构设计师练题台
 
-这是一个面向软考高级「系统架构设计师」的开源刷题练习站，适合周末碎片化备考、真题练习、错题复盘和阶段性诊断。
+这是一个面向软考高级资格考试的开源刷题练习站，支持系统架构设计师、系统规划与管理师、信息系统项目管理师、系统分析师和网络规划设计师。
+
+## 本次更新
+
+- 扩展五科题库并补齐当前已导入题目的答案，本地解析覆盖全部可作答选择题。
+- 支持五科切换以及作答、错题、收藏、统计和论文范文的科目隔离。
+- 进度 JSON 升级为 v2，可导入导出全部科目的作答、收藏和论文范文，并兼容 v1。
+- 优化桌面端和移动端科目切换、工具栏与提示显示。
+- 使用 GitHub Actions 自动部署 GitHub Pages。完整记录见 [CHANGELOG.md](CHANGELOG.md)。
 
 - 覆盖综合知识选择题、案例分析和论文题。
 - 支持继续练习、记忆复习、章节练习、真题套卷、错题重刷和收藏题。
@@ -10,6 +18,8 @@
 - 每道案例都保留题库参考答案，并内置 `glm-5.2` 生成的解题思路与作答要点。
 - 论文页可按题调用 `glm-5.2` 流式生成 AI 范文示例，完成后保存在当前浏览器，支持重读、重新生成和删除。
 - 资料页可按需读取来源仓库的清洗版考试大纲和教程 Markdown，并在网页内自适应阅读。
+- 顶部科目选择器可切换五科；题库、筛选器、错题、收藏、统计和论文范文按科目隔离。
+- 五科均加载独立的本地题目解析文件；未核验答案仍明确标记为待补，不会误判。
 
 ## 在线使用
 
@@ -33,6 +43,15 @@ start.cmd
 node scripts/serve.mjs
 ```
 
+题库重建或更新本地解析时执行：
+
+```bash
+python scripts/import_planner_pdf_bank.py
+node scripts/import_network_online_answers.mjs
+node scripts/build_subject_banks.mjs
+node scripts/build_local_subject_explanations.mjs
+```
+
 然后访问：
 
 ```text
@@ -41,12 +60,12 @@ http://localhost:4173
 
 ## GitHub Pages
 
-本项目为纯静态站点，`main` 分支根目录可直接作为 GitHub Pages 发布源，无需构建或后端服务。
+本项目为纯静态站点，由 `.github/workflows/pages.yml` 自动发布，无需构建或后端服务。
 
 1. 进入仓库 Settings -> Pages。
-2. Source 选择 `Deploy from a branch`。
-3. Branch 选择 `main`，目录选择 `/root`，然后保存。
-4. 等待 GitHub Pages 发布完成后访问 `https://andynull.github.io/ruankao-architect-practice/`。
+2. Source 选择 `GitHub Actions`。
+3. 推送到 `main` 或手动运行 `Deploy to GitHub Pages` 工作流。
+4. 等待发布完成后访问 `https://andynull.github.io/ruankao-architect-practice/`。
 
 ## 使用方式
 
@@ -65,6 +84,7 @@ http://localhost:4173
 13. 在论文页点击 `使用 glm-5.2 生成范文`，范文会实时显示；完成后自动保存，可随时重新打开阅读。
 14. 案例页默认展示题库参考答案与本地 GLM 解题要点；可按需点击 `使用 glm-5.2 重新整理` 获取新的案例复习版本。
 15. 资料页可筛选考试大纲与教程章节；正文按需从来源仓库读取，离线或来源不可达时可直接跳转至原始文件。
+16. 顶部选择器用于切换考试科目；尚未补齐答案的原始题目会在题库说明中标记，不会进入练习。
 
 ## 练习模式
 
@@ -85,6 +105,10 @@ http://localhost:4173
 ```text
 data/bank.json
 ```
+
+其他科目的结构化题库在 `data/banks/`，目录清单为 `data/banks/index.json`，可用 `node scripts/build_subject_banks.mjs` 从 `data/exam-materials/` 的原始资料重新生成。
+
+当前五科可作答题量：架构师 1947 道、系规 814 道、高项 3686 道、系分 956 道、网规 1496 道。当前已导入选择题的待补答案数量为 0。
 
 当前题库可从同级参考仓库的清洗版重新同步：
 
@@ -112,6 +136,7 @@ node scripts/sync_reference_bank.mjs
 
 - 接口：`https://glm.996986.xyz/v1/chat/completions`
 - 模型：`glm-5.2`
+- 题库批量解析：`node scripts/generate_subject_explanations_glm.mjs network`（可替换为 `planner`、`itpm`、`analyst`；默认只处理网页导入题目，使用 `GLM_API_KEY`、`--refresh` 可重新生成）。
 - API Key：当前接口无需密钥；如接口启用鉴权，可在数据页填写，且只保存在页面内存。
 - 本地优先：`data/ai-explanations.json` 按题目 ID、题干、选项、答案、原解析和图示签名保存 GLM 生成的解析。无论答对或答错都会展示本地解析，不发送 AI 请求；仅题目已更新或答错后手动点击“重新解读”时调用接口。
 - 批量生成：运行 `node scripts/generate_ai_explanations.mjs --concurrency 20`。该脚本只调用上述 GLM 接口，断点后重复执行会跳过签名仍有效的题目；请求失败会记录在 `data/ai-explanation-errors.json`，下次继续补齐。
@@ -129,7 +154,7 @@ node scripts/sync_reference_bank.mjs
 - 输出：仅作为 `AI 范文示例`。按软考项目实践论文格式，摘要与正文分开，摘要约 `300-400` 字、正文约 `2000-3000` 字；正文按题目三个小问组织，在项目背景、本人职责和实施部分使用第一人称。写作要点中的范文提纲只作学习参考，不会成为固定标题、字数或项目事实。
 - 保存：流式输出结束后，校验摘要与正文分隔、摘要和正文字数、正文中的第一人称项目角色与职责；通过才保存到当前浏览器 IndexedDB。刷新页面后仍可阅读，重新生成只会在新范文成功后覆盖旧内容。
 - 失败处理：流式输出结构或篇幅明显不完整时，生成器会自动请求一次完整响应；只有完整响应通过校验后才保存。完整响应请求失败或仍不合格时，首稿原文会保留为未保存草稿，并显示具体问题；可选择保存为“未达标草稿”，不会覆盖已合格内容。
-- 清理：`清空本地记录`只删除作答和收藏，不删除已保存范文；进度 JSON 也不包含范文内容。
+- 清理：`清空本地记录`只删除作答和收藏，不删除已保存范文；进度 JSON v2 包含全部科目的范文内容。
 
 ## 图题处理
 
@@ -145,8 +170,8 @@ node scripts/sync_reference_bank.mjs
 
 进度 JSON 用于在不同浏览器或电脑之间热插拔练习记录。
 
-- `导出进度`：下载 `ruankao-progress.json`，包含作答记录和收藏题。
-- `导入进度`：先读取 JSON 摘要，展示作答数、覆盖题目、错题、收藏题和最近作答时间。
+- `导出进度`：下载 v2 格式的 `ruankao-progress.json`，包含全部科目的作答记录、收藏题和论文范文。
+- `导入进度`：兼容 v1 和 v2，先展示作答数、覆盖题目、错题、收藏题、论文范文和最近作答时间。
 - `应用读取的进度`：确认后用 JSON 替换当前浏览器里的本地进度。
 - `清空记录`：只清空当前浏览器本地 IndexedDB，不影响已经导出的 JSON。
 

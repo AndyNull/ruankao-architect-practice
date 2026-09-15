@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "defaultSubject": "architect",
+  "subjects": [
+    {
+      "id": "architect",
+      "name": "系统架构设计师",
+      "shortName": "架构师",
+      "bankUrl": "./data/bank.json",
+      "explanationUrl": "./data/ai-explanations.json",
+      "caseExplanationUrl": "./data/ai-case-explanations.json"
+    },
+    {
+      "id": "planner",
+      "name": "系统规划与管理师",
+      "shortName": "系规",
+      "bankUrl": "./data/banks/planner.json",
+      "explanationUrl": "./data/banks/ai-explanations-planner.json",
+      "caseExplanationUrl": "./data/banks/ai-case-explanations-planner.json"
+    },
+    {
+      "id": "itpm",
+      "name": "信息系统项目管理师",
+      "shortName": "高项",
+      "bankUrl": "./data/banks/itpm.json",
+      "explanationUrl": "./data/banks/ai-explanations-itpm.json",
+      "caseExplanationUrl": "./data/banks/ai-case-explanations-itpm.json"
+    },
+    {
+      "id": "analyst",
+      "name": "系统分析师",
+      "shortName": "系分",
+      "bankUrl": "./data/banks/analyst.json",
+      "explanationUrl": "./data/banks/ai-explanations-analyst.json",
+      "caseExplanationUrl": "./data/banks/ai-case-explanations-analyst.json"
+    },
+    {
+      "id": "network",
+      "name": "网络规划设计师",
+      "shortName": "网规",
+      "bankUrl": "./data/banks/network.json",
+      "explanationUrl": "./data/banks/ai-explanations-network.json",
+      "caseExplanationUrl": "./data/banks/ai-case-explanations-network.json"
+    }
+  ]
+}

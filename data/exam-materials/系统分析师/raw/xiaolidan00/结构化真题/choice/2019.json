@@ -1,0 +1,3180 @@
+{
+  "msg": "success",
+  "code": 200,
+  "data": {
+    "currentIndex": null,
+    "examId": "1787849208586047488",
+    "examTime": 9000,
+    "examComplete": 0,
+    "questionList": [
+      {
+        "id": "796234577084436481",
+        "title": "<p><strong>请作答第<span style=\"color: red\">1</span>个空。</strong></p>信息资源是企业的重要资源，需要进行合理的管理，其中（19）管理强调对数据的控制(维护和安全)，（20）管理则关心企业管理人员如何获取和处理信息(流程和方法)且强调企业中信息资源的重要性。",
+        "analyze": "本题考查企业信息化方面的基础知识。<br> 信息资源是企业的重要资源，需要进行合理的管理，其中数据资源管理强调对数据的控制（维护和安全），信息处理管理则关心企业管理人员如何获取和处理信息（流程和方法）且强调企业中信息资源的重要性。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "D",
+        "chooseItem": ["796234578053320705"],
+        "itemList": [
+          {
+            "id": "796234577998794753",
+            "questionId": "796234577084436481",
+            "content": " 生产资源",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234578023960577",
+            "questionId": "796234577084436481",
+            "content": " 流程资源",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234578036543489",
+            "questionId": "796234577084436481",
+            "content": " 客户资源",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234578053320705",
+            "questionId": "796234577084436481",
+            "content": " 数据资源",
+            "answer": 1,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234580083363841",
+        "title": "<p><strong>请作答第<span style=\"color: red\">2</span>个空。</strong></p>信息资源是企业的重要资源，需要进行合理的管理，其中（19）管理强调对数据的控制(维护和安全)，（20）管理则关心企业管理人员如何获取和处理信息(流程和方法)且强调企业中信息资源的重要性。",
+        "analyze": "本题考查企业信息化方面的基础知识。<br> 信息资源是企业的重要资源，需要进行合理的管理，其中数据资源管理强调对数据的控制（维护和安全），信息处理管理则关心企业管理人员如何获取和处理信息（流程和方法）且强调企业中信息资源的重要性。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234581027082241"],
+        "itemList": [
+          {
+            "id": "796234581027082241",
+            "questionId": "796234580083363841",
+            "content": " 信息处理",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234581035470849",
+            "questionId": "796234580083363841",
+            "content": " 流程重组",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234581048053761",
+            "questionId": "796234580083363841",
+            "content": " 组织机构",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234581056442369",
+            "questionId": "796234580083363841",
+            "content": " 业务方法",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234642066788353",
+        "title": "软件能力成熟度模型提供了一个软件能力成熟度的框架，它将软件过程改进的步骤组织成5个成熟度等级。其中，软件过程已建立了基本的项目管理过程，可用于对成本、进度和功能特性进行跟踪，说明软件已达到（ ）成熟度等级。",
+        "analyze": "本题考查软件成熟度模型方面的基础知识。<br> 软件成熟度模型（Capability Maturity Model for Software, CMM),英文缩写为SW-CMM,简称CMM。它是对于软件组织在定义、实施、度量、控制和改善其软件过程的实践中各个发展阶段的描述。CMM的核心是把软件开发视为一个过程，并根据这一原则对软件开发和维护进行过程监控和研究，以使其更加科学化、标准化、使企业能够更好地实现商业目标。<br> CMM是一种用于评价软件成熟能力并帮助其改善软件质量的方法，侧重于软件开发过程的管理及工程能力的提高与评估。CMM分为五个等级：一级为初始级，二级为可重复级，三级为已定义级，四级为已管理级，五级为优化级。<br> CMM/CMMI将软件过程的成熟度分为5个等级，以下是5个等级的基本特征：<br> ①初始级（imtial)。工作无序，项目进行过程中常放弃当初的计划。管理无章法，缺乏健全的管理制度。开发项目成效不稳定，项目成功主要依靠项目负责人的经验和能力，他一旦离去，工作秩序面目全非。<br> ②可重复级（Repeatable)。管理制度化，建立了基本的管理制度和规程，管理工作有章可循。初步实现标准化，开发工作比较好地按标准实施。变更依法进行，做到基线化，稳定可跟踪，新项目的计划和管理基于过去的实践经验，具有重复以前成功项目的环境和条件。<br> ③已定义级（Defined)。开发过程，包括技术工作和管理工作，均已实现标准化、文档化。建立了完善的培训制度和专家评审制度，全部技术活动和管理活动均可控制，对项目进行中的过程、岗位和职责均有共同的理解。<br> ④已管理级（Managed)。产品和过程已建立了定量的质量目标。开发活动中的生产率和质量是可量度的。已建立过程数据库。<span>已</span>实现项目产品和过程的控制。可预测过程和产品质量趋势，如预测偏差，实现及时纠正。<br> ⑤优化级（Optimizing)。可集中精力改进过程，采用新技术、新方法。拥有防止出现缺陷、识别薄弱环节以及加以改进的手段。可取得过程有效性的统计数据，并可据进行分析，从而得出最佳方法。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "D",
+        "chooseItem": ["796234643123752961"],
+        "itemList": [
+          {
+            "id": "796234643014701057",
+            "questionId": "796234642066788353",
+            "content": " 已定义级",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234643052449793",
+            "questionId": "796234642066788353",
+            "content": " 优化级",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234643090198529",
+            "questionId": "796234642066788353",
+            "content": " 已管理级",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234643123752961",
+            "questionId": "796234642066788353",
+            "content": " 可重复级",
+            "answer": 1,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234695049236481",
+        "title": "下表记录了六个结点A、B、C、D、E、F之间的路径方向和距离。从A到F的最短距离是（ ）。<br> <img alt=\"\" src=\"https://image-t.chaiding.com/ruankao/bb38a12a0b9257a2607ec770be8bb50c.jpg-ruankao\" width=\"505\" height=\"155\">",
+        "analyze": "本题考查应用数学（运筹学-图论）基础知识。 <br>按照表中的数据，画图如下。<br><img width=\"471\" height=\"158\" alt=\"\" src=\"https://image-t.chaiding.com/ruankao/06408e0ba069f1b2dd720db19f0e9074.jpg-ruankao\"><br>从E到F的最短距离=15。<br>从D到F的最短距离=min{D-E-F，D-F}=min{14+15，17}=17。<br>从C到F的最短距离=min{C-D-F，C-E-F，C-F}=min{14+17，17+15,22}=22。<br>从B到F的最短距离=min{B-C-F，B-D-F，B-E-F，B-F}=min{13+22，16+17,21+15,29}=29。 <br>从A到F的最短距离=min{A-B-F，A-C-F，A-D-F，A-E-F，A-F}<br>=min{11+29，16+22,24+17，36+15,54}=38。<br>最短路径为A-C-F，最短距离为38。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234695984566273"],
+        "itemList": [
+          {
+            "id": "796234695984566273",
+            "questionId": "796234695049236481",
+            "content": " 38",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234696005537793",
+            "questionId": "796234695049236481",
+            "content": " 40",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234696030703617",
+            "questionId": "796234695049236481",
+            "content": " 44",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234696051675137",
+            "questionId": "796234695049236481",
+            "content": " 46",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234584458022913",
+        "title": "<p><strong>请作答第<span style=\"color: red\">1</span>个空。</strong></p>信息资源规划(Information Resource Planning, IRP)是信息化建设的基础工程，IRP强调将需求分析与（21）结合起来。IRP的过程大致可以分为7个步骤，其中（22）步骤的主要工作是用户视图收集、分组、分析和数据元素分析；（23）步骤的主要工作是主题数据库定义、基本表定义和扩展表定义；（24）步骤的主要工作是子系统定义、功能模块定义和程序单元定义。",
+        "analyze": "本题考查企业信息资源规划的基础知识。<br> 信息资源规划（Information Resource Planning,IRP)是信息化建设的基础工程，IRP强调将需求分析与系统建模结合起来。IRP的过程大致可以分为7个步骤，其中数据需求分析步骤的主要工作是用户视图收集、分组、分析和数据元素分析；系统数据建模步骤的主要工作是主题数据库定义、基本表定义和扩展表定义；系统功能建模步骤的主要工作是子系统定义、功能模块定义和程序单元定义。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234585502404609"],
+        "itemList": [
+          {
+            "id": "796234585502404609",
+            "questionId": "796234584458022913",
+            "content": " 系统建模",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234585527570433",
+            "questionId": "796234584458022913",
+            "content": " 系统架构",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234585552736257",
+            "questionId": "796234584458022913",
+            "content": " 业务分析",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234585573707777",
+            "questionId": "796234584458022913",
+            "content": " 流程建模",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234587687636993",
+        "title": "<p><strong>请作答第<span style=\"color: red\">2</span>个空。</strong></p>信息资源规划(Information Resource Planning, IRP)是信息化建设的基础工程，IRP强调将需求分析与（21）结合起来。IRP的过程大致可以分为7个步骤，其中（22）步骤的主要工作是用户视图收集、分组、分析和数据元素分析；（23）步骤的主要工作是主题数据库定义、基本表定义和扩展表定义；（24）步骤的主要工作是子系统定义、功能模块定义和程序单元定义。",
+        "analyze": "本题考查企业信息资源规划的基础知识。<br> 信息资源规划（Information Resource Planning,IRP)是信息化建设的基础工程，IRP强调将需求分析与系统建模结合起来。IRP的过程大致可以分为7个步骤，其中数据需求分析步骤的主要工作是用户视图收集、分组、分析和数据元素分析；系统数据建模步骤的主要工作是主题数据库定义、基本表定义和扩展表定义；系统功能建模步骤的主要工作是子系统定义、功能模块定义和程序单元定义。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234588803321857"],
+        "itemList": [
+          {
+            "id": "796234588778156033",
+            "questionId": "796234587687636993",
+            "content": " 业务流程分析",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234588803321857",
+            "questionId": "796234587687636993",
+            "content": " 数据需求分析",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234588828487681",
+            "questionId": "796234587687636993",
+            "content": " 业务需求分析",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234588853653505",
+            "questionId": "796234587687636993",
+            "content": " 关联模型分析",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234590938222593",
+        "title": "<p><strong>请作答第<span style=\"color: red\">3</span>个空。</strong></p>信息资源规划(Information Resource Planning, IRP)是信息化建设的基础工程，IRP强调将需求分析与（21）结合起来。IRP的过程大致可以分为7个步骤，其中（22）步骤的主要工作是用户视图收集、分组、分析和数据元素分析；（23）步骤的主要工作是主题数据库定义、基本表定义和扩展表定义；（24）步骤的主要工作是子系统定义、功能模块定义和程序单元定义。",
+        "analyze": "本题考查企业信息资源规划的基础知识。<br> 信息资源规划（Information Resource Planning,IRP)是信息化建设的基础工程，IRP强调将需求分析与系统建模结合起来。IRP的过程大致可以分为7个步骤，其中数据需求分析步骤的主要工作是用户视图收集、分组、分析和数据元素分析；系统数据建模步骤的主要工作是主题数据库定义、基本表定义和扩展表定义；系统功能建模步骤的主要工作是子系统定义、功能模块定义和程序单元定义。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "C",
+        "chooseItem": ["796234591898718209"],
+        "itemList": [
+          {
+            "id": "796234591856775169",
+            "questionId": "796234590938222593",
+            "content": " 信息接口建模",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234591877746689",
+            "questionId": "796234590938222593",
+            "content": " 数据结构建模",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234591898718209",
+            "questionId": "796234590938222593",
+            "content": " 系统数据建模",
+            "answer": 1,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234591923884033",
+            "questionId": "796234590938222593",
+            "content": " 信息处理建模",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234593882624001",
+        "title": "<p><strong>请作答第<span style=\"color: red\">4</span>个空。</strong></p>信息资源规划(Information Resource Planning, IRP)是信息化建设的基础工程，IRP强调将需求分析与（21）结合起来。IRP的过程大致可以分为7个步骤，其中（22）步骤的主要工作是用户视图收集、分组、分析和数据元素分析；（23）步骤的主要工作是主题数据库定义、基本表定义和扩展表定义；（24）步骤的主要工作是子系统定义、功能模块定义和程序单元定义。",
+        "analyze": "本题考查企业信息资源规划的基础知识。<br> 信息资源规划（Information Resource Planning,IRP)是信息化建设的基础工程，IRP强调将需求分析与系统建模结合起来。IRP的过程大致可以分为7个步骤，其中数据需求分析步骤的主要工作是用户视图收集、分组、分析和数据元素分析；系统数据建模步骤的主要工作是主题数据库定义、基本表定义和扩展表定义；系统功能建模步骤的主要工作是子系统定义、功能模块定义和程序单元定义。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234594977337345"],
+        "itemList": [
+          {
+            "id": "796234594977337345",
+            "questionId": "796234593882624001",
+            "content": " 系统功能建模",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234595010891777",
+            "questionId": "796234593882624001",
+            "content": " 业务流程分解",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234595036057601",
+            "questionId": "796234593882624001",
+            "content": " 系统架构建模",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234595069612033",
+            "questionId": "796234593882624001",
+            "content": " 系统业务重组",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234638963003393",
+        "title": "下列开发方法中，（ ）不属于敏捷开发方法。",
+        "analyze": "本题考查软件开发模型方面的基础知识。<br> 敏捷开发是一种从1990年开始逐渐引起广泛关注的软件开发方法，是一种能应对快速变化需求的软件开发模型。它们的具体名称、理念、过程、术语都不尽相同，相对于“非敏捷”，更强调程序员团队与业务专家之间的紧密协作、面对面的沟通（认为比书面 的文档更有效）、频繁交付新的软件版本、紧凑而自我组织型的团队、能够很好地适应需求变化的代码编写和团队组织方法，也更注重作为软件开发中的人的作用。<br> 螺旋模型是一种演化软件开发过程模型，它兼顾了快速原型的迭代的特征以及瀑布模型的系统化与严格监控，不属于敏捷开发。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234640003190785"],
+        "itemList": [
+          {
+            "id": "796234639969636353",
+            "questionId": "796234638963003393",
+            "content": " 极限编程",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234640003190785",
+            "questionId": "796234638963003393",
+            "content": " 螺旋模型",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234640040939521",
+            "questionId": "796234638963003393",
+            "content": " 自适应软件开发",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234640061911041",
+            "questionId": "796234638963003393",
+            "content": " 水晶方法",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234597154181121",
+        "title": "<p><strong>请作答第<span style=\"color: red\">1</span>个空。</strong></p>业务流程重组(Business Process Reengineering，BPR)是针对企业业务流程的基本问题进行回顾，其核心思路是对业务流程的（25）改造，BPR过程通常以（26）为中心。",
+        "analyze": "本题考查企业业务流程重组方面的基础知识。<br> 业务流程重组（Business Process Reengineering，BPR)是针对企业业务流程的基本问题进行回顾，其核心思路是对业务流程的根本性、变革性地改造，BPR过程通常以业务流程为中心。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234598076928001"],
+        "itemList": [
+          {
+            "id": "796234598051762177",
+            "questionId": "796234597154181121",
+            "content": " 增量式",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234598076928001",
+            "questionId": "796234597154181121",
+            "content": " 根本性",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234598097899521",
+            "questionId": "796234597154181121",
+            "content": " 迭代式",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234598118871041",
+            "questionId": "796234597154181121",
+            "content": " 保守式",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234600056639489",
+        "title": "<p><strong>请作答第<span style=\"color: red\">2</span>个空。</strong></p>业务流程重组(Business Process Reengineering，BPR)是针对企业业务流程的基本问题进行回顾，其核心思路是对业务流程的（25）改造，BPR过程通常以（26）为中心。",
+        "analyze": "本题考查企业业务流程重组方面的基础知识。<br> 业务流程重组（Business Process Reengineering，BPR)是针对企业业务流程的基本问题进行回顾，其核心思路是对业务流程的根本性、变革性地改造，BPR过程通常以业务流程为中心。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234600966803457"],
+        "itemList": [
+          {
+            "id": "796234600966803457",
+            "questionId": "796234600056639489",
+            "content": " 流程",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234600991969281",
+            "questionId": "796234600056639489",
+            "content": " 需求",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234601017135105",
+            "questionId": "796234600056639489",
+            "content": " 组织",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234601042300929",
+            "questionId": "796234600056639489",
+            "content": " 资源",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234561716506625",
+        "title": "雷达设计人员在设计数字信号处理单元时，其处理器普遍采用DSP芯片(比如：TI公司的TMS320C63xx)，通常DSP芯片采用哈佛(HarVard)体系结构，以下关于哈佛结构特征的描述，不正确的是（ ）。",
+        "analyze": "哈佛结构是一种将程序指令存储和数据存储分开的存储器结构。哈佛结构是一种并行体系结构，它的主要特点是将程序和数据存储在不同的存储空间中，即程序存储器和数据存储器是两个独立的存储器，每个存储器独立编址、独立访问。 与两个存储器相对应的是系统的4条总线：程序和数据的数据总线与地址总线。这种分离的程序总线和数据总线可允许在一个机器周期内同时获得指令字（来自程序存储器）和操作数（来自数据存储器），从而提高了执行速度，提高了数据的吞吐率。又由于程序和数据存储在两个分开的物理空间中，因此取址和执行能完全重叠。中央处理器首先到程序指令存储器中读取程序指令内容，解码后得到数据地址，再到相应的数据存储器中读取数据，并进行下一步的操作（通常是执行）。程序指令存储和数据存储分开，可以使指令和数据有不同的数据宽度。 哈佛结构能在一个机器周期内同时获取指令字与操作数，但做不到一个机器周期内多次访问存储器\n",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234562752499713"],
+        "itemList": [
+          {
+            "id": "796234562723139585",
+            "questionId": "796234561716506625",
+            "content": " 程序和数据具有独立的存储空间，允许同时取指令和取操作数，并允许在程序空间或数据空间之间互传数据",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234562752499713",
+            "questionId": "796234561716506625",
+            "content": " 处理器内部采用多总线结构，保证了在一个机器周期内可以多次访问程序空间和数据空间",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234562781859841",
+            "questionId": "796234561716506625",
+            "content": " 哈佛体系结构强调的是多功能，适合多种不同的环境和任务，强调兼容性",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234562802831361",
+            "questionId": "796234561716506625",
+            "content": " 处理器内部采用多处理单元，可以在一个指令周期内同时进行运算",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234564933537793",
+        "title": "某16位AD芯片中标注电压范围是-5V～＋5V,请问该款AD芯片的分辨率是（ ）。",
+        "analyze": "AD芯片是模拟与数字信号的转换芯片，其主要功能是将外部模拟信号通过AD芯片转换成计算机可以处理的数字信号。AD芯片的分辨率是指AD转换器对输入信号的分辨能力。通常，AD转换的分辨率=参考电压/(总元素-1)，而总元素是指AD位数所能表示的最大数值，如：8位AD，其总元素是256。所以，16位AD的分辨率=(10V)/(65536-1)=0.01526mV。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "C",
+        "chooseItem": ["796234565998891009"],
+        "itemList": [
+          {
+            "id": "796234565948559361",
+            "questionId": "796234564933537793",
+            "content": " 10V",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234565973725185",
+            "questionId": "796234564933537793",
+            "content": " 0.0763mV",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234565998891009",
+            "questionId": "796234564933537793",
+            "content": " 0.1526mV",
+            "answer": 1,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234566024056833",
+            "questionId": "796234564933537793",
+            "content": " 0.3052mV",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234567957630977",
+        "title": "以下关于多核处理器的说法中，不正确的是（ ）。",
+        "analyze": "SMP是一种对称型多核处理系统结构，MP是一种非对称型多处理器系统结构，而BMP是一种介于对称、非对称之间的多核处理系统结构。多核处理器可降低计算机体积与功耗，多核处理器与多处理器的不同之处就在于将两个以上的独立CPU集成到一个硅片（电路）中，在多核处理系统中，进程可以同时运行在不同处理器核上，真正实现操作系统线程的并行执行。<br> 由于SMP、BMP和MP的结构与硬件结构有着紧密关系，硬件的结构决定着采用哪种多核使用方式。以上所述，SMP、BMP和MP是多核处理器系统通常采用的三种结构，采用哪种结构与应用场景相关，而无须考虑硬件的组成差异的说法是不正确的。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234568981041153"],
+        "itemList": [
+          {
+            "id": "796234568960069633",
+            "questionId": "796234567957630977",
+            "content": " 采用多核处理器可以降低计算机系统的功耗和体积",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234568981041153",
+            "questionId": "796234567957630977",
+            "content": " SMP、BMP和MP是多核处理器系统通常采用的三种结构，采用哪种结构与应用场景相关，而无须考虑硬件的组成差异",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234569006206977",
+            "questionId": "796234567957630977",
+            "content": " 在多核处理器中，计算机可以同时执行多个进程，而操作系统中的多个线程也可以并行执行",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234569027178497",
+            "questionId": "796234567957630977",
+            "content": " 多核处理器是将两个或更多的独立处理器封装在一起，集成在一个电路中",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234707367907329",
+        "title": "使用（ ）DPI分辨率的扫描仪扫描一幅2×4英寸的照片，可直接得到300×600像素的图像。",
+        "analyze": "本题考查多媒体系统基础知识。<br> 300/150=2；600/150=4。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234708290654209"],
+        "itemList": [
+          {
+            "id": "796234708273876993",
+            "questionId": "796234707367907329",
+            "content": " 100",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234708290654209",
+            "questionId": "796234707367907329",
+            "content": " 150",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234708311625729",
+            "questionId": "796234707367907329",
+            "content": " 300",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234708332597249",
+            "questionId": "796234707367907329",
+            "content": " 600",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234571128524801",
+        "title": "多核操作系统的设计方法不同于单核操作系统，一般要突破（ ）等方面的关键技术。",
+        "analyze": "随着计算机芯片的快速发展，多核处理器己成主流CPU,操作系统应适应处理器的发展，因此多核操作系统已成为操作系统主流。多核操作系统的设计方法与单核相比存在很大差异，除了考虑单核基本功能设计外，还应突破与多核相关技术。主要包括了以下几点：<br> ①核结构：操作系统的核心功能与CPU的内核结构密切相关，多核结构的不同影响着内核的多核工作方式。<br> ②Cache设计:多核操作系统内核设计方法与多核Cache的设计相关，解决多核Cache一致性问题与单核相比要复杂得多。<br> ③核间通信：核间通信技术是多核操作系统必须解决的关键技术，核间通信的优劣直接影响着多核操作系统的效能。<br> ④任务调度：任务调度是操作系统的核心功能，其调度策略的选择与单核或多核结构紧密相关，多核的任务调度需要考虑核间负载平衡问题以及任务同步问题。<br> ⑤中断处理：中断处理是多核结构中需要共享的资源，与单核设计不同的是在多核情况下需要考虑中断与核的依赖关系。<br> ⑥存储器墙设计：存储器墙设计是多核硬件结构设计中必须解决的空间隔离技术，不属于操作系统设计范畴。<br> ⑦同步互斥：多核环境下的共享资源同步互斥，是多核操作系统必须解决的关键技术，在多核环境下共享资源同步互斥也是保障系统安全的有效方法。<br> ⑧总体设计：多核的总体设计主要考虑系统架构设计，是一种软硬件的整体考虑，虽然要提出对软件的需求，但并不是多核操作系统最需要突破的技术。<br> 综上所述，选项A中的总体设计不在多核操作系统设计范畴；选项B中的可靠性设计、安全性设计是单核和多核都要突破的技术，因此不在多核操作系统突破技术范畴；选项C中的存储器墙设计不在多核操作系统设计范畴。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "D",
+        "chooseItem": ["796234572118380545"],
+        "itemList": [
+          {
+            "id": "796234572047077377",
+            "questionId": "796234571128524801",
+            "content": " 总线设计、Cache设计、核间通信、任务调度、中断处理、同步互斥",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234572072243201",
+            "questionId": "796234571128524801",
+            "content": " 核结构、Cache设计、核间通信、可靠性设计、安全性设计、同步互斥",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234572101603329",
+            "questionId": "796234571128524801",
+            "content": " 核结构、Cache设计、核间通信、任务调度、中断处理、存储器墙设计",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234572118380545",
+            "questionId": "796234571128524801",
+            "content": " 核结构、Cache设计、核间通信、任务调度、中断处理、同步互斥",
+            "answer": 1,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234574106480641",
+        "title": "多核CPU环境下进程的调度算法一般有全局队列调度和局部队列调度两种。（ ）属于全局队列调度的特征。",
+        "analyze": "在多核环境下，任务调度是操作系统设计的关键技术，通常采用全局队列调度和局部队列调度两种方式。但是两种调度队列的作用不同，主要体现在以下几点。<br> 全局队列调度：<br> 操作系统维护一个全局的任务等待队列。<br> 当系统中有一个CPU核心空闲时，操作系统从全局任务等待队列中选取就绪任务开始在此核心上执行。&nbsp;<br> 这种方法的优点是提高了CPU核心利用率。<br> 局部队列调度：<br> 操作系统为每个CPU内核维护一个局部的任务等待队列。<br> 当系统中有一个CPU核心空闲时,操作系统便从该核心的任务等待队列中选取适当的任务执行。<br> 这种方法的优点是任务基本上无需在多个CPU核心间切换，有利于提高CPU核心局部Cache命中率。<br> 目前大多数多核CPU操作系统采用的是基于全局队列的任务调度算法。<br> 因此，操作系统维护一个任务等待队列属于全局队列调度的特征。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234575041810433"],
+        "itemList": [
+          {
+            "id": "796234575025033217",
+            "questionId": "796234574106480641",
+            "content": " 操作系统为每个CPU维护一个任务等待队列",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234575041810433",
+            "questionId": "796234574106480641",
+            "content": " 操作系统维护一个任务等待队列",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234575058587649",
+            "questionId": "796234574106480641",
+            "content": " 任务基本上无需在多个CPU核心间切换，有利于提高Cache命中率",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234575071170561",
+            "questionId": "796234574106480641",
+            "content": " 当系统中有一个CPU核心空闲时，操作系统便从该核心的任务等待队列中选取适当的任务执行",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234710303920129",
+        "title": "（ ）防火墙是内部网和外部网的隔离点，它可对应用层的通信数据流进行监控和过滤。",
+        "analyze": "本题考查防火墙的基础知识。防火墙一般分为包过滤型、应用级网关和复合型防火墙（集合包过滤与应用级网关技术)，而Web防火墙是一种针对于网站安全的入侵防御系统，一般部署在Web服务器上或者Web服务器的前端。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234711465742337"],
+        "itemList": [
+          {
+            "id": "796234711436382209",
+            "questionId": "796234710303920129",
+            "content": " 包过滤",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234711465742337",
+            "questionId": "796234710303920129",
+            "content": " 应用级网关",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234711490908161",
+            "questionId": "796234710303920129",
+            "content": " 数据库",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234711516073985",
+            "questionId": "796234710303920129",
+            "content": " WEB",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234542892470273",
+        "title": "<p><strong>请作答第<span style=\"color: red\">1</span>个空。</strong></p>用户A从CA获取了自己的数字证书，该数字证书中包含为证书进行数字签名的（8）和（9）。",
+        "analyze": "本题考查信息安全基础知识。<br> CA(Certificate Authority)即颁发数字证书的机构，是负责发放和管理数字证书的权威机构，并作为电子商务交易中受信任的第三方，承担公钥体系中公钥的合法性检验的责任。<br> 数字证书在用户公钥后附加了用户信息及CA的签名。公钥是密钥对的一部分，另一部分是私钥。公钥公之于众，谁都可以使用。私钥只有自己知道。由公钥加密的信息只能由与之相对应的私钥解密。为确保只有某个人才能阅读自己的信件，发送者要用收件人的公钥加密信件；收件人便可用自己的私钥解密信件。同样，为证实发件人的身份，发送者要用自己的私钥对信件进行签名；收件人可使用发送者的公钥对签名进行验证，以确认发送者的身份。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234543878131713"],
+        "itemList": [
+          {
+            "id": "796234543848771585",
+            "questionId": "796234542892470273",
+            "content": " CA的私钥",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234543878131713",
+            "questionId": "796234542892470273",
+            "content": " CA的公钥",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234543907491841",
+            "questionId": "796234542892470273",
+            "content": " A的私钥",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234543928463361",
+            "questionId": "796234542892470273",
+            "content": " A的公钥",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234704348008449",
+        "title": "矢量图是常用的图形图像表示形式，（ ）是描述矢量图的基本组成单位。",
+        "analyze": "本题考查多媒体系统基础知识。<br> 所谓矢量图，就是使用直线和曲线来描述的图形，构成这些图形的元素是一些点、线、矩形、多边形、圆和弧线等图元，它们都是通过数学公式计算获得的，具有编辑后不失真的特点。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "C",
+        "chooseItem": ["796234705379807233"],
+        "itemList": [
+          {
+            "id": "796234705321086977",
+            "questionId": "796234704348008449",
+            "content": " 像素",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234705350447105",
+            "questionId": "796234704348008449",
+            "content": " 像素点",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234705379807233",
+            "questionId": "796234704348008449",
+            "content": " 图元",
+            "answer": 1,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234705409167361",
+            "questionId": "796234704348008449",
+            "content": " 二进制位",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234741882834945",
+        "title": "<p><strong>请作答第<span style=\"color: red\">1</span>个空。</strong></p>During the systems planning phase, a systems analyst conducts a （71）activity to study the systems request and recommend specific action. After obtaining an authorization to proceed, the analyst interacts with （72） to gather facts about the problem or opportunity, project scope and constraints, project benefits, and estimated development time and costs. In many cases, the systems request does not reveal the underlying problem, but only a symptom. A popular technique for investigating causes and effects is called （73）The analyst has analyzed the problem or opportunity, defined the project scope and constraints, and performed （74）to evaluate project usability, costs, benefits, and time constraints. The end product of the activity is （75）. The main content must include an estimate of time, staffing requirements, costs, benefits, and expected results for the next phase of the SDLC.",
+        "analyze": "在系统计划阶段，系统分析师执行一项初步调查（preliminary investigation），研究系统需求和具体的建议活动。在获得继续进行的授权之后，分析师与经理和用户（managers and users）进行交互，以收集关于机会、项目范围和约束、项目收益以及估计的开发时间和成本等问题的事实。大多数情况下，系统需求只是描述了症状，而未揭示潜在的问题。一种调查因果关系的流行技术叫做鱼刺图（fishbone diagram）。分析师分析了问题或机会，定义了项目范围和约束，并执行可行性分析（feasibility analysis）来评估项目可用性、成本、收益和时间约束。此活动的最终输出是项目章程（a project charter）。主要内容必须包括系统开发生命周期下一阶段的时间、人员需求、成本、效益和对预期结果的估计。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "C",
+        "chooseItem": ["796234743057240065"],
+        "itemList": [
+          {
+            "id": "796234742998519809",
+            "questionId": "796234741882834945",
+            "content": " case study",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234743027879937",
+            "questionId": "796234741882834945",
+            "content": " requirements discovery",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234743057240065",
+            "questionId": "796234741882834945",
+            "content": " preliminary investigation",
+            "answer": 1,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234743086600193",
+            "questionId": "796234741882834945",
+            "content": " business understanding",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234620042498049",
+        "title": "内聚表示模块内部各部件之间的联系程度，（ ）是系统内聚度从高到低的排序。",
+        "analyze": "本题考查架构设计中内聚和耦合方面的基础知识。<br> 内聚是指内部各元素之间联系的紧密程度，内聚度越低模块的独立性越差。内聚度从低到高依次是：偶然内聚、逻辑内聚、瞬时内聚、过程内聚、通信内聚、顺序内聚、功能内聚。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "C",
+        "chooseItem": ["796234621376286721"],
+        "itemList": [
+          {
+            "id": "796234621309177857",
+            "questionId": "796234620042498049",
+            "content": " 通信内聚、瞬时内聚、过程内聚、逻辑内聚",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234621342732289",
+            "questionId": "796234620042498049",
+            "content": " 功能内聚、瞬时内聚、顺序内聚、逻辑内聚",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234621376286721",
+            "questionId": "796234620042498049",
+            "content": " 功能内聚、顺序内聚、瞬时内聚、逻辑内聚",
+            "answer": 1,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234621405646849",
+            "questionId": "796234620042498049",
+            "content": " 功能内聚、瞬时内聚、过程内聚、逻辑内聚",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234745129226241",
+        "title": "<p><strong>请作答第<span style=\"color: red\">2</span>个空。</strong></p>During the systems planning phase, a systems analyst conducts a （71）activity to study the systems request and recommend specific action. After obtaining an authorization to proceed, the analyst interacts with （72） to gather facts about the problem or opportunity, project scope and constraints, project benefits, and estimated development time and costs. In many cases, the systems request does not reveal the underlying problem, but only a symptom. A popular technique for investigating causes and effects is called （73）The analyst has analyzed the problem or opportunity, defined the project scope and constraints, and performed （74）to evaluate project usability, costs, benefits, and time constraints. The end product of the activity is （75）. The main content must include an estimate of time, staffing requirements, costs, benefits, and expected results for the next phase of the SDLC.",
+        "analyze": "在系统计划阶段，系统分析师执行一项初步调查（preliminary investigation），研究系统需求和具体的建议活动。在获得继续进行的授权之后，分析师与经理和用户（managers and users）进行交互，以收集关于机会、项目范围和约束、项目收益以及估计的开发时间和成本等问题的事实。大多数情况下，系统需求只是描述了症状，而未揭示潜在的问题。一种调查因果关系的流行技术叫做鱼刺图（fishbone diagram）。分析师分析了问题或机会，定义了项目范围和约束，并执行可行性分析（feasibility analysis）来评估项目可用性、成本、收益和时间约束。此活动的最终输出是项目章程（a project charter）。主要内容必须包括系统开发生命周期下一阶段的时间、人员需求、成本、效益和对预期结果的估计。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "C",
+        "chooseItem": ["796234746110693377"],
+        "itemList": [
+          {
+            "id": "796234746056167425",
+            "questionId": "796234745129226241",
+            "content": " system users",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234746085527553",
+            "questionId": "796234745129226241",
+            "content": " system owner",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234746110693377",
+            "questionId": "796234745129226241",
+            "content": " managers and users",
+            "answer": 1,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234746131664897",
+            "questionId": "796234745129226241",
+            "content": " business analysts",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234748111376385",
+        "title": "<p><strong>请作答第<span style=\"color: red\">3</span>个空。</strong></p>During the systems planning phase, a systems analyst conducts a （71）activity to study the systems request and recommend specific action. After obtaining an authorization to proceed, the analyst interacts with （72） to gather facts about the problem or opportunity, project scope and constraints, project benefits, and estimated development time and costs. In many cases, the systems request does not reveal the underlying problem, but only a symptom. A popular technique for investigating causes and effects is called （73）The analyst has analyzed the problem or opportunity, defined the project scope and constraints, and performed （74）to evaluate project usability, costs, benefits, and time constraints. The end product of the activity is （75）. The main content must include an estimate of time, staffing requirements, costs, benefits, and expected results for the next phase of the SDLC.",
+        "analyze": "在系统计划阶段，系统分析师执行一项初步调查（preliminary investigation），研究系统需求和具体的建议活动。在获得继续进行的授权之后，分析师与经理和用户（managers and users）进行交互，以收集关于机会、项目范围和约束、项目收益以及估计的开发时间和成本等问题的事实。大多数情况下，系统需求只是描述了症状，而未揭示潜在的问题。一种调查因果关系的流行技术叫做鱼刺图（fishbone diagram）。分析师分析了问题或机会，定义了项目范围和约束，并执行可行性分析（feasibility analysis）来评估项目可用性、成本、收益和时间约束。此活动的最终输出是项目章程（a project charter）。主要内容必须包括系统开发生命周期下一阶段的时间、人员需求、成本、效益和对预期结果的估计。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234749059289089"],
+        "itemList": [
+          {
+            "id": "796234749059289089",
+            "questionId": "796234748111376385",
+            "content": " fishbone diagram",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234749105426433",
+            "questionId": "796234748111376385",
+            "content": " PERT diagram",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234749147369473",
+            "questionId": "796234748111376385",
+            "content": " Gantt diagram",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234749168340993",
+            "questionId": "796234748111376385",
+            "content": " use case diagram",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234555454410753",
+        "title": "某教授于2016年6月1日自行将《信息网络传播权保护条例》译成英文，投递给某国家的核心期刊，并于2016年11月1日发表。国家相关部门认为该教授的译文质量很高，经与该教授协商，于2017年1月5日发文将该译文定为官方正式译文。下列说法，（ ）是正确的。",
+        "analyze": "本题考查知识产权基础知识。<br> 该教授对《信息网络传播权保护条例》英文译文自2016年6月1日至2017年1月4曰期间享有著作权。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "C",
+        "chooseItem": ["796234556582678529"],
+        "itemList": [
+          {
+            "id": "796234556511375361",
+            "questionId": "796234555454410753",
+            "content": " 由于该教授未经相关部门同意而自行翻译官方条例，因此对其译文不享有著作权",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234556544929793",
+            "questionId": "796234555454410753",
+            "content": " 该教授对其译文自2016年6月1日起一直享有著作权",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234556582678529",
+            "questionId": "796234555454410753",
+            "content": " 该教授对其译文自2016年6月1日至2017年1月4日期间享有著作权",
+            "answer": 1,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234556620427265",
+            "questionId": "796234555454410753",
+            "content": " 该教授对其译文自2016年11月1日至2017年1月4日期间享有著作权",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234689009438721",
+        "title": "<p><strong>请作答第<span style=\"color: red\">1</span>个空。</strong></p>某项目有A~H八个作业，各作业所需时间（单位：周）以及紧前作业如下表:<br> <img alt=\"\" src=\"https://image-t.chaiding.com/ruankao/31ee6863e8dc7a5bfc6ad1a4885cfb8a.jpg-ruankao\" width=\"646\" height=\"82\"><br> 该项目的工期为（54）周。如果作业C拖延3周完成，则该项目的工期（55）。",
+        "analyze": "<br> <img alt=\"\" src=\"https://image-t.chaiding.com/ruankao/c1350bf7cffd0e33392d7537a8c89438.jpg-ruankao\" width=\"646\" height=\"200\"><br>通过绘图找最长路径可知，关键路径为：ADFH，长度为13，所以项目的工期为13周。 当C拖延3周之后，关键路径变为：ACEH，长度为15，所以工期拖延2周。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234689944768513"],
+        "itemList": [
+          {
+            "id": "796234689932185601",
+            "questionId": "796234689009438721",
+            "content": " 12",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234689944768513",
+            "questionId": "796234689009438721",
+            "content": " 13",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234689957351425",
+            "questionId": "796234689009438721",
+            "content": " 14",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234689965740033",
+            "questionId": "796234689009438721",
+            "content": " 15",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234751122886657",
+        "title": "<p><strong>请作答第<span style=\"color: red\">4</span>个空。</strong></p>During the systems planning phase, a systems analyst conducts a （71）activity to study the systems request and recommend specific action. After obtaining an authorization to proceed, the analyst interacts with （72） to gather facts about the problem or opportunity, project scope and constraints, project benefits, and estimated development time and costs. In many cases, the systems request does not reveal the underlying problem, but only a symptom. A popular technique for investigating causes and effects is called （73）The analyst has analyzed the problem or opportunity, defined the project scope and constraints, and performed （74）to evaluate project usability, costs, benefits, and time constraints. The end product of the activity is （75）. The main content must include an estimate of time, staffing requirements, costs, benefits, and expected results for the next phase of the SDLC.",
+        "analyze": "在系统计划阶段，系统分析师执行一项初步调查（preliminary investigation），研究系统需求和具体的建议活动。在获得继续进行的授权之后，分析师与经理和用户（managers and users）进行交互，以收集关于机会、项目范围和约束、项目收益以及估计的开发时间和成本等问题的事实。大多数情况下，系统需求只是描述了症状，而未揭示潜在的问题。一种调查因果关系的流行技术叫做鱼刺图（fishbone diagram）。分析师分析了问题或机会，定义了项目范围和约束，并执行可行性分析（feasibility analysis）来评估项目可用性、成本、收益和时间约束。此活动的最终输出是项目章程（a project charter）。主要内容必须包括系统开发生命周期下一阶段的时间、人员需求、成本、效益和对预期结果的估计。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234752033050625"],
+        "itemList": [
+          {
+            "id": "796234752033050625",
+            "questionId": "796234751122886657",
+            "content": " feasibility analysis",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234752058216449",
+            "questionId": "796234751122886657",
+            "content": " requirement analysis",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234752083382273",
+            "questionId": "796234751122886657",
+            "content": " system proposal",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234752108548097",
+            "questionId": "796234751122886657",
+            "content": " fact-finding",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234691987394561",
+        "title": "<p><strong>请作答第<span style=\"color: red\">2</span>个空。</strong></p>某项目有A~H八个作业，各作业所需时间（单位：周）以及紧前作业如下表:<br> <img alt=\"\" src=\"https://image-t.chaiding.com/ruankao/5b4dab2f971ac99d45b260dc70fdeaa6.jpg-ruankao\" width=\"646\" height=\"82\"><br> 该项目的工期为（54）周。如果作业C拖延3周完成，则该项目的工期（55）。",
+        "analyze": "<br> <img alt=\"\" src=\"https://image-t.chaiding.com/ruankao/c1350bf7cffd0e33392d7537a8c89438.jpg-ruankao\" width=\"646\" height=\"200\"><br>\n通过绘图找最长路径可知，关键路径为：ADFH，长度为13，所以项目的工期为13周。 当C拖延3周之后，关键路径变为：ACEH，长度为15，所以工期拖延2周。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "C",
+        "chooseItem": ["796234692947890177"],
+        "itemList": [
+          {
+            "id": "796234692897558529",
+            "questionId": "796234691987394561",
+            "content": " 不变",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234692922724353",
+            "questionId": "796234691987394561",
+            "content": " 拖延1周",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234692947890177",
+            "questionId": "796234691987394561",
+            "content": " 拖延2周",
+            "answer": 1,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234692973056001",
+            "questionId": "796234691987394561",
+            "content": " 拖延3周",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234754054705153",
+        "title": "<p><strong>请作答第<span style=\"color: red\">5</span>个空。</strong></p>During the systems planning phase, a systems analyst conducts a （71）activity to study the systems request and recommend specific action. After obtaining an authorization to proceed, the analyst interacts with （72） to gather facts about the problem or opportunity, project scope and constraints, project benefits, and estimated development time and costs. In many cases, the systems request does not reveal the underlying problem, but only a symptom. A popular technique for investigating causes and effects is called （73）The analyst has analyzed the problem or opportunity, defined the project scope and constraints, and performed （74）to evaluate project usability, costs, benefits, and time constraints. The end product of the activity is （75）. The main content must include an estimate of time, staffing requirements, costs, benefits, and expected results for the next phase of the SDLC.",
+        "analyze": "在系统计划阶段，系统分析师执行一项初步调查（preliminary investigation），研究系统需求和具体的建议活动。在获得继续进行的授权之后，分析师与经理和用户（managers and users）进行交互，以收集关于机会、项目范围和约束、项目收益以及估计的开发时间和成本等问题的事实。大多数情况下，系统需求只是描述了症状，而未揭示潜在的问题。一种调查因果关系的流行技术叫做鱼刺图（fishbone diagram）。分析师分析了问题或机会，定义了项目范围和约束，并执行可行性分析（feasibility analysis）来评估项目可用性、成本、收益和时间约束。此活动的最终输出是项目章程（a project charter）。主要内容必须包括系统开发生命周期下一阶段的时间、人员需求、成本、效益和对预期结果的估计。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "C",
+        "chooseItem": ["796234755031977985"],
+        "itemList": [
+          {
+            "id": "796234754985840641",
+            "questionId": "796234754054705153",
+            "content": " a report to management",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234755011006465",
+            "questionId": "796234754054705153",
+            "content": " a requirement definition",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234755031977985",
+            "questionId": "796234754054705153",
+            "content": " a project charter",
+            "answer": 1,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234755052949505",
+            "questionId": "796234754054705153",
+            "content": " a request for proposal",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234536752009217",
+        "title": "<p><strong>请作答第<span style=\"color: red\">1</span>个空。</strong></p>非对称加密算法中，加密和解密使用不同的密钥，下面的加密算法中（6）属于非对称加密算法。若甲、乙采用非对称密钥体系进行保密通信，甲用乙的公钥加密数据文件，乙使用（7）来对数据文件进行解密。",
+        "analyze": "本题考查加密算法的基础知识。<br> 非对称加密算法是指在加密和解密过程中，使用两个不相同的密钥，这两个密钥之间没有相互的依存关系。通常加密密钥为公钥，解密密钥为私钥。目前，使用较为广泛的非对称加密算法是RSA。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234537666367489"],
+        "itemList": [
+          {
+            "id": "796234537653784577",
+            "questionId": "796234536752009217",
+            "content": " AES",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234537666367489",
+            "questionId": "796234536752009217",
+            "content": " RSA",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234537678950401",
+            "questionId": "796234536752009217",
+            "content": " IDEA",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234537691533313",
+            "questionId": "796234536752009217",
+            "content": " DES",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234552405151745",
+        "title": "根据《计算机软件保护条例》，下列说法中，错误的是（ ）",
+        "analyze": "本题考查知识产权基础知识。<br> 软件著作权受保护的条件包括：①原创性，即软件应该是开发者独立设计、独立编制的编码组合；②感知性，受保护的软件须固定在某种有形物体上，客观表达出来并为人们所知悉；③可再现性，即把软件转载在有形物体上的可能性。<br> 合法复制品所有人的权利包括出于学习研究目的，安装、储存、显示等方式使用复制品，无须经著作权人许可。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234553323704321"],
+        "itemList": [
+          {
+            "id": "796234553302732801",
+            "questionId": "796234552405151745",
+            "content": " 受保护的软件必须固化在有形物体上，如硬盘、光盘、软盘等",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234553323704321",
+            "questionId": "796234552405151745",
+            "content": " 合法复制品所有人的权利包括出于学习研究目的，安装、储存、显示等方式使用复制品，必须经著作权人许可，可不向其支付报酬",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234553348870145",
+            "questionId": "796234552405151745",
+            "content": " 如果开发者在单位或组织中任职期间，所开发的软件符合一定条件，则软件著作权应归单位或组织所有",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234553374035969",
+            "questionId": "796234552405151745",
+            "content": " 接受他人委托而进行开发的软件，其著作权的归属应由委托人与受托人签订书面合同约定；如果没有签订合同，或合同中未规定的，则其著作权由受托人享有",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234539847405569",
+        "title": "<p><strong>请作答第<span style=\"color: red\">2</span>个空。</strong></p>非对称加密算法中，加密和解密使用不同的密钥，下面的加密算法中（6）属于非对称加密算法。若甲、乙采用非对称密钥体系进行保密通信，甲用乙的公钥加密数据文件，乙使用（7）来对数据文件进行解密。",
+        "analyze": "本题考查加密算法的基础知识。<br> 非对称加密算法是指在加密和解密过程中，使用两个不相同的密钥，这两个密钥之间没有相互的依存关系。通常加密密钥为公钥，解密密钥为私钥。目前，使用较为广泛的非对称加密算法是RSA。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "D",
+        "chooseItem": ["796234540925341697"],
+        "itemList": [
+          {
+            "id": "796234540837261313",
+            "questionId": "796234539847405569",
+            "content": " 甲的公钥",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234540870815745",
+            "questionId": "796234539847405569",
+            "content": " 甲的私钥",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234540895981569",
+            "questionId": "796234539847405569",
+            "content": " 乙的公钥",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234540925341697",
+            "questionId": "796234539847405569",
+            "content": " 乙的私钥",
+            "answer": 1,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234524399783937",
+        "title": "关于用例图中的参与者，说法正确的是（ ）。",
+        "analyze": "本题考查用例模型的基础知识。<br> 用例图中，参与者是指存在于系统外部并与系统进行交互的任何事物，既可以是使用系统的用户，也可以是其他外部系统和设备等外部实体。当系统需要定时触发时，时钟就是一个参与者。执行系统某项功能的参与者可能有多个，根据职责的重要程度不同，有主要参与者和次要参与者之分。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234525448359937"],
+        "itemList": [
+          {
+            "id": "796234525418999809",
+            "questionId": "796234524399783937",
+            "content": " 参与者是与系统交互的事物，都是由人来承担",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234525448359937",
+            "questionId": "796234524399783937",
+            "content": " 当系统需要定时触发时，时钟就是一个参与者",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234525477720065",
+            "questionId": "796234524399783937",
+            "content": " 参与者可以在系统外部，也可能在系统内部",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234525507080193",
+            "questionId": "796234524399783937",
+            "content": " 系统某项特定功能只能有一个参与者",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234558658859009",
+        "title": "甲公司从市场上购买乙公司生产的软件，作为甲公司计算机产品的部件。丙公司已经取得该软件的发明权，并许可乙公司生产销售该软件。下列说法中，正确的是（ ）。",
+        "analyze": "本题考查知识产权基础知识。<br> 甲公司的行为不构成对丙公司权利的侵犯。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234559623548929"],
+        "itemList": [
+          {
+            "id": "796234559585800193",
+            "questionId": "796234558658859009",
+            "content": " 甲公司的行为构成对丙公司权利的侵犯",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234559623548929",
+            "questionId": "796234558658859009",
+            "content": " 甲公司的行为不构成对丙公司权利的侵犯",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234559657103361",
+            "questionId": "796234558658859009",
+            "content": " 甲公司的行为不侵犯丙公司的权利，乙公司侵犯了丙公司的权利",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234559694852097",
+            "questionId": "796234558658859009",
+            "content": " 甲公司的行为与乙公司的行为共同构成对丙公司权利的侵犯",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234549196509185",
+        "title": "甲公司委托乙公司开发一种工具软件，未约定软件的使用权、转让权及利益分配办法，甲公司按规定支付乙公司开发费用。然而，乙公司按约定时间开发该工具软件后，在未向甲公司交付之前，将其转让给丙公司。下列说法中，正确的是（ ）",
+        "analyze": "该问题涉及到了合同法和知识产权法。根据合同法的相关规定，未约定软件的使用权、转让权及利益分配办法的情况下，应当认为该软件的知识产权属于软件开发者，即乙公司。因此，选项D \"该工具软件的转让权属于乙公司\"是正确的。另外，乙公司与丙公司的转让合同是否有效，需要根据具体的情况进行判断。\n依据：系统分析师2014至2019年试题分析与解答／全国计算机专业技术资格考试办公室主编．一北京：清华大学出版社，2020.12269页中解析，主要依据是未约定的著作权由受托人享有。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "D",
+        "chooseItem": ["796234550383497217"],
+        "itemList": [
+          {
+            "id": "796234550282833921",
+            "questionId": "796234549196509185",
+            "content": " 该工具软件的使用权属于甲公司",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234550328971265",
+            "questionId": "796234549196509185",
+            "content": " 甲和乙公司均有该工具软件的使用权和转让权",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234550362525697",
+            "questionId": "796234549196509185",
+            "content": " 乙公司与丙公司的转让合同无效",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234550383497217",
+            "questionId": "796234549196509185",
+            "content": " 该工具软件的转让权属于乙公司",
+            "answer": 1,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234527532929025",
+        "title": "<p><strong>请作答第<span style=\"color: red\">1</span>个空。</strong></p>在线学习系统中，课程学习和课程考试都需要先检查学员的权限，“课程学习”与“检查权限”两个用例之间属于（3）；课程学习过程中，如果所缴纳学费不够，就需要补缴学费，“课程学习”与“缴纳学费”两个用例之间属于（4）；课程学习前需要课程注册，可以采用电话注册或者网络注册，“课程注册”与“网络注册”两个用例之间属于（5）。",
+        "analyze": "本题考查用例模型的基础知识。<br> 包含关系是指可以从两个或两个以上的用例中提取公共行为，在线学习系统中，课程学习和课程考试都需要先检查学员的权限，“课程学习”与“检查权限”两个用例之间属于包含关系。扩展关系是指一个用例明显地混合了两种或两种以上的不同场景时可以发生多种分支，“课程学习”与“缴纳学费”两个用例之间属于扩展关系。泛化关系是指多个用例共同拥有一种类似的结构和行为，“课程注册”与“网络注册”两个用例之间属于泛化关系。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234528673779713"],
+        "itemList": [
+          {
+            "id": "796234528673779713",
+            "questionId": "796234527532929025",
+            "content": " 包含关系",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234528719917057",
+            "questionId": "796234527532929025",
+            "content": " 扩展关系",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234528770248705",
+            "questionId": "796234527532929025",
+            "content": " 泛化关系",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234528820580353",
+            "questionId": "796234527532929025",
+            "content": " 关联关系",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234530762543105",
+        "title": "<p><strong>请作答第<span style=\"color: red\">2</span>个空。</strong></p>在线学习系统中，课程学习和课程考试都需要先检查学员的权限，“课程学习”与“检查权限”两个用例之间属于（3）；课程学习过程中，如果所缴纳学费不够，就需要补缴学费，“课程学习”与“缴纳学费”两个用例之间属于（4）；课程学习前需要课程注册，可以采用电话注册或者网络注册，“课程注册”与“网络注册”两个用例之间属于（5）。",
+        "analyze": "本题考查用例模型的基础知识。<br> 包含关系是指可以从两个或两个以上的用例中提取公共行为，在线学习系统中，课程学习和课程考试都需要先检查学员的权限，“课程学习”与“检查权限”两个用例之间属于包含关系。扩展关系是指一个用例明显地混合了两种或两种以上的不同场景时可以发生多种分支，“课程学习”与“缴纳学费”两个用例之间属于扩展关系。泛化关系是指多个用例共同拥有一种类似的结构和行为，“课程注册”与“网络注册”两个用例之间属于泛化关系。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234531727233025"],
+        "itemList": [
+          {
+            "id": "796234531702067201",
+            "questionId": "796234530762543105",
+            "content": " 包含关系",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234531727233025",
+            "questionId": "796234530762543105",
+            "content": " 扩展关系",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234531764981761",
+            "questionId": "796234530762543105",
+            "content": " 泛化关系",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234531790147585",
+            "questionId": "796234530762543105",
+            "content": " 关联关系",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234533820190721",
+        "title": "<p><strong>请作答第<span style=\"color: red\">3</span>个空。</strong></p>在线学习系统中，课程学习和课程考试都需要先检查学员的权限，“课程学习”与“检查权限”两个用例之间属于（3）；课程学习过程中，如果所缴纳学费不够，就需要补缴学费，“课程学习”与“缴纳学费”两个用例之间属于（4）；课程学习前需要课程注册，可以采用电话注册或者网络注册，“课程注册”与“网络注册”两个用例之间属于（5）。",
+        "analyze": "本题考查用例模型的基础知识。<br> 包含关系是指可以从两个或两个以上的用例中提取公共行为，在线学习系统中，课程学习和课程考试都需要先检查学员的权限，“课程学习”与“检查权限”两个用例之间属于包含关系。扩展关系是指一个用例明显地混合了两种或两种以上的不同场景时可以发生多种分支，“课程学习”与“缴纳学费”两个用例之间属于扩展关系。泛化关系是指多个用例共同拥有一种类似的结构和行为，“课程注册”与“网络注册”两个用例之间属于泛化关系。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "C",
+        "chooseItem": ["796234534793269249"],
+        "itemList": [
+          {
+            "id": "796234534734548993",
+            "questionId": "796234533820190721",
+            "content": " 包含关系",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234534763909121",
+            "questionId": "796234533820190721",
+            "content": " 扩展关系",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234534793269249",
+            "questionId": "796234533820190721",
+            "content": " 泛化关系",
+            "answer": 1,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234534822629377",
+            "questionId": "796234533820190721",
+            "content": " 关联关系",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234645170573313",
+        "title": "描述企业应用中的实体及其联系，属于数据库设计的（ ）阶段。",
+        "analyze": "本题考查对数据库应用系统设计中各设计阶段的理解。<br> 需求分析用于调查和整理企业数据需求和应用需求；概念设计用于描述企业应用中的实体及其联系；逻辑设计用于逻辑结构的设计，主要是关系模式的设计、视图设计、规范化等；物理设计实现对数据物理组织的描述，包括存取方式、索引设计、数据文件物理分布等。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234646135263233"],
+        "itemList": [
+          {
+            "id": "796234646105903105",
+            "questionId": "796234645170573313",
+            "content": " 需求分析",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234646135263233",
+            "questionId": "796234645170573313",
+            "content": " 概念设计",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234646160429057",
+            "questionId": "796234645170573313",
+            "content": " 逻辑设计",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234646193983489",
+            "questionId": "796234645170573313",
+            "content": " 物理设计",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234686014705665",
+        "title": "设三个煤场A、B、C分别能供应煤12、14、10万吨，三个工厂X、Y、Z分别需要煤11、12、13万吨，从各煤场到各工厂运煤的单价（百元/吨）见下表方框内的数字。只要选择最优的运输方案，总的运输成本就能降到（ ）百万元。<br> <img width=\"550\" height=\"131\" alt=\"\" src=\"https://image-t.chaiding.com/ruankao/c28cf5f0845a94d0e75f42e0173e3b31.jpg-ruankao\" title=\"\" align=\"\">",
+        "analyze": "本题考查应用数学（运筹学一运输问题）基础知识。<br> 先按最低运费单价1和2(百元/吨）尽量多运，做出如下初始方案，总运费11X1+10X2+1X4+3X3+10X8=124百万元。<br> <img src=\"https://image-t.chaiding.com/ruankao/eeb2e1c4bc8d2c48387b5a2a538cd74f.jpg-ruankao\" alt=\"\" width=\"550\" height=\"169\" title=\"\" align=\"\"><br> 再改进此方案。按最高运费单价8百元/吨尽量少运，再调整其他项，得到如下方案，总运费11X1+1X4+13X3+10X3=84百万元。<br> <img src=\"https://image-t.chaiding.com/ruankao/6ac0eec98ef6fcc5eaaf960781239bd5.jpg-ruankao\" alt=\"\" width=\"550\" height=\"169\" title=\"\" align=\"\"><br> 现在，每个未运格若再增加运量，都将增加运费。<br> 例如，若AX格增加1吨运输（运费增加5百元)，则其他格的运量需要做相应调整。<br> 可以有两种情况：(1)AX,AY,CY,CX分别增、减、增、减1吨运量，则运费变化为+5-1+6-3=+7(增加7百万元）；(2)AX,AY,BY,BZ、CZ、CX分别增、减、增、减、增、减1吨运量，则运费变化为+5-1+4-3+8-3=+10(增加10百万元)。<br> 全是增加运费的。其余类推。因此最低总运费为84百万元。（实际解答时，许多明显不合理的途径不用计算就可以舍去）<br> 运输问题的初始方案可以不同，最优方案也可以不同，但最低运费一定相同。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234686929063937"],
+        "itemList": [
+          {
+            "id": "796234686929063937",
+            "questionId": "796234686014705665",
+            "content": " 83",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234686954229761",
+            "questionId": "796234686014705665",
+            "content": " 91",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234686983589889",
+            "questionId": "796234686014705665",
+            "content": " 113",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234687012950017",
+            "questionId": "796234686014705665",
+            "content": " 153",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234651726270465",
+        "title": "<p><strong>请作答第<span style=\"color: red\">1</span>个空。</strong></p>给定关系模式R＜U，F＞，其中：属性集U = {A,B,C,D,E},函数依赖集F={AC→B,B→DE}。关系R（42）,且分别有（43）。",
+        "analyze": "AC推出B，B又能推出DE，因此AC是唯一的候选键，其中AC分别是主属性，B、D、E为非主属性。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234652900675585"],
+        "itemList": [
+          {
+            "id": "796234652900675585",
+            "questionId": "796234651726270465",
+            "content": " 只有1个候选关键字AC",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234652921647105",
+            "questionId": "796234651726270465",
+            "content": " 只有1个候选关键字AB",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234652951007233",
+            "questionId": "796234651726270465",
+            "content": " 有2个候选关键字AC和BC",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234652976173057",
+            "questionId": "796234651726270465",
+            "content": " 无正确答案",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234654951690241",
+        "title": "<p><strong>请作答第<span style=\"color: red\">2</span>个空。</strong></p>给定关系模式R＜U，F＞，其中：属性集U = {A,B,C,D,E},函数依赖集F={AC→B,B→DE}。关系R（42）,且分别有（43）。",
+        "analyze": "AC推出B，B又能推出DE，因此AC是唯一的候选键，其中AC分别是主属性，B、D、E为非主属性。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "C",
+        "chooseItem": ["796234655928963073"],
+        "itemList": [
+          {
+            "id": "796234655866048513",
+            "questionId": "796234654951690241",
+            "content": " 1个非主属性和4个主属性",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234655899602945",
+            "questionId": "796234654951690241",
+            "content": " 2个非主属性和3个主属性",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234655928963073",
+            "questionId": "796234654951690241",
+            "content": " 3个非主属性和2个主属性",
+            "answer": 1,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234655962517505",
+            "questionId": "796234654951690241",
+            "content": " 4个非主属性和1个主属性",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234657988366337",
+        "title": "<p><strong>请作答第<span style=\"color: red\">1</span>个空。</strong></p>若要将部门表Demp中name列的修改权限赋予用户Ming，并允许Ming将该限授予他人，实现的SQL语句如下:<br> GRANT（44）ON TABLE Demp TO Ming（45）。",
+        "analyze": "本题考查对标准SQL授权语句的掌握。<br> 标准SQL中授权的语句格式如下：<br> <img width=\"548\" height=\"56\" src=\"https://image-t.chaiding.com/ruankao/493f3e4e421a3a07a1a174231dc69fce.jpg-ruankao\" alt=\"\"><br> 若在授权时指定了WITH GRANT OPTION,那么获得了权限的用户还可以将权限赋给其他用户。不同类型的操作对象有不同的操作权限，常见的操作权限如表所示。<br> 表常见的操作权限<br> <img width=\"552\" height=\"160\" src=\"https://image-t.chaiding.com/ruankao/a68892d9c30970576ecf4585fbb5d28a.jpg-ruankao\" alt=\"\"><br> 按试题要求，是要将修改属性列name权限给用户Ming，故空（44）应填写UPDATE(name)。故空（45）应填写WITH GRANT OPTION。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234659020165121"],
+        "itemList": [
+          {
+            "id": "796234658990804993",
+            "questionId": "796234657988366337",
+            "content": " SELECT（name)",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234659020165121",
+            "questionId": "796234657988366337",
+            "content": " UPDATE(name)",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234659053719553",
+            "questionId": "796234657988366337",
+            "content": " INSERT(name)",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234659074691073",
+            "questionId": "796234657988366337",
+            "content": " ALL PRIVILEGES(name)",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234661025042433",
+        "title": "<p><strong>请作答第<span style=\"color: red\">2</span>个空。</strong></p>若要将部门表Demp中name列的修改权限赋予用户Ming，并允许Ming将该限授予他人，实现的SQL语句如下:<br> GRANT（44）ON TABLE Demp TO Ming（45）。",
+        "analyze": "本题考查对标准SQL授权语句的掌握。<br> 标准SQL中授权的语句格式如下：<br> <img width=\"548\" height=\"56\" src=\"https://image-t.chaiding.com/ruankao/7a3a612f54be33a2723bd1c73a6278a7.jpg-ruankao\" alt=\"\"><br> 若在授权时指定了WITH GRANT OPTION,那么获得了权限的用户还可以将权限赋给其他用户。不同类型的操作对象有不同的操作权限，常见的操作权限如表所示。<br> 表常见的操作权限<br> <img width=\"552\" height=\"160\" src=\"https://image-t.chaiding.com/ruankao/bc4f8780f6d308ae3d280162f0cb709f.jpg-ruankao\" alt=\"\"><br> 按试题要求，是要将修改属性列name权限给用户Ming，故空（44）应填写UPDATE(name)。故空（45）应填写WITH GRANT OPTION。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "C",
+        "chooseItem": ["796234662082007041"],
+        "itemList": [
+          {
+            "id": "796234662002315265",
+            "questionId": "796234661025042433",
+            "content": " FOR ALL",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234662056841217",
+            "questionId": "796234661025042433",
+            "content": " CASCADE",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234662082007041",
+            "questionId": "796234661025042433",
+            "content": " WITH GRANT OPTION",
+            "answer": 1,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234662098784257",
+            "questionId": "796234661025042433",
+            "content": " WITH CHECK OPTION",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234664166576129",
+        "title": "<p><strong>请作答第<span style=\"color: red\">1</span>个空。</strong></p>前趋图是一个有向无环图，记为→=｛（Pi,Pj）pi完成时间先于Pj开始时间｝。假设系统中进P=｛P1，P2，P3，P4，P5，P6，P7，P8｝，且进程的前趋图如下：<br> <img alt=\"\" src=\"https://image-t.chaiding.com/ruankao/8eead6c26b73a713f0a5841c026b1322.jpg-ruankao\" width=\"386\" height=\"182\" title=\"\" align=\"\"><br> 那么，该前趋图可记为（46），图中（47）。",
+        "analyze": "本题考查操作系统基本概念。<br> 前趋图（Precedence Graph)是一个有向无循环图，记为DAG(Directed Acyclic Graph),用于描述进程之间执行的前后关系。图中的每个结点可用于描述一个程序段或进程，乃至一条语句；结点间的有向边则用于表示两个结点之间存在的偏序（Partial Order,亦称偏序关系）或前趋关系（Precedence Relation) “→”。<br> 对于题中所示的前趋图，存在着前趋关系：P1→P2，P1→P4，P2→P3，P2→P5，P3→P4，P3→P6，P4→P7，P5→P6，P6→P8，P7→P6。可记为：<br> P={P1，P2，P3，P4，P5，P6，P7，P8}<br> →={(P1，P2)，(P1，P4)，(P2，P3)，(P2，P5)，(P3，P4)，(P3，P6)，(P4，P7)，（P5，P6)，(P6，P8)，(P7，P6)}<br> 从以上分析可知存在着10个前趋关系。另外在前趋图中，把没有前趋的结点称为初始结点(Initial Node),故P<sub>1</sub>为初始结点。把没有后继的结点称为终止结点(Final Node), 故P<sub>8</sub>为终止结点。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234665240317953"],
+        "itemList": [
+          {
+            "id": "796234665215152129",
+            "questionId": "796234664166576129",
+            "content": " →={(P1，P2),(P1，P3),(P1,P4),(P2,P5),(P3,P2),(P3.P4).（P3，P6).(P4,P7),(P5,P8)",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234665240317953",
+            "questionId": "796234664166576129",
+            "content": " →={(P1，P2)，(P1，P4)，(P2,P3),(P2,P5)，(P3,P4)，(P3,P6),(P4,P7)，(P5,P6)，(P6,P8),(P7,P6)}",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234665278066689",
+            "questionId": "796234664166576129",
+            "content": " →={(P1,P2),(P1，P4)，(P2,P5)，(P3,P2)，(P3,P4)，(P3,P6),(P4,P6)，(P4,p7),(p6，p8)，(p7,P8)}",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234665303232513",
+            "questionId": "796234664166576129",
+            "content": " →={(P1,P2)，(P1，P3)，(P2,P4),(P2,P5)，(P3,P2),(P3 ,P4)，(P3,P5)，(P4，P7)，(P6，P8)，(P7，P8)}",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234667312304129",
+        "title": "<p><strong>请作答第<span style=\"color: red\">2</span>个空。</strong></p>前趋图是一个有向无环图，记为→=｛（Pi,Pj）pi完成时间先于Pj开始时间｝。假设系统中进P=｛P1，P2，P3，P4，P5，P6，P7，P8｝，且进程的前趋图如下：<br> <img alt=\"\" src=\"https://image-t.chaiding.com/ruankao/60e1597f9fbe84d4896880af7fd81238.jpg-ruankao\" width=\"386\" height=\"182\" title=\"\" align=\"\"><br> 那么，该前趋图可记为（46），图中（47）。",
+        "analyze": "本题考查操作系统基本概念。<br> 前趋图（Precedence Graph)是一个有向无循环图，记为DAG(Directed Acyclic Graph),用于描述进程之间执行的前后关系。图中的每个结点可用于描述一个程序段或进程，乃至一条语句；结点间的有向边则用于表示两个结点之间存在的偏序（Partial Order,亦称偏序关系）或前趋关系（Precedence Relation) “→”。<br> 对于题中所示的前趋图，存在着前趋关系：P1→P2，P1→P4，P2→P3，P2→P5，P3→P4，P3→P6，P4→P7，P5→P6，P6→P8，P7→P6。可记为：<br> P={P1，P2，P3，P4，P5，P6，P7，P8}<br> →={(P1，P2)，(P1，P4)，(P2，P3)，(P2，P5)，(P3，P4)，(P3，P6)，(P4，P7)，（P5，P6)，(P6，P8)，(P7，P6)}<br> 从以上分析可知存在着10个前趋关系。另外在前趋图中，把没有前趋的结点称为初始结点(Initial Node),故P<sub>1</sub>为初始结点。把没有后继的结点称为终止结点(Final Node), 故P<sub>8</sub>为终止结点。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "D",
+        "chooseItem": ["796234668369268737"],
+        "itemList": [
+          {
+            "id": "796234668281188353",
+            "questionId": "796234667312304129",
+            "content": " 存在着10个前趋关系，P1为初始结点，P2P4为终止结点",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234668314742785",
+            "questionId": "796234667312304129",
+            "content": " 存在着2个前趋关系，P6为初始结点，P2P4为终止结点",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234668348297217",
+            "questionId": "796234667312304129",
+            "content": " 存在着9个前趋关系，P6为初始结点，P8为终止结点",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234668369268737",
+            "questionId": "796234667312304129",
+            "content": " 存在着10个前趋关系，P1,为初始结点，P8为终止结点",
+            "answer": 1,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234670416089089",
+        "title": "<p><strong>请作答第<span style=\"color: red\">1</span>个空。</strong></p>某文件管理系统在磁盘上建立了位示图（bitmap），记录磁盘的使用情况。若磁盘上物理块的编号依次为：0、1、2、...；系统中的字长为64位，字的编号依次为：0、1、2、...，字中的一位对应文件存储器上的一个物理块，取值0和1分别表示空闲和占用，如下图所示：<br> <img alt=\"\" src=\"https://image-t.chaiding.com/ruankao/2dfdbd10763949a2422d3c6765bae7a6.jpg-ruankao\" width=\"359\" height=\"223\"><br> 假设操作系统将256号物理块分配给某文件，那么该物理块的使用情况在位示图中编号为（48）的字中描述；系统应该将（49）。",
+        "analyze": "本题考查操作系统内存管理方面的基础知识。<br> 文件管理系统是在外存上建立一张位示图（bitmap),记录文件存储器的使用情况。每一位对应文件存储器上的一个物理块，取值0和1分别表示空闲和占用。<br> 由于系统中字长为64位，所以每个字可以表示64个物理块的使用情况。根据题意“文件存储器上的物理块依次编号为：0,1,2,…”可知，位示图的第0个字对应0,1,2,…,63号物理块；第1个字对应64,65,66,…,127号物理块；第2个字对应128,129,130,…,191号物理块；第3个字对应192,193,194,…,255号物理块；第4个字对应256,257,258,…,319号物理块。256号物理块应该在位示图的第4个字中描述。又因为第4个字中的第0位对应的256号物理块，所以系统应该将该字的第0位置“1”。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234671531773953"],
+        "itemList": [
+          {
+            "id": "796234671510802433",
+            "questionId": "796234670416089089",
+            "content": " 3",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234671531773953",
+            "questionId": "796234670416089089",
+            "content": " 4",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234671556939777",
+            "questionId": "796234670416089089",
+            "content": " 5",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234671577911297",
+            "questionId": "796234670416089089",
+            "content": " 6",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234673691840513",
+        "title": "<p><strong>请作答第<span style=\"color: red\">2</span>个空。</strong></p>某文件管理系统在磁盘上建立了位示图（bitmap），记录磁盘的使用情况。若磁盘上物理块的编号依次为：0、1、2、...；系统中的字长为64位，字的编号依次为：0、1、2、...，字中的一位对应文件存储器上的一个物理块，取值0和1分别表示空闲和占用，如下图所示：<br> <img alt=\"\" src=\"https://image-t.chaiding.com/ruankao/0daccadc6f51fbc3c6b0a92df1024495.jpg-ruankao\" width=\"359\" height=\"223\"><br> 假设操作系统将256号物理块分配给某文件，那么该物理块的使用情况在位示图中编号为（48）的字中描述；系统应该将（49）。",
+        "analyze": "本题考查操作系统内存管理方面的基础知识。<br> 文件管理系统是在外存上建立一张位示图（bitmap),记录文件存储器的使用情况。每一位对应文件存储器上的一个物理块，取值0和1分别表示空闲和占用。<br> 由于系统中字长为64位，所以每个字可以表示64个物理块的使用情况。根据题意“文件存储器上的物理块依次编号为：0,1,2,…”可知，位示图的第0个字对应0,1,2,…,63号物理块；第1个字对应64,65,66,…,127号物理块；第2个字对应128,129,130,…,191号物理块；第3个字对应192,193,194,…,255号物理块；第4个字对应256,257,258,…,319号物理块。256号物理块应该在位示图的第4个字中描述。又因为第4个字中的第0位对应的256号物理块，所以系统应该将该字的第0位置“1”。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234674874634241"],
+        "itemList": [
+          {
+            "id": "796234674874634241",
+            "questionId": "796234673691840513",
+            "content": " 该字的0号位置“1”",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234674899800065",
+            "questionId": "796234673691840513",
+            "content": " 该字的63号位置“1”",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234674924965889",
+            "questionId": "796234673691840513",
+            "content": " 该字的0号位置“0”",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234674945937409",
+            "questionId": "796234673691840513",
+            "content": " 该字的63号位置“0”",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234676908871681",
+        "title": "<p><strong>请作答第<span style=\"color: red\">1</span>个空。</strong></p>假设计算机系统中有三类互斥资源Rl、R2和R3,可用资源数分别为9、5和3，若在T0时刻系统中有P1、P2、P3、P4和P5五个进程，这些进程对资源的最大需求量和已分配资源数如下表所示。在T0时刻系统剩余的可用资源数分别为（50）。如果进程按（51）序列执行，那么系统状态是安全的。<br> <img alt=\"\" src=\"https://image-t.chaiding.com/ruankao/1b89d752fb2aeec1582cb8d5d9120bb2.jpg-ruankao\" width=\"384\" height=\"197\">",
+        "analyze": "本题考查操作系统进程管理方面的基础知识。<br> 在操作系统进程管理中，安全状态是指系统能按某种进程顺序（P1,P2,…,Pn)，来为每个进程Pi分配其所需的资源，直到满足每个进程对资源的最大需求，使每个进程都可以顺利完成。如果无法找到这样的一个安全序列，则称系统处于不安全状态。根据己知条件可知，在T0时刻的剩余资源数计算如下：<br> 剩余资源数=资源总数（9,5,3)-己分配数（7,5,2)=(2,0,1)<br> 进程的执行序列己经给出，我们只需将四个选项按其顺序执行一遍，便可以判断出现死锁的三个序列。<br> <img src=\"https://image-t.chaiding.com/ruankao/dce857ef9f696b4dcad13409fcf0c0f9.jpg-ruankao\" alt=\"\" width=\"500\" height=\"127\" title=\"\" align=\"\"><br> 选项A:P1→P2→P4→P5→P3是不安全的序列。因为在这种情况下，进程P1先运行，P1尚需资源数为（3,0,1)，假设将资源R1分配3台给进程P1,则系统剩余的可用资源数为（0,0,1)，将导致系统所有的进程都不能做上能完成标志“True”，故选项A是不安全的序列。<br> 选项B:P4→P2→P1→P5→P3是不安全的序列。因为在这种情况下，进程P4先运行，P4尚需资源数为（2,2,1)，假设将资源R1分配2台给进程P4,则系统剩余的可用资源数为（0,0,1)，将导致系统所有的进程都不能做上能完成标志“True”，故选项B是不安全的序列。<br> 选项C:P5→P2→P4→P3→P1是安全的序列。因为所有的进程都能做上完成标志“True”，如下表所示。<br> <img src=\"https://image-t.chaiding.com/ruankao/67262370e0665e3775c957eec6d43bc6.jpg-ruankao\" alt=\"\" width=\"500\" height=\"126\" title=\"\" align=\"\"><br> 具体分析如下:<br> ①进程P5运行，系统剩余的可用资源数为(2,0,1),P5尚需资源数为(1,0,1),系统可进行分配，故进程P5能做上能完成标志\"True”,释放P5占有的资源数(1,1,0),系统可用资源数为(3,1,1)。<br> ②进程P2运行，系统剩余的可用资源数为(3,1,1),P2尚需资源数为(1,1,0),系统可进行分配，故进程P2能做上能完成标志\"True”,释放P2占有的资源数(2,1,0),系统可用资源数为(5,2,1)。<br> ③进程P4运行，系统剩余的可用资源数为(5,2,1),P4尚需资源数为(2,2,1),系统可进行分配，故进程P4能做上能完成标志\"True\",释放P4占有的资源数(1,1,1),系统可用资源数为(6,3,2)。<br> ④进程P3运行，系统剩余的可用资源数为(6,3,2),P3尚需资源数为(3,2,0),系统可进行分配，故进程P3能做上能完成标志“True”,释放P3占有的资源数(1,1,1),系统可用资源数为(7,4,2)。<br> ⑤进程P1运行，系统剩余的可用资源数为(7,4,3),P1尚需资源数为(4,2,0),系统可进行分配，故进程P1能做上能完成标志“True”,释放P1占有的资源数(1,1,1),系统可用资源数为（10, 5,3)。<br> 选项D:P5→P1→P4→P2→P3是不安全的序列。因为在选项D中，进程P5先运行，系统剩余的可用资源数为（2,0,1),P5尚需资源数为（1,0,1)，系统可进行分配，故进程P5能做上能完成标志“True”，释放P5占有的资源数（1,1,0)，系统可用资源数为（3,1,1)。进程P1运行，P1尚需资源数为（4,0,1)，假设将资源R1分配3台给进程P1,则系统剩余的可用资源数为（0,1,1),将导致系统中的进程Pl、P2、P3和P4都不能做上能完成标志“True”，故选项D是不安全的序列。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "D",
+        "chooseItem": ["796234677928087553"],
+        "itemList": [
+          {
+            "id": "796234677852590081",
+            "questionId": "796234676908871681",
+            "content": " 1、1和0",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234677877755905",
+            "questionId": "796234676908871681",
+            "content": " 1、1和1",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234677898727425",
+            "questionId": "796234676908871681",
+            "content": " 2、1和0",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234677928087553",
+            "questionId": "796234676908871681",
+            "content": " 2、0和1",
+            "answer": 1,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234679886827521",
+        "title": "<p><strong>请作答第<span style=\"color: red\">2</span>个空。</strong></p>假设计算机系统中有三类互斥资源Rl、R2和R3,可用资源数分别为9、5和3，若在T0时刻系统中有P1、P2、P3、P4和P5五个进程，这些进程对资源的最大需求量和已分配资源数如下表所示。在T0时刻系统剩余的可用资源数分别为（50）。如果进程按（51）序列执行，那么系统状态是安全的。<br> <img alt=\"\" src=\"https://image-t.chaiding.com/ruankao/b4ca10ffad70396c7df95d58d6a9295c.jpg-ruankao\" width=\"384\" height=\"197\">",
+        "analyze": "本题考查操作系统进程管理方面的基础知识。<br> 在操作系统进程管理中，安全状态是指系统能按某种进程顺序（P1,P2,…,Pn)，来为每个进程Pi分配其所需的资源，直到满足每个进程对资源的最大需求，使每个进程都可以顺利完成。如果无法找到这样的一个安全序列，则称系统处于不安全状态。根据己知条件可知，在T0时刻的剩余资源数计算如下：<br> 剩余资源数=资源总数（9,5,3)-己分配数（7,5,2)=(2,0,1)<br> 进程的执行序列己经给出，我们只需将四个选项按其顺序执行一遍，便可以判断出现死锁的三个序列。<br> <img src=\"https://image-t.chaiding.com/ruankao/d7641947a362e7803400b53f6d357d4d.jpg-ruankao\" alt=\"\" width=\"500\" height=\"127\" title=\"\" align=\"\"><br> 选项A:P1→P2→P4→P5→P3是不安全的序列。因为在这种情况下，进程P1先运行，P1尚需资源数为（3,0,1)，假设将资源R1分配3台给进程P1,则系统剩余的可用资源数为（0,0,1)，将导致系统所有的进程都不能做上能完成标志“True”，故选项A是不安全的序列。<br> 选项B:P4→P2→P1→P5→P3是不安全的序列。因为在这种情况下，进程P4先运行，P4尚需资源数为（2,2,1)，假设将资源R1分配2台给进程P4,则系统剩余的可用资源数为（0,0,1)，将导致系统所有的进程都不能做上能完成标志“True”，故选项B是不安全的序列。<br> 选项C:P5→P2→P4→P3→P1是安全的序列。因为所有的进程都能做上完成标志“True”，如下表所示。<br> <img src=\"https://image-t.chaiding.com/ruankao/6ff972618607db38b0ad430858119098.jpg-ruankao\" alt=\"\" width=\"500\" height=\"126\" title=\"\" align=\"\"><br> 具体分析如下:<br> ①进程P5运行，系统剩余的可用资源数为(2,0,1),P5尚需资源数为(1,0,1),系统可进行分配，故进程P5能做上能完成标志\"True”,释放P5占有的资源数(1,1,0),系统可用资源数为(3,1,1)。<br> ②进程P2运行，系统剩余的可用资源数为(3,1,1),P2尚需资源数为(1,1,0),系统可进行分配，故进程P2能做上能完成标志\"True”,释放P2占有的资源数(2,1,0),系统可用资源数为(5,2,1)。<br> ③进程P4运行，系统剩余的可用资源数为(5,2,1),P4尚需资源数为(2,2,1),系统可进行分配，故进程P4能做上能完成标志\"True\",释放P4占有的资源数(1,1,1),系统可用资源数为(6,3,2)。<br> ④进程P3运行，系统剩余的可用资源数为(6,3,2),P3尚需资源数为(3,2,0),系统可进行分配，故进程P3能做上能完成标志“True”,释放P3占有的资源数(1,1,1),系统可用资源数为(7,4,2)。<br> ⑤进程P1运行，系统剩余的可用资源数为(7,4,3),P1尚需资源数为(4,2,0),系统可进行分配，故进程P1能做上能完成标志“True”,释放P1占有的资源数(1,1,1),系统可用资源数为（10, 5,3)。<br> 选项D:P5→P1→P4→P2→P3是不安全的序列。因为在选项D中，进程P5先运行，系统剩余的可用资源数为（2,0,1),P5尚需资源数为（1,0,1)，系统可进行分配，故进程P5能做上能完成标志“True”，释放P5占有的资源数（1,1,0)，系统可用资源数为（3,1,1)。进程P1运行，P1尚需资源数为（4,0,1)，假设将资源R1分配3台给进程P1,则系统剩余的可用资源数为（0,1,1),将导致系统中的进程Pl、P2、P3和P4都不能做上能完成标志“True”，故选项D是不安全的序列。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "C",
+        "chooseItem": ["796234680889266177"],
+        "itemList": [
+          {
+            "id": "796234680826351617",
+            "questionId": "796234679886827521",
+            "content": " P1→P2→P4→P5→P3",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234680859906049",
+            "questionId": "796234679886827521",
+            "content": " P4→P2→P1→P5→P3",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234680889266177",
+            "questionId": "796234679886827521",
+            "content": " P5→P2→P4→P3→P1",
+            "answer": 1,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234680918626305",
+            "questionId": "796234679886827521",
+            "content": " P5→Pl→P4→P2→P3",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234682885754881",
+        "title": "“从减少成本和缩短研发周期考虑，要求嵌入式操作系统能运行在不同的微处理器平台上，能针对硬件变化进行结构与功能上的配置。”是属于嵌入式操作系统（ ）特点。",
+        "analyze": "本题考查嵌入式操作系统的基本概念。<br> \nPS:2023.05.16更新解析\n（1）微型化，从性能和成本角度考虑，希望占用的资源和系统代码量少；\n（2）可定制，从减少成本和缩短研发周期考虑，要求嵌入式操作系统能运行在不同的微处理器平台上，能针对硬件变化进行结构与功能上的配置，以满足不同应用的需求；\n（3）实时性，嵌入式操作系统主要应用于过程控制、数据采集、传输通信、多媒体信息及关键要害领域需要迅速响应的场合，所以对实时性要求较高；\n（4）可靠性，系统构件、模块和体系结构必须达到应有的可靠性，对关键要害应用还要提供容错和防故障措施；\n（5）易移植性，为了提高系统的易移植性，通常采用硬件抽象层和板级支撑包的底层设计技术。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234683917553665"],
+        "itemList": [
+          {
+            "id": "796234683917553665",
+            "questionId": "796234682885754881",
+            "content": " 可定制",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234683955302401",
+            "questionId": "796234682885754881",
+            "content": " 实时性",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234683980468225",
+            "questionId": "796234682885754881",
+            "content": " 可靠性",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234684005634049",
+            "questionId": "796234682885754881",
+            "content": " 易移植性",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234698069135361",
+        "title": "信息系统的性能评价指标是客观评价信息系统性能的依据，其中，（ ）是指系统在单位时间内处理请求的数量。",
+        "analyze": "本题考查性能方面的基础知识。<br> 吞吐量是指系统在单位时间内处理请求的数量。对于无并发的应用系统而言，吞吐量与响应时间成严格的反比关系，实际上此时吞吐量就是响应时间的倒数。前面己经说过，对于单用户的系统，响应时间（或者系统响应时间和应用延迟时间）可以很好地度量系统的性能，但对于并发系统，通常需要用吞吐量作为性能指标。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234699008659457"],
+        "itemList": [
+          {
+            "id": "796234698979299329",
+            "questionId": "796234698069135361",
+            "content": " 系统响应时间",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234699008659457",
+            "questionId": "796234698069135361",
+            "content": " 吞吐量",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234699042213889",
+            "questionId": "796234698069135361",
+            "content": " 资源利用率",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234699071574017",
+            "questionId": "796234698069135361",
+            "content": " 并发用户数",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234701063868417",
+        "title": "运用互联网技术，在系统性能评价中通常用平均无故障时间（MTBF）和平均故障修复时间（MTTR）分别表示计算机系统的可靠性和可用性，（ ）表示系统具有高可靠性和高可用性。",
+        "analyze": "本题考查软件质量属性方面的基础知识。<br> 平均无故障时间就是指在规定的条件下和规定的时间，产品的寿命单位总数与故障总数之比；或者说，平均无故障工作时间是可修复产品在相邻两次故障之间工作时间的数学期望值，即在每两次相邻故障之间的工作时间的平均值，它相当于产品的工作时间与这段时间内产品故障数之比。平均故障修复时间，是指设备出现故障后到恢复正常工 作时平均所需要的时间。是排除故障所需实际维修时间的平均值，用MTTR表示。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234702200524801"],
+        "itemList": [
+          {
+            "id": "796234702158581761",
+            "questionId": "796234701063868417",
+            "content": " MTBF小，MTTR小",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234702200524801",
+            "questionId": "796234701063868417",
+            "content": " MTBF大，MTTR小",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234702221496321",
+            "questionId": "796234701063868417",
+            "content": " MTBF大，MTTR大",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234702242467841",
+            "questionId": "796234701063868417",
+            "content": " MTBF小，MTTR大",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234623611850753",
+        "title": "<p><strong>请作答第<span style=\"color: red\">1</span>个空。</strong></p>随着对象持久化技术的发展，产生了众多持久化框架，其中，（33）基于EJB技术。（34）是ORM的解决方案。",
+        "analyze": "本题考查持久化方面的基础知识。<br> 持久化是将程序数据在持久状态和瞬时状态间转换的机制。通俗地讲，就是瞬时数据（比如内存中的数据，是不能永久保存的）持久化为持久数据（比如持久化至数据库中，能够长久保存)。随着对象持久化技术的发展，产生了众多持久化框架，其中，CMP基于EJB技术，iBatis是ORM的解决方案。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234624568152065"],
+        "itemList": [
+          {
+            "id": "796234624542986241",
+            "questionId": "796234623611850753",
+            "content": " iBatis",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234624568152065",
+            "questionId": "796234623611850753",
+            "content": " CMP",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234624597512193",
+            "questionId": "796234623611850753",
+            "content": " JDO",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234624618483713",
+            "questionId": "796234623611850753",
+            "content": " SQL",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234713554505729",
+        "title": "<p><strong>请作答第<span style=\"color: red\">1</span>个空。</strong></p>在以太网标准中规定的最小帧长是（62）字节，最小帧长是根据（63）来定的。",
+        "analyze": "本题考查以太网标准相关知识。<br> 在以太网标准中规定的最小帧长是64字节，最小帧长是根据网络中检测冲突的最长时间，为了过滤冲突废帧而设定的。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234714515001345"],
+        "itemList": [
+          {
+            "id": "796234714485641217",
+            "questionId": "796234713554505729",
+            "content": " 20",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234714515001345",
+            "questionId": "796234713554505729",
+            "content": " 64",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234714544361473",
+            "questionId": "796234713554505729",
+            "content": " 128",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234714565332993",
+            "questionId": "796234713554505729",
+            "content": " 151.8",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234626589806593",
+        "title": "<p><strong>请作答第<span style=\"color: red\">2</span>个空。</strong></p>随着对象持久化技术的发展，产生了众多持久化框架，其中，（33）基于EJB技术。（34）是ORM的解决方案。",
+        "analyze": "本题考查持久化方面的基础知识。<br> 持久化是将程序数据在持久状态和瞬时状态间转换的机制。通俗地讲，就是瞬时数据（比如内存中的数据，是不能永久保存的）持久化为持久数据（比如持久化至数据库中，能够长久保存)。随着对象持久化技术的发展，产生了众多持久化框架，其中，CMP基于EJB技术，iBatis是ORM的解决方案。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "D",
+        "chooseItem": ["796234627705491457"],
+        "itemList": [
+          {
+            "id": "796234627634188289",
+            "questionId": "796234626589806593",
+            "content": " SQL",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234627663548417",
+            "questionId": "796234626589806593",
+            "content": " CMP",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234627684519937",
+            "questionId": "796234626589806593",
+            "content": " JDO",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234627705491457",
+            "questionId": "796234626589806593",
+            "content": " iBatis",
+            "answer": 1,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234717056749569",
+        "title": "<p><strong>请作答第<span style=\"color: red\">2</span>个空。</strong></p>在以太网标准中规定的最小帧长是（62）字节，最小帧长是根据（63）来定的。",
+        "analyze": "本题考查以太网标准相关知识。<br> 在以太网标准中规定的最小帧长是64字节，最小帧长是根据网络中检测冲突的最长时间，为了过滤冲突废帧而设定的。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "D",
+        "chooseItem": ["796234718071771137"],
+        "itemList": [
+          {
+            "id": "796234717992079361",
+            "questionId": "796234717056749569",
+            "content": " 网络中传送的最小信息单位",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234718017245185",
+            "questionId": "796234717056749569",
+            "content": " 物理层可以区分的信息长度",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234718054993921",
+            "questionId": "796234717056749569",
+            "content": " 网络中发生冲突的最短时间",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234718071771137",
+            "questionId": "796234717056749569",
+            "content": " 网络中检测冲突的最长时间",
+            "answer": 1,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234720139563009",
+        "title": "假设模拟信号的频率为10-16MHz，采样频率必须大于（ ）时，才能使得的样本信号不失真。",
+        "analyze": "本题考查采样定理。<br> 采样定理规定采样频率必须大于信号最高频率2倍时，才能使得到的样本信号不失真，故采样频率需大于32MHz。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "D",
+        "chooseItem": ["796234721267830785"],
+        "itemList": [
+          {
+            "id": "796234721192333313",
+            "questionId": "796234720139563009",
+            "content": " 8MHz",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234721217499137",
+            "questionId": "796234720139563009",
+            "content": " 10MHz",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234721242664961",
+            "questionId": "796234720139563009",
+            "content": " 20MHz",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234721267830785",
+            "questionId": "796234720139563009",
+            "content": " 32MHz",
+            "answer": 1,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234521434411009",
+        "title": "面向对象分析中，一个事物发生变化会影响另一个事物，两个事物之间属于（ ）。",
+        "analyze": "本题考查统一建模语言（UML)的基础知识。<br> UML用关系把事物结合在一起。依赖关系是两个事物之间一个事物发生变化会影响另一个事物；关联关系描述一组对象之间连接的结构关系；泛化关系描述一般化和特殊化的关系；实现关系是类之间一个类指定了由另一个类保证执行的契约。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234522399100929"],
+        "itemList": [
+          {
+            "id": "796234522365546497",
+            "questionId": "796234521434411009",
+            "content": " 关联关系",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234522399100929",
+            "questionId": "796234521434411009",
+            "content": " 依赖关系",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234522415878145",
+            "questionId": "796234521434411009",
+            "content": " 实现关系",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234522436849665",
+            "questionId": "796234521434411009",
+            "content": " 泛化关系",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234723364982785",
+        "title": "TCP和UDP协议均提供了（ ）能力。",
+        "analyze": "本题考查TCP和UDP的工作原理。<br> TCP和UDP协议均提供了端口寻址功能，连接管理、差错校验和重传以及流量控制均为TCP的功能。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "D",
+        "chooseItem": ["796234724551970817"],
+        "itemList": [
+          {
+            "id": "796234724476473345",
+            "questionId": "796234723364982785",
+            "content": " 连接管理",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234724501639169",
+            "questionId": "796234723364982785",
+            "content": " 差错校验和重传",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234724526804993",
+            "questionId": "796234723364982785",
+            "content": " 流量控制",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234724551970817",
+            "questionId": "796234723364982785",
+            "content": " 端口寻址",
+            "answer": 1,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234726691065857",
+        "title": "建立TCP连接时，一端主动打开后所处的状态为（ ）。",
+        "analyze": "本题考查TCP的工作原理。<br> 建立TCP连接时，一端主动打开后所处的状态为SYN SENT。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234727760613377"],
+        "itemList": [
+          {
+            "id": "796234727760613377",
+            "questionId": "796234726691065857",
+            "content": " SYNSENT",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234727785779201",
+            "questionId": "796234726691065857",
+            "content": " ESTABLISHED",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234727815139329",
+            "questionId": "796234726691065857",
+            "content": " CLOSE-WAIT",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234727848693761",
+            "questionId": "796234726691065857",
+            "content": " LAST-ACK",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234729794850817",
+        "title": "配置POP3服务器时，邮件服务器中默认开放TCP的（ ）端口。",
+        "analyze": "本题考查POP3服务器的配置。<br> 在配置邮件服务器的过程中，发送邮件SMTP默认采用25端口，接收邮件POP3服务器默认开放TCP的110端口。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "D",
+        "chooseItem": ["796234730805678081"],
+        "itemList": [
+          {
+            "id": "796234730721792001",
+            "questionId": "796234729794850817",
+            "content": " 21",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234730751152129",
+            "questionId": "796234729794850817",
+            "content": " 25",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234730780512257",
+            "questionId": "796234729794850817",
+            "content": " 53",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234730805678081",
+            "questionId": "796234729794850817",
+            "content": " 110",
+            "answer": 1,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234732827332609",
+        "title": "某校园网的地址是202.115.192.0/19,要把该网络分成32个子网，则子网掩码该是（ ）。",
+        "analyze": "本题考查IP地址及子网划分。<br> 将网络划分为32个子网需要5个比特，故划分后子网掩码长度为24，即子网掩码为255.255.255.0。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "D",
+        "chooseItem": ["796234733808799745"],
+        "itemList": [
+          {
+            "id": "796234733741690881",
+            "questionId": "796234732827332609",
+            "content": " 255.255.200.0",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234733775245313",
+            "questionId": "796234732827332609",
+            "content": " 255.255.224.0",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234733796216833",
+            "questionId": "796234732827332609",
+            "content": " 255.255.254.0",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234733808799745",
+            "questionId": "796234732827332609",
+            "content": " 255.255.255.0",
+            "answer": 1,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234735834648577",
+        "title": "下列无线网络技术中，覆盖范围最小的是（ ）。",
+        "analyze": "本题考查扩频技术及相关知识。u2003<br> 802.15.1蓝牙是覆盖范围最小无线网络技术。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234736749006849"],
+        "itemList": [
+          {
+            "id": "796234736749006849",
+            "questionId": "796234735834648577",
+            "content": " 802.15.1蓝牙",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234736799338497",
+            "questionId": "796234735834648577",
+            "content": " 802.11n无线局域网",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234736832892929",
+            "questionId": "796234735834648577",
+            "content": " 802.15.4ZigBee",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234736853864449",
+            "questionId": "796234735834648577",
+            "content": " 802.16m无线城域网",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234738812604417",
+        "title": "2019年我国将在多地展开5G试点，届时将在人口密集区为用户提供（ ）bps的用户体验速率。",
+        "analyze": "本题考查5G相关知识。<br> 5G试点时将在人口密集区为用户提供lGbps的用户体验速率。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234739756322817"],
+        "itemList": [
+          {
+            "id": "796234739726962689",
+            "questionId": "796234738812604417",
+            "content": " 100M",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234739756322817",
+            "questionId": "796234738812604417",
+            "content": " 1G",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234739781488641",
+            "questionId": "796234738812604417",
+            "content": " 10G",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234739806654465",
+            "questionId": "796234738812604417",
+            "content": " 1T",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234603344973825",
+        "title": "<p><strong>请作答第<span style=\"color: red\">1</span>个空。</strong></p>结构化设计(StructuredDesign，SD)是一种面向（27）的方法，该方法中（28）是实现功能的基本单位。",
+        "analyze": "本题考查结构化设计方面的基础知识。<br> 结构化设计即SD(Structured Design)，是一种面向数据流的设计方法，目的在于确定软件的结构。结构化分析是一种面向功能或面向数据流的需求分析方法，采用自顶向下、逐层分解的方法，建立系统的处理流程。模块是该方法中实现功能的基本单位。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234604284497921"],
+        "itemList": [
+          {
+            "id": "796234604284497921",
+            "questionId": "796234603344973825",
+            "content": " 数据流",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234604322246657",
+            "questionId": "796234603344973825",
+            "content": " 对象",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234604351606785",
+            "questionId": "796234603344973825",
+            "content": " 模块",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234604380966913",
+            "questionId": "796234603344973825",
+            "content": " 构件",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234606851411969",
+        "title": "<p><strong>请作答第<span style=\"color: red\">2</span>个空。</strong></p>结构化设计(StructuredDesign，SD)是一种面向（27）的方法，该方法中（28）是实现功能的基本单位。",
+        "analyze": "本题考查结构化设计方面的基础知识。<br> 结构化设计即SD(Structured Design)，是一种面向数据流的设计方法，目的在于确定软件的结构。结构化分析是一种面向功能或面向数据流的需求分析方法，采用自顶向下、逐层分解的方法，建立系统的处理流程。模块是该方法中实现功能的基本单位。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234607761575937"],
+        "itemList": [
+          {
+            "id": "796234607761575937",
+            "questionId": "796234606851411969",
+            "content": " 模块",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234607786741761",
+            "questionId": "796234606851411969",
+            "content": " 对象",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234607811907585",
+            "questionId": "796234606851411969",
+            "content": " 接口",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234607832879105",
+            "questionId": "796234606851411969",
+            "content": " 子系统",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234613365166081",
+        "title": "<p><strong>请作答第<span style=\"color: red\">2</span>个空。</strong></p>耦合表示模块之间联系的程度。模块的耦合类型通常可分为7种。其中，一组模块通过参数表传递记录信息属于（29）。一个模块可直接访问另一个模块的内部数据属于（30）。（31）表示模块之间的关联程度最高。",
+        "analyze": "本题考查系统设计的模块化基础知识。<br> 模块化是将一个待开发的软件分解成若干个小而简单的部分——模块，每个模块可独立地开发、测试，最后组装成完整的程序。这是一种复杂问题的“分而治之”的原则。模块化的目的是使程序结构清晰，容易阅读，容易理解，容易测试，容易修改。每个模块完成一个相对特定独立的子功能，并且与其他模块之间的联系简单。衡量度量标准有两个：模块间的耦合和模块的内聚。模块独立性强必须做到高内聚低耦合。耦合用来表示模块之间联系的紧密程度，耦合度越高模块的独立性越差。耦合度从低到高的次序为：非直接耦合、数据耦合、标记耦合、控制耦合、外部耦合、公共耦合、内容耦合。内聚是指内部各元素之间联系的紧密程度，内聚度越低模块的独立性越差。内聚度从低到高依次是：偶然内聚、逻辑内聚、瞬时内聚、过程内聚、通信内聚、顺序内聚、功能内聚。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234614396964865"],
+        "itemList": [
+          {
+            "id": "796234614396964865",
+            "questionId": "796234613365166081",
+            "content": " 内部耦合",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234614426324993",
+            "questionId": "796234613365166081",
+            "content": " 标记耦合",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234614459879425",
+            "questionId": "796234613365166081",
+            "content": " 数据耦合",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234614489239553",
+            "questionId": "796234613365166081",
+            "content": " 控制耦合",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234616523476993",
+        "title": "<p><strong>请作答第<span style=\"color: red\">3</span>个空。</strong></p>耦合表示模块之间联系的程度。模块的耦合类型通常可分为7种。其中，一组模块通过参数表传递记录信息属于（29）。一个模块可直接访问另一个模块的内部数据属于（30）。（31）表示模块之间的关联程度最高。",
+        "analyze": "本题考查系统设计的模块化基础知识。<br> 模块化是将一个待开发的软件分解成若干个小而简单的部分——模块，每个模块可独立地开发、测试，最后组装成完整的程序。这是一种复杂问题的“分而治之”的原则。模块化的目的是使程序结构清晰，容易阅读，容易理解，容易测试，容易修改。每个模块完成一个相对特定独立的子功能，并且与其他模块之间的联系简单。衡量度量标准有两个：模块间的耦合和模块的内聚。模块独立性强必须做到高内聚低耦合。耦合用来表示模块之间联系的紧密程度，耦合度越高模块的独立性越差。耦合度从低到高的次序为：非直接耦合、数据耦合、标记耦合、控制耦合、外部耦合、公共耦合、内容耦合。内聚是指内部各元素之间联系的紧密程度，内聚度越低模块的独立性越差。内聚度从低到高依次是：偶然内聚、逻辑内聚、瞬时内聚、过程内聚、通信内聚、顺序内聚、功能内聚。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "A",
+        "chooseItem": ["796234617492361217"],
+        "itemList": [
+          {
+            "id": "796234617492361217",
+            "questionId": "796234616523476993",
+            "content": " 内部耦合",
+            "answer": 1,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234617513332737",
+            "questionId": "796234616523476993",
+            "content": " 标记耦合",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234617538498561",
+            "questionId": "796234616523476993",
+            "content": " 数据耦合",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234617555275777",
+            "questionId": "796234616523476993",
+            "content": " 控制耦合",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234629798449153",
+        "title": "<p><strong>请作答第<span style=\"color: red\">1</span>个空。</strong></p>（35）的开发过程一般是先把系统功能视作一个大的模块，再根据系统分析与设计的要求对其进行进一步的模块分解或组合。（36）使用了建模的思想，讨论如何建立一个实际的应用模型，包括对象模型、动态模型和功能模型，其功能模型主要用（37）实现。",
+        "analyze": "本题考查软件架构的基础知识。<br> 结构化设计（Structured Design,SD)是一种面向数据流的设计方法，目的在于确定软件的结构。结构化分析是一种面向功能或面向数据流的需求分析方法，采用自顶向下、逐层分解的方法，建立系统的处理流程。模块是该方法中实现功能的基本单位。<br> OMT方法的OOA模型包括对象模型、动态模型和功能模型。对象模型是对客观世界实体模拟的对象及对象彼此之间的关系的映射，描述了系统的静态结构。通常用类图表示。动态模型规定对象模型中的对象的合法变化序列。通常用状态图表示。功能模型指明系统应该做什么。更直接地反映了用户对目标系统的需求，用数据流图 (DFD)表示。<br> 建立DFD图的目的是描述系统的功能需求。DFD方法利用应用问题域中数据及信息的提供者与使用者、信息的流向、处理、存储四种元素描述系统需求，建立应用系统 的功能模型。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "C",
+        "chooseItem": ["796234630905745409"],
+        "itemList": [
+          {
+            "id": "796234630851219457",
+            "questionId": "796234629798449153",
+            "content": " 面向对象方法",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234630880579585",
+            "questionId": "796234629798449153",
+            "content": " OMT方法",
+            "answer": 0,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234630905745409",
+            "questionId": "796234629798449153",
+            "content": " 结构化方法",
+            "answer": 1,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234630935105537",
+            "questionId": "796234629798449153",
+            "content": " Booch方法",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234632893845505",
+        "title": "<p><strong>请作答第<span style=\"color: red\">2</span>个空。</strong></p>（35）的开发过程一般是先把系统功能视作一个大的模块，再根据系统分析与设计的要求对其进行进一步的模块分解或组合。（36）使用了建模的思想，讨论如何建立一个实际的应用模型，包括对象模型、动态模型和功能模型，其功能模型主要用（37）实现。",
+        "analyze": "本题考查软件架构的基础知识。<br> 结构化设计（Structured Design,SD)是一种面向数据流的设计方法，目的在于确定软件的结构。结构化分析是一种面向功能或面向数据流的需求分析方法，采用自顶向下、逐层分解的方法，建立系统的处理流程。模块是该方法中实现功能的基本单位。<br> OMT方法的OOA模型包括对象模型、动态模型和功能模型。对象模型是对客观世界实体模拟的对象及对象彼此之间的关系的映射，描述了系统的静态结构。通常用类图表示。动态模型规定对象模型中的对象的合法变化序列。通常用状态图表示。功能模型指明系统应该做什么。更直接地反映了用户对目标系统的需求，用数据流图 (DFD)表示。<br> 建立DFD图的目的是描述系统的功能需求。DFD方法利用应用问题域中数据及信息的提供者与使用者、信息的流向、处理、存储四种元素描述系统需求，建立应用系统 的功能模型。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234633837563905"],
+        "itemList": [
+          {
+            "id": "796234633816592385",
+            "questionId": "796234632893845505",
+            "content": " 面向对象方法",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234633837563905",
+            "questionId": "796234632893845505",
+            "content": " OMT方法",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234633866924033",
+            "questionId": "796234632893845505",
+            "content": " 结构化方法",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234633892089857",
+            "questionId": "796234632893845505",
+            "content": " Booch方法",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      },
+      {
+        "id": "796234635913744385",
+        "title": "<p><strong>请作答第<span style=\"color: red\">3</span>个空。</strong></p>（35）的开发过程一般是先把系统功能视作一个大的模块，再根据系统分析与设计的要求对其进行进一步的模块分解或组合。（36）使用了建模的思想，讨论如何建立一个实际的应用模型，包括对象模型、动态模型和功能模型，其功能模型主要用（37）实现。",
+        "analyze": "本题考查软件架构的基础知识。<br> 结构化设计（Structured Design,SD)是一种面向数据流的设计方法，目的在于确定软件的结构。结构化分析是一种面向功能或面向数据流的需求分析方法，采用自顶向下、逐层分解的方法，建立系统的处理流程。模块是该方法中实现功能的基本单位。<br> OMT方法的OOA模型包括对象模型、动态模型和功能模型。对象模型是对客观世界实体模拟的对象及对象彼此之间的关系的映射，描述了系统的静态结构。通常用类图表示。动态模型规定对象模型中的对象的合法变化序列。通常用状态图表示。功能模型指明系统应该做什么。更直接地反映了用户对目标系统的需求，用数据流图 (DFD)表示。<br> 建立DFD图的目的是描述系统的功能需求。DFD方法利用应用问题域中数据及信息的提供者与使用者、信息的流向、处理、存储四种元素描述系统需求，建立应用系统 的功能模型。",
+        "multi": 0,
+        "questionType": 1,
+        "answer": "B",
+        "chooseItem": ["796234636874240001"],
+        "itemList": [
+          {
+            "id": "796234636840685569",
+            "questionId": "796234635913744385",
+            "content": " 状态图",
+            "answer": 0,
+            "chooseValue": "A"
+          },
+          {
+            "id": "796234636874240001",
+            "questionId": "796234635913744385",
+            "content": " DFD",
+            "answer": 1,
+            "chooseValue": "B"
+          },
+          {
+            "id": "796234636907794433",
+            "questionId": "796234635913744385",
+            "content": " 类图",
+            "answer": 0,
+            "chooseValue": "C"
+          },
+          {
+            "id": "796234636932960257",
+            "questionId": "796234635913744385",
+            "content": " 流程图",
+            "answer": 0,
+            "chooseValue": "D"
+          }
+        ],
+        "userAnswer": "",
+        "userChooseItem": null,
+        "answerCorrect": null,
+        "userCollect": 0,
+        "notebookNum": 0
+      }
+    ]
+  }
+}

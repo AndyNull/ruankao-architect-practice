@@ -187,6 +187,26 @@ button:disabled {
   justify-content: flex-end;
 }
 
+.toolbar-actions button,
+.toolbar-actions select {
+  height: 44px;
+}
+
+.subject-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.subject-switch select {
+  min-width: 156px;
+  padding: 0 28px 0 10px;
+}
+
 @media (min-width: 781px) {
   body {
     height: 100vh;
@@ -231,11 +251,24 @@ button:disabled {
 }
 
 .notice {
-  margin-bottom: 12px;
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  z-index: 1000;
+  width: min(360px, calc(100vw - 32px));
   padding: 12px 14px;
   border-radius: 6px;
   background: #e9f5ff;
   border: 1px solid #a9d7ff;
+  box-shadow: 0 8px 24px rgba(18, 35, 52, 0.14);
+  pointer-events: none;
+  transform: translateX(-50%);
+  animation: notice-in 180ms ease-out;
+}
+
+@keyframes notice-in {
+  from { opacity: 0; transform: translate(-50%, -8px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
 }
 
 .notice.error {
@@ -1513,9 +1546,20 @@ th {
   }
 
   .toolbar {
-    align-items: center;
-    flex-direction: row;
+    align-items: stretch;
+    flex-direction: column;
     gap: 10px;
+  }
+
+  .toolbar-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    width: 100%;
+  }
+
+  .subject-switch,
+  .subject-switch select {
+    min-width: 0;
   }
 
   .toolbar h2 {
@@ -1523,7 +1567,7 @@ th {
   }
 
   .toolbar-actions .primary {
-    padding: 9px 10px;
+    padding: 0 12px;
   }
 
   .study-drawer > summary,
@@ -1627,5 +1671,20 @@ th {
 
   .markdown-content {
     max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .toolbar-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .subject-switch {
+    grid-column: 1 / -1;
+    display: block;
+  }
+
+  .toolbar-actions button {
+    width: 100%;
   }
 }

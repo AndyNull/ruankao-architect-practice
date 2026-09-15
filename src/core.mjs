@@ -211,7 +211,7 @@ export function summarizeMemory(questions, attempts, options = {}) {
 }
 
 export function summarizeProgressPayload(payload) {
-  if (!payload || payload.schemaVersion !== 1 || !Array.isArray(payload.attempts)) {
+  if (!payload || ![1, 2].includes(payload.schemaVersion) || !Array.isArray(payload.attempts)) {
     throw new Error("进度 JSON 格式不正确");
   }
   const attempts = payload.attempts;
@@ -229,6 +229,7 @@ export function summarizeProgressPayload(payload) {
     answeredQuestions: latest.size,
     wrong,
     bookmarks: bookmarks.length,
+    essaySamples: Array.isArray(payload.essaySamples) ? payload.essaySamples.length : 0,
     latestAt,
   };
 }

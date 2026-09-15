@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>系统架构设计师练题台</title>
-    <link rel="stylesheet" href="./styles.css?v=20260910.4" />
+    <link rel="stylesheet" href="./styles.css?v=20260915.1" />
   </head>
   <body>
     <div id="app">
@@ -12,7 +12,7 @@
         <div class="brand">
           <span class="brand-mark">SA</span>
           <div>
-            <h1>架构师练题台</h1>
+            <h1 id="brandTitle">架构师练题台</h1>
           </div>
         </div>
         <nav class="nav" aria-label="主导航">
@@ -45,6 +45,9 @@
             <h2 id="viewTitle">选择题</h2>
           </div>
           <div class="toolbar-actions">
+            <label class="subject-switch">
+              <select id="subjectSelect" aria-label="选择考试科目"></select>
+            </label>
             <button id="importProgressTop" type="button">导入进度</button>
             <button id="exportProgressTop" class="primary" type="button">导出进度</button>
           </div>

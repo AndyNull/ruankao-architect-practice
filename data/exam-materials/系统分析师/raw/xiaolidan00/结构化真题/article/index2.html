@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      .choose-active {
+        background-color: rgba(0, 128, 0, 0.5);
+        font-weight: bold;
+      }
+      #content {
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script>
+      const content = document.getElementById('content');
+      //https://image-t.chaiding.com/ruankao/e3624a2d09e171f54e061c341d1705a4.jpg-ruankao
+      const rUrl = 'https://image-t.chaiding.com';
+      function getData(url) {
+        fetch(url)
+          .then((res) => res.json())
+          .then((res) => {
+            const list = res.data.list.reverse();
+
+            list.forEach((a, i) => {
+              const dom = document.createElement('div');
+              dom.innerHTML = `<h1>第${i + 1}题</h1>${a.title}<hr/>${a.analyze}`;
+              content.appendChild(dom);
+            });
+          });
+      }
+      getData('list.json');
+    </script>
+  </body>
+</html>

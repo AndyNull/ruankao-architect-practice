@@ -1,3 +1,10 @@
 data/*-generation*.log
 data/*-recovery*.log
 data/local-server*.log
+data/exam-materials/**/*.pdf
+data/exam-materials/**/*.doc
+data/exam-materials/**/*.docx
+data/exam-materials/**/*.png
+data/exam-materials/**/*.jpg
+data/exam-materials/**/*.jpeg
+**/__pycache__/

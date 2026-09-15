@@ -92,7 +92,23 @@ test("summarizes imported progress JSON before applying it", () => {
   assert.equal(summary.answeredQuestions, 2);
   assert.equal(summary.wrong, 1);
   assert.equal(summary.bookmarks, 1);
+  assert.equal(summary.essaySamples, 0);
   assert.equal(summary.latestAt, "2026-06-21T02:30:00.000Z");
+});
+
+test("summarizes multi-subject progress exports", () => {
+  const summary = summarizeProgressPayload({
+    schemaVersion: 2,
+    attempts: [
+      { subjectId: "architect", questionId: "real-1", correct: true },
+      { subjectId: "network", questionId: "network-real-1", correct: false },
+    ],
+    bookmarks: [{ subjectId: "planner", questionId: "planner-real-1" }],
+    essaySamples: [{ subjectId: "analyst", essayId: "analyst-essay-1", content: "sample" }],
+  });
+  assert.equal(summary.attempts, 2);
+  assert.equal(summary.bookmarks, 1);
+  assert.equal(summary.essaySamples, 1);
 });
 
 test("formats clear source labels", () => {
