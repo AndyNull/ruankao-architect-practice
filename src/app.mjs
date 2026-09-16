@@ -133,6 +133,7 @@ async function init() {
     bindEvents();
     renderAll();
     renderPresenceEstimate();
+    window.setInterval(renderPresenceEstimate, 60_000);
   } catch (error) {
     showNotice(`初始化失败：${error.message}`, "error");
   }
@@ -280,8 +281,9 @@ function renderAll() {
 }
 
 function renderPresenceEstimate() {
-  const bucket = Math.floor(Date.now() / 300_000);
-  const estimate = 18 + ((bucket * 17) % 24);
+  const bucket = Math.floor(Date.now() / 60_000);
+  const subjectSeed = [...state.subjectId].reduce((sum, char) => sum + char.charCodeAt(0), 0);
+  const estimate = 16 + Math.abs((bucket * 17 + subjectSeed * 13) % 33);
   const status = $("presenceStatus");
   status.className = "presence-status estimate";
   $("presenceCount").textContent = `约 ${estimate} 人`;
@@ -398,8 +400,18 @@ function renderModeCounts() {
     mode: "exam",
     filters: state.mode === "exam" ? state.filters : { ...emptyFilters },
   });
-  $("continueModeCount").textContent = `${state.bank.choices.length} 题 / ${memory.new} 未做`;
-  $("reviewModeCount").textContent = `${Math.min(memory.due, state.dailyCount)} 题 / ${memory.due} 到期`;
+  const continueQueue = buildPracticeSet(state.bank.choices, state.attempts, {
+    mode: "continue",
+    filters: state.mode === "continue" ? state.filters : { ...emptyFilters },
+  });
+  const continueUnanswered = continueQueue.filter((question) => !latestAttemptByQuestion(state.attempts).has(question.id)).length;
+  const reviewQueue = buildPracticeSet(state.bank.choices, state.attempts, {
+    mode: "review",
+    filters: state.mode === "review" ? state.filters : { ...emptyFilters },
+    dailyCount: state.dailyCount,
+  });
+  $("continueModeCount").textContent = `${continueUnanswered} 未做`;
+  $("reviewModeCount").textContent = `${reviewQueue.length} 题 / ${memory.due} 到期`;
   $("specialModeCount").textContent = `${uniqueSorted(state.bank.choices, "module").length} 模块`;
   $("examModeCount").textContent = `${terms.length} 套${state.mode === "exam" ? ` · 当前 ${selectedExam.length} 题` : ""}`;
   $("wrongModeCount").textContent = `${memory.wrong} 错题`;
@@ -1177,6 +1189,7 @@ function runMode(mode) {
   state.queuePage = 0;
   switchView("practice");
   renderPractice();
+  renderModeCounts();
 }
 
 function runChapter(module) {
