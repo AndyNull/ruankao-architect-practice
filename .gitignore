@@ -10,5 +10,7 @@ data/exam-materials/**/*.jpeg
 data/exam-materials/**/raw/
 **/__pycache__/
 tmp/
+tests/
+*.log
 data/banks/lightsoft-subjective-errors.json
 data/banks/subjective-correction-errors.json
