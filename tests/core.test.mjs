@@ -13,6 +13,7 @@ import {
   summarizeModules,
   summarizeProgressPayload,
   summarizeAttempts,
+  uniqueSorted,
 } from "../src/core.mjs";
 
 const questions = [
@@ -45,6 +46,10 @@ test("builds deterministic continue, review, and exam practice sets", () => {
   assert.deepEqual(favorite.map((q) => q.id), ["q2"]);
   const exam = buildPracticeSet(questions, [], { mode: "exam", filters: { term: "2024年下半年" } });
   assert.deepEqual(exam.map((q) => q.id), ["q1"]);
+  const selectedExam = buildPracticeSet(questions, [], { mode: "exam", filters: { term: "2023年下半年" } });
+  assert.deepEqual(selectedExam.map((q) => q.id), ["q3"]);
+  const realOnly = buildPracticeSet(questions, [], { mode: "continue", filters: { sourceType: "real" } });
+  assert.deepEqual(realOnly.map((q) => q.id), ["q3", "q1"]);
 });
 
 test("summarizes memory states from answer history", () => {
@@ -94,6 +99,28 @@ test("summarizes imported progress JSON before applying it", () => {
   assert.equal(summary.bookmarks, 1);
   assert.equal(summary.essaySamples, 0);
   assert.equal(summary.latestAt, "2026-06-21T02:30:00.000Z");
+});
+
+test("sorts exam terms chronologically and defaults to the newest paper", () => {
+  const papers = [
+    { term: "2025年下半年" },
+    { term: "2024年下半年" },
+    { term: "2025年上半年" },
+    { term: "2026年上半年 第二批次" },
+    { term: "2026年上半年 第一批次" },
+  ];
+  assert.deepEqual(uniqueSorted(papers, "term"), [
+    "2024年下半年",
+    "2025年上半年",
+    "2025年下半年",
+    "2026年上半年 第一批次",
+    "2026年上半年 第二批次",
+  ]);
+  const latest = buildPracticeSet([
+    { ...questions[0], term: "2025年下半年" },
+    { ...questions[1], id: "q4", sourceType: "real", term: "2026年上半年 第二批次" },
+  ], [], { mode: "exam" });
+  assert.deepEqual(latest.map((question) => question.id), ["q4"]);
 });
 
 test("summarizes multi-subject progress exports", () => {

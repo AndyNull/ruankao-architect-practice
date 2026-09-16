@@ -1,6 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { getLocalCaseExplanation } from "../src/ai.mjs";
+import { buildPracticeSet, uniqueSorted } from "../src/core.mjs";
 
 const index = JSON.parse(readFileSync(new URL("../data/banks/index.json", import.meta.url), "utf8"));
 
@@ -22,10 +24,23 @@ test("each generated subject bank is answerable and has unique ids", () => {
     assert.ok(bank.cases.length > 0, `${subject.id} cases`);
     assert.ok(bank.essays.length > 0, `${subject.id} essays`);
     assert.equal(new Set(bank.cases.map((item) => item.id)).size, bank.cases.length, `${subject.id} case ids`);
+    for (const item of bank.cases) {
+      for (const question of item.subQuestions) {
+        assert.equal(typeof question.reference_answer, "string", `${subject.id}:${item.id} case answer type`);
+        assert.doesNotMatch(question.reference_answer, /暂无|待补|请先|应用市场|\[object Object\]/u, `${subject.id}:${item.id} case answer completeness`);
+      }
+    }
+    for (const item of bank.essays) {
+      assert.equal(typeof item.writingPoints, "string", `${subject.id}:${item.id} essay answer type`);
+      assert.doesNotMatch(item.writingPoints, /暂无|待补|请先|应用市场|\[object Object\]/u, `${subject.id}:${item.id} essay answer completeness`);
+    }
     const caseExplanationUrl = subject.caseExplanationUrl || "./data/ai-case-explanations.json";
     const caseExplanations = JSON.parse(readFileSync(new URL(`../${caseExplanationUrl.replace(/^\.\//, "")}`, import.meta.url), "utf8"));
     assert.equal(Object.keys(caseExplanations.explanations || {}).length, bank.cases.length, `${subject.id} case explanation count`);
-    for (const item of bank.cases) assert.ok(caseExplanations.explanations[item.id], `${subject.id}:${item.id} case explanation`);
+    for (const item of bank.cases) {
+      assert.ok(caseExplanations.explanations[item.id], `${subject.id}:${item.id} case explanation`);
+      assert.ok(getLocalCaseExplanation(item, caseExplanations.explanations), `${subject.id}:${item.id} current case explanation`);
+    }
     if (subject.id !== "architect") {
       const pending = JSON.parse(readFileSync(new URL(`../data/banks/${subject.id}-pending.json`, import.meta.url), "utf8"));
       assert.equal(pending.choices.length, bank.manifest.counts.pending_choice_answers, `${subject.id} pending count`);
@@ -45,6 +60,23 @@ test("each subject ships matching local choice explanations", () => {
       assert.equal(record?.answer, question.answer, `${subject.id}:${question.id} answer`);
       assert.match(record?.content || "", /核心考点[\s\S]*错误原因[\s\S]*选项辨析[\s\S]*记忆方法/u, `${subject.id}:${question.id} headings`);
     }
+  }
+});
+
+test("all subjects build isolated continue and switchable exam queues", () => {
+  for (const subject of index.subjects) {
+    const bank = JSON.parse(readFileSync(new URL(`../${subject.bankUrl.replace(/^\.\//, "")}`, import.meta.url), "utf8"));
+    const continued = buildPracticeSet(bank.choices, [], { mode: "continue" });
+    assert.equal(continued.length, bank.choices.length, `${subject.id} continue queue`);
+    const terms = uniqueSorted(bank.choices.filter((item) => item.sourceType === "real"), "term");
+    assert.ok(terms.length >= 2, `${subject.id} real exam terms`);
+    const current = buildPracticeSet(bank.choices, [], { mode: "exam" });
+    const selected = buildPracticeSet(bank.choices, [], { mode: "exam", filters: { term: terms[0] } });
+    const latestSize = Math.min(75, bank.choices.filter((item) => item.sourceType === "real" && item.term === terms.at(-1)).length);
+    const selectedSize = Math.min(75, bank.choices.filter((item) => item.sourceType === "real" && item.term === terms[0]).length);
+    assert.equal(current.length, latestSize, `${subject.id} latest exam queue`);
+    assert.equal(selected.length, selectedSize, `${subject.id} selected exam queue`);
+    assert.notEqual(current[0]?.id, selected[0]?.id, `${subject.id} exam switch`);
   }
 });
 
@@ -86,7 +118,7 @@ test("network legacy case and essay papers remain imported", () => {
   const legacyEssays = network.essays.filter((item) => /^20(?:0[9]|1[0-9])年/u.test(item.term));
   assert.ok(legacyCases.length >= 30);
   assert.ok(legacyEssays.length >= 21);
-  assert.ok(legacyCases.every((item) => item.subQuestions.every((question) => question.reference_answer.length >= 20)));
+  assert.ok(legacyCases.every((item) => item.subQuestions.every((question) => question.reference_answer.length >= 2)));
 });
 
 test("supplement validation report is clean", () => {

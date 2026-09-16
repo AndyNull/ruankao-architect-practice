@@ -393,7 +393,7 @@ function compactQuestion(question) {
 
 function sortQuestionsForPractice(questions) {
   return [...questions].sort((a, b) => {
-    const termCompare = String(a.term || "").localeCompare(String(b.term || ""), "zh-Hans-CN", { numeric: true });
+    const termCompare = compareExamTerms(a.term, b.term);
     if (termCompare) return termCompare;
     const noCompare = Number(a.questionNo || 0) - Number(b.questionNo || 0);
     if (noCompare) return noCompare;
@@ -487,7 +487,32 @@ function normalizeAnalysis(analysis) {
 }
 
 export function uniqueSorted(items, key) {
-  return [...new Set(items.map((item) => item[key]).filter(Boolean))].sort((a, b) => String(a).localeCompare(String(b), "zh-Hans-CN"));
+  const values = [...new Set(items.map((item) => item[key]).filter(Boolean))];
+  return values.sort(key === "term" ? compareExamTerms : (a, b) => String(a).localeCompare(String(b), "zh-Hans-CN", { numeric: true }));
+}
+
+function compareExamTerms(left, right) {
+  const leftKey = examTermKey(left);
+  const rightKey = examTermKey(right);
+  if (leftKey && rightKey) {
+    for (let index = 0; index < leftKey.length; index += 1) {
+      const difference = leftKey[index] - rightKey[index];
+      if (difference) return difference;
+    }
+  } else if (leftKey) return -1;
+  else if (rightKey) return 1;
+  return String(left || "").localeCompare(String(right || ""), "zh-Hans-CN", { numeric: true });
+}
+
+function examTermKey(value) {
+  const term = String(value || "");
+  const year = Number(term.match(/(20\d{2})年/u)?.[1]);
+  if (!year) return null;
+  const phase = term.includes("上半年") ? 1 : term.includes("下半年") ? 2 : Number(term.match(/年\s*(\d{1,2})月/u)?.[1] || 0);
+  const arabicBatch = Number(term.match(/(?:第\s*)?(\d+)\s*(?:批次|模拟卷)/u)?.[1] || 0);
+  const chineseBatch = term.match(/第?([一二三四五六七八九十])批次/u)?.[1] || "";
+  const batch = arabicBatch || "一二三四五六七八九十".indexOf(chineseBatch) + 1 || 0;
+  return [year, phase, batch];
 }
 
 export function formatPercent(value) {

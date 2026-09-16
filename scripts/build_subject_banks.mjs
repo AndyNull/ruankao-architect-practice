@@ -17,16 +17,23 @@ const onlineAnswers = loadJson(path.join(outputRoot, "online-answers.json"), {})
 const networkOnlineAnswers = loadJson(path.join(outputRoot, "network-online-answers.json"), {});
 const networkPdfAnswers = loadJson(path.join(outputRoot, "network-pdf-answer-keys.json"), {});
 const networkWebSupplement = loadJson(path.join(outputRoot, "network-web-supplement.json"), { choices: [], cases: [], essays: [] });
+const lightsoftSource = loadJson(path.join(outputRoot, "lightsoft-subjective-supplements.json"), { subjects: {} }).subjects;
+const lightsoftAnswers = loadJson(path.join(outputRoot, "lightsoft-subjective-answers.json"), { answers: {} }).answers;
+const subjectiveCorrections = loadJson(path.join(outputRoot, "subjective-corrections.json"), { corrections: {} }).corrections;
 const qicoderSupplements = loadJson(path.join(outputRoot, "qicoder-supplements.json"), {});
 const pdfSupplements = {
   planner: loadJson(path.join(outputRoot, "planner-pdf-supplement.json"), { choices: [], cases: [], essays: [] }),
   network: loadJson(path.join(outputRoot, "network-pdf-supplement.json"), { choices: [], cases: [], essays: [] }),
 };
-const architectBank = loadJson(path.join(root, "data", "bank.json"), null);
+let architectBank = loadJson(path.join(root, "data", "bank.json"), null);
 
 validateSupplementInputs();
 
 mkdirSync(outputRoot, { recursive: true });
+if (architectBank) {
+  architectBank = applySubjectiveCorrections(mergeLightsoftBank("architect", architectBank));
+  writeFileSync(path.join(root, "data", "bank.json"), `${JSON.stringify(architectBank)}\n`);
+}
 const catalog = [{
   id: "architect",
   name: "系统架构设计师",
@@ -77,12 +84,14 @@ function buildBank(code, name) {
   const supplement = pdfSupplements[code] || { choices: [], cases: [], essays: [] };
   const webSupplement = code === "network" ? networkWebSupplement : { choices: [], cases: [], essays: [] };
   const qicoderSupplement = qicoderSupplements[code] || { choices: [], cases: [], essays: [] };
+  const lightsoftSupplement = getLightsoftSupplement(code);
   choices = mergeBy(choices, [...markdown.choices, ...supplement.choices, ...webSupplement.choices, ...qicoderSupplement.choices], (item) => `${item.term}|${item.questionNo}`);
   choices = choices.map((item) => item.module === "other"
     ? { ...item, module: inferModule(`${item.stem} ${item.analysis}`) }
     : item);
   cases = mergeBy(cases, [...markdown.cases, ...supplement.cases], (item) => `${item.term}|${normalizeKey(item.title)}|${normalizeKey(item.description).slice(0, 80)}`);
   essays = mergeBy(essays, [...markdown.essays, ...supplement.essays], (item) => `${item.term}|${normalizeKey(item.title)}`);
+  ({ cases, essays } = applySubjectiveCorrections(mergeLightsoftBank(code, { cases, essays })));
 
   const pendingChoices = markdown.pendingChoices;
   cases = dedupeCases(cases);
@@ -112,6 +121,143 @@ function buildBank(code, name) {
   };
   writeFileSync(path.join(outputRoot, `${code}-pending.json`), `${JSON.stringify({ subject: name, choices: pendingChoices }, null, 2)}\n`);
   return { schemaVersion: 1, generatedAt: manifest.generated_at, subject: { id: code, name }, manifest, choices, cases, essays };
+}
+
+function getLightsoftSupplement(code) {
+  const source = lightsoftSource[code] || { cases: [], essays: [] };
+  const cases = source.cases.flatMap((item) => {
+    const generated = lightsoftAnswers[item.id];
+    if (!isValidGeneratedCase(item, generated)) return [];
+    return [{ ...item, subQuestions: item.subQuestions.map((question, index) => ({ ...question, reference_answer: generated.answers[index] })), answerSource: "glm-5.2-reviewed" }];
+  });
+  const essays = source.essays.flatMap((item) => {
+    const generated = lightsoftAnswers[item.id];
+    return isValidGeneratedEssay(generated) ? [{ ...item, writingPoints: generated.writingPoints, answerSource: "glm-5.2-reviewed" }] : [];
+  });
+  return { cases, essays };
+}
+
+function applySubjectiveCorrections(bank) {
+  const cases = (bank.cases || []).map((item) => {
+    const correction = subjectiveCorrections[item.id];
+    if (!isValidCaseCorrection(item, correction)) return item;
+    const replacements = new Map(correction.indexes.map((index, position) => [index, correction.answers[position]]));
+    return {
+      ...item,
+      subQuestions: item.subQuestions.map((question, index) => replacements.has(index) ? { ...question, reference_answer: replacements.get(index) } : question),
+      answerSource: "glm-5.2-reviewed",
+    };
+  });
+  const essays = (bank.essays || []).map((item) => {
+    const correction = subjectiveCorrections[item.id];
+    return isValidEssayCorrection(correction) ? { ...item, writingPoints: correction.writingPoints, answerSource: "glm-5.2-reviewed" } : item;
+  });
+  const answerableCases = cases.filter((item) => item.subQuestions?.length && item.subQuestions.every((question) => isUsableAnswerText(question.reference_answer)));
+  const answerableEssays = essays.filter((item) => item.prompt?.trim().length >= 80 && isUsableAnswerText(item.writingPoints) && !/待补充完整题目/u.test(item.title));
+  if (!bank.manifest) return { ...bank, cases: answerableCases, essays: answerableEssays };
+  return {
+    ...bank,
+    cases: answerableCases,
+    essays: answerableEssays,
+    manifest: {
+      ...bank.manifest,
+      counts: { ...bank.manifest.counts, case: answerableCases.length, essay: answerableEssays.length },
+      subjective_real_missing_by_term: knownSubjectiveGaps(bank),
+    },
+  };
+}
+
+function knownSubjectiveGaps(bank) {
+  const subjectId = bank.subject?.id || bank.manifest?.subject?.id || (bank.source ? "architect" : "");
+  const known = subjectId === "architect" ? { "2024年上半年": { cases: [4], essays: [] } } : {};
+  return { ...(bank.manifest?.subjective_real_missing_by_term || {}), ...known };
+}
+
+function mergeLightsoftBank(code, bank) {
+  const supplement = getLightsoftSupplement(code);
+  const cases = mergeCollectedItems(code, "case", bank.cases || [], supplement.cases);
+  const essays = mergeCollectedItems(code, "essay", bank.essays || [], supplement.essays);
+  if (!bank.manifest) return { ...bank, cases, essays };
+  const generatedAt = new Date().toISOString();
+  return {
+    ...bank,
+    generatedAt,
+    cases,
+    essays,
+    manifest: {
+      ...bank.manifest,
+      generated_at: generatedAt,
+      counts: { ...bank.manifest.counts, case: cases.length, essay: essays.length },
+      supplemental_sources: uniqueSources([...(bank.manifest.supplemental_sources || []), {
+        name: "Lightsoft 软考真题",
+        url: "https://www.lightsoft.tech/doquestion/subject",
+        scope: "案例与论文历史真题题干；缺失参考答案由 GLM 生成并经结构校验",
+      }]),
+    },
+  };
+}
+
+function mergeCollectedItems(code, type, existing, additions) {
+  if (!additions.length) return existing;
+  const completeTerms = new Set(additions.map((item) => item.term).filter((term) => replacesWholeTerm(code, type, term)));
+  const additionKeys = new Set(additions.map((item) => `${item.term}|${normalizePaperTitle(item.title)}`));
+  const retained = existing.filter((item) => {
+    if (item.sourceType === "real" && completeTerms.has(item.term)) return false;
+    return !additionKeys.has(`${item.term}|${normalizePaperTitle(item.title)}`) || !isPlaceholderSubjective(type, item);
+  });
+  return [...retained, ...additions];
+}
+
+function replacesWholeTerm(code, type, term) {
+  const year = Number(term.slice(0, 4));
+  if (code === "architect" || code === "network") return true;
+  if (code === "itpm") return type === "case" ? year <= 2016 || term === "2025年上半年" : year <= 2020;
+  if (code === "analyst") return year <= 2017 || term === "2020年下半年";
+  if (code === "planner") return year <= 2020;
+  return false;
+}
+
+function normalizePaperTitle(value) {
+  return normalizeKey(value).replace(/[一壹]/gu, "1").replace(/[二贰]/gu, "2").replace(/[三叁]/gu, "3").replace(/[四肆]/gu, "4").replace(/[五伍]/gu, "5");
+}
+
+function isPlaceholderSubjective(type, item) {
+  const text = type === "case" ? (item.subQuestions || []).map((question) => question.reference_answer).join("\n") : item.writingPoints;
+  return !String(text || "").trim() || /暂无|待补|请先|应用市场/u.test(text);
+}
+
+function isUsableAnswerText(value) {
+  return typeof value === "string" && value.trim().length >= 2 && !/暂无|待补|请先|应用市场|\[object Object\]/u.test(value);
+}
+
+function isValidGeneratedCase(item, generated) {
+  return generated?.type === "case"
+    && Array.isArray(generated.answers)
+    && generated.answers.length === item.subQuestions.length
+    && generated.answers.every(isUsableAnswerText);
+}
+
+function isValidGeneratedEssay(generated) {
+  return generated?.type === "essay" && typeof generated.writingPoints === "string"
+    && generated.writingPoints.trim().length >= 180 && isUsableAnswerText(generated.writingPoints);
+}
+
+function isValidCaseCorrection(item, correction) {
+  return correction?.type === "case"
+    && Array.isArray(correction.indexes)
+    && Array.isArray(correction.answers)
+    && correction.indexes.length === correction.answers.length
+    && correction.indexes.every((index) => Number.isInteger(index) && index >= 0 && index < item.subQuestions.length)
+    && correction.answers.every(isUsableAnswerText);
+}
+
+function isValidEssayCorrection(correction) {
+  return correction?.type === "essay" && typeof correction.writingPoints === "string"
+    && correction.writingPoints.trim().length >= 120 && isUsableAnswerText(correction.writingPoints);
+}
+
+function uniqueSources(sources) {
+  return [...new Map(sources.map((item) => [item.name, item])).values()];
 }
 
 function validateSupplementInputs() {
@@ -307,10 +453,12 @@ function parseCaseMarkdown(code, entry, questionText, answerText, sourceFile) {
 }
 
 function parseEssayMarkdown(code, entry, questionText, answerText, sourceFile) {
-  const questions = splitSections(questionText, /^(?:#{2,4}\s*)?(?:试题|论文)\s*([一二三四五六七八九十\d]+)[：:]?[^\n]*$/gmu);
-  const answers = splitSections(answerText, /^(?:#{2,4}\s*)?(?:试题|论文)\s*([一二三四五六七八九十\d]+)[：:]?[^\n]*$/gmu);
+  if (code === "itpm" && entry.term.startsWith("2026年")) return [];
+  const sectionPattern = /^(?:#{2,4}\s*)?(?:(?:试题|论文)\s*([一二三四五六七八九十\d]+)[：:]?|(?:试题|论文)[：:](?=论)|第[一二三四五六七八九十\d]+批次[^：:\n]*[：:](?=论))[^\n]*$/gmu;
+  const questions = splitSections(questionText, sectionPattern);
+  const answers = splitSections(answerText, sectionPattern);
   return questions.map((section, index) => {
-    const prompt = cleanMarkdown(section.body);
+    const prompt = cleanMarkdown(`${section.heading}\n${section.body}`);
     const title = prompt.match(/论[^\n。]{2,40}/u)?.[0] || `论文${section.label}`;
     return {
       id: `${code}-essay-${entry.sourceType}-${slug(entry.term)}-${index + 1}`,
@@ -460,6 +608,7 @@ function splitSections(text, pattern) {
   const matches = [...text.matchAll(pattern)];
   return matches.map((match, index) => ({
     label: match[1],
+    heading: match[0],
     body: text.slice(match.index + match[0].length, matches[index + 1]?.index ?? text.length).trim(),
   }));
 }

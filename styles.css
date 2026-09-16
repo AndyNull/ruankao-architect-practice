@@ -1102,6 +1102,21 @@ input {
   text-align: center;
 }
 
+.exam-term-wrap {
+  display: grid;
+  gap: 5px;
+  margin: -2px 0 12px;
+  color: #5d6978;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.exam-term-wrap select {
+  width: 100%;
+  min-width: 0;
+  padding: 8px 10px;
+}
+
 .queue-legend {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1597,8 +1612,8 @@ th {
   }
 
   .mode-button {
-    flex: 0 0 138px;
-    min-height: 58px;
+    flex: 0 0 172px;
+    min-height: 64px;
     scroll-snap-align: start;
   }
 

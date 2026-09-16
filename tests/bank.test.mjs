@@ -25,17 +25,20 @@ test("never reduces the original project bank", () => {
   assert.ok(bank.essays.length >= originalCounts.essays);
 });
 
-test("covers every audited real exam", () => {
+test("keeps answerable real exam papers and records source gaps", () => {
   for (const term of auditedTerms) {
     const choices = bank.choices.filter((item) => item.sourceType === "real" && item.term === term);
     const cases = bank.cases.filter((item) => item.sourceType === "real" && item.term === term);
     const essays = bank.essays.filter((item) => item.sourceType === "real" && item.term === term);
     assert.deepEqual(choices.map((item) => item.questionNo).sort((a, b) => a - b), Array.from({ length: 75 }, (_, index) => index + 1), term);
-    assert.ok(cases.length >= 5, term);
+    assert.ok(cases.length >= (term === "2024年上半年" ? 4 : 5), term);
     assert.ok(essays.length >= 4, term);
     if (/^201[6-9]/.test(term)) {
       assert.equal(cases.every((item) => item.description.trim() && item.subQuestions[0].prompt.trim()), true, term);
       assert.equal(essays.every((item) => item.prompt.trim() && item.writingPoints.trim()), true, term);
     }
   }
+  assert.deepEqual(bank.manifest.subjective_real_missing_by_term, {
+    "2024年上半年": { cases: [4], essays: [] },
+  });
 });

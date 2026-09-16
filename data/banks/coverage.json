@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-09-15T12:43:06.799Z",
+  "generatedAt": "2026-09-16T05:52:26.642Z",
   "subjects": {
     "architect": {
-      "generated_at": "2026-09-13T16:02:18.680Z",
+      "generated_at": "2026-09-16T05:52:26.306Z",
       "source": {
         "name": "awesome-ruankao",
         "url": "https://github.com/wujiaming88/awesome-ruankao.git",
@@ -22,6 +22,11 @@
           "url": "https://github.com/YoungHong1992/ruankao-senior-architecture-designer",
           "scope": "2016-2025 系统架构设计师清洗交叉校对版真题",
           "note": "第三方整理资料，不代表官方原卷或官方答案。"
+        },
+        {
+          "name": "Lightsoft 软考真题",
+          "url": "https://www.lightsoft.tech/doquestion/subject",
+          "scope": "案例与论文历史真题题干；缺失参考答案由 GLM 生成并经结构校验"
         }
       ],
       "scope": {
@@ -61,8 +66,8 @@
         "choice": 1947,
         "choice_real": 1422,
         "choice_mock": 525,
-        "case": 98,
-        "essay": 76
+        "case": 132,
+        "essay": 104
       },
       "choice_real_by_term": {
         "2009年下半年": 75,
@@ -109,10 +114,18 @@
         "2012年下半年": [
           69
         ]
+      },
+      "subjective_real_missing_by_term": {
+        "2024年上半年": {
+          "cases": [
+            4
+          ],
+          "essays": []
+        }
       }
     },
     "planner": {
-      "generated_at": "2026-09-15T12:43:06.568Z",
+      "generated_at": "2026-09-16T05:52:26.364Z",
       "subject": {
         "id": "planner",
         "name": "系统规划与管理师"
@@ -145,8 +158,8 @@
         "choice": 814,
         "choice_real": 664,
         "choice_mock": 150,
-        "case": 21,
-        "essay": 8,
+        "case": 28,
+        "essay": 24,
         "pending_choice_answers": 0
       },
       "choice_real_by_term": {
@@ -181,7 +194,7 @@
       }
     },
     "itpm": {
-      "generated_at": "2026-09-15T12:43:06.700Z",
+      "generated_at": "2026-09-16T05:52:26.517Z",
       "subject": {
         "id": "itpm",
         "name": "信息系统项目管理师"
@@ -224,8 +237,8 @@
         "choice": 3686,
         "choice_real": 1094,
         "choice_mock": 2592,
-        "case": 196,
-        "essay": 4,
+        "case": 209,
+        "essay": 64,
         "pending_choice_answers": 0
       },
       "choice_real_by_term": {
@@ -485,7 +498,7 @@
       }
     },
     "analyst": {
-      "generated_at": "2026-09-15T12:43:06.743Z",
+      "generated_at": "2026-09-16T05:52:26.575Z",
       "subject": {
         "id": "analyst",
         "name": "系统分析师"
@@ -525,8 +538,8 @@
         "choice": 956,
         "choice_real": 806,
         "choice_mock": 150,
-        "case": 71,
-        "essay": 26,
+        "case": 98,
+        "essay": 76,
         "pending_choice_answers": 0
       },
       "choice_real_by_term": {
@@ -973,7 +986,7 @@
       }
     },
     "network": {
-      "generated_at": "2026-09-15T12:43:06.789Z",
+      "generated_at": "2026-09-16T05:52:26.633Z",
       "subject": {
         "id": "network",
         "name": "网络规划设计师"
@@ -1015,8 +1028,8 @@
         "choice": 1496,
         "choice_real": 1346,
         "choice_mock": 150,
-        "case": 51,
-        "essay": 33,
+        "case": 57,
+        "essay": 45,
         "pending_choice_answers": 0
       },
       "choice_real_by_term": {

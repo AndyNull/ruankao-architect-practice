@@ -157,6 +157,7 @@ function bindEvents() {
     if (state.mode === "review") {
       applyFilters();
       renderPractice();
+      renderModeCounts();
       renderOverview();
     }
   });
@@ -175,6 +176,13 @@ function bindEvents() {
   $("toggleFavorite").addEventListener("click", toggleCurrentFavorite);
   $("queuePrevPage").addEventListener("click", () => changeQueuePage(-1));
   $("queueNextPage").addEventListener("click", () => changeQueuePage(1));
+  $("examTermSelect").addEventListener("change", (event) => {
+    state.filters.term = event.target.value;
+    syncFilterControls();
+    applyFilters();
+    renderPractice();
+    renderModeCounts();
+  });
   $("exportDiagnosis").addEventListener("click", downloadDiagnosis);
   $("importProgressTop").addEventListener("click", chooseProgressFile);
   $("exportProgressTop").addEventListener("click", downloadProgress);
@@ -206,6 +214,7 @@ function initFilters() {
   ]);
   fillSelect($("termFilter"), [["all", "全部年份/卷"], ...uniqueSorted(state.bank.choices, "term").map((x) => [x, x])]);
   fillSelect($("moduleFilter"), [["all", "全部模块"], ...uniqueSorted(state.bank.choices, "module").map((x) => [x, moduleLabel(x)])]);
+  fillSelect($("examTermSelect"), uniqueSorted(state.bank.choices.filter((item) => item.sourceType === "real"), "term").map((x) => [x, x]));
 }
 
 function fillSelect(select, rows) {
@@ -309,6 +318,8 @@ async function switchSubject(subjectId) {
     state.caseExplanation = null;
     state.essayGeneration = null;
     state.materialCache.clear();
+    state.mode = "continue";
+    state.filters = { ...emptyFilters };
     await loadSubjectRecords();
     initFilters();
     applyFilters();
@@ -350,16 +361,22 @@ function renderOverview() {
   const realRange = realTerms.length ? `${realTerms[0]} 至 ${realTerms.at(-1)}，共 ${realTerms.length} 个批次` : "暂无真题";
   const missingByTerm = state.bank.manifest.choice_real_missing_by_term || {};
   const missingText = Object.entries(missingByTerm).map(([term, numbers]) => `${term}缺第${numbers.join("、")}题`).join("；");
+  const subjectiveMissing = state.bank.manifest.subjective_real_missing_by_term || {};
+  const subjectiveText = Object.entries(subjectiveMissing).map(([term, missing]) => {
+    const cases = missing.cases?.length ? `案例第${missing.cases.join("、")}题` : "";
+    const essays = missing.essays?.length ? `论文第${missing.essays.join("、")}题` : "";
+    return [term, cases, essays].filter(Boolean).join(" ");
+  }).join("；");
   $("sourceSummary").textContent = `${state.bank.choices.length} 道选择题，${state.bank.cases.length} 道案例，${state.bank.essays.length} 道论文`;
   const missingDetail = missingText ? `结构化题面缺口：${missingText}。` : "各套真题题号连续。";
-  $("sourceDetail").textContent = `真题 ${realCount} 道：${realRange}；模拟 ${mockCount} 道：${mockTerms.length} 套。${pendingCount ? `另有 ${pendingCount} 道题待补答案，暂不进入练习。` : "全部已提取题目均有答案。"}${missingDetail}每题下方显示年份、题号、模块和来源文件。`;
+  $("sourceDetail").textContent = `真题 ${realCount} 道：${realRange}；模拟 ${mockCount} 道：${mockTerms.length} 套。${pendingCount ? `另有 ${pendingCount} 道题待补答案，暂不进入练习。` : "全部已提取题目均有答案。"}${missingDetail}${subjectiveText ? `主观题原始资料缺口：${subjectiveText}。` : ""}每题下方显示年份、题号、模块和来源文件。`;
 }
 
 function renderModeCounts() {
   const memory = summarizeMemory(state.bank.choices, state.attempts);
   const terms = uniqueSorted(state.bank.choices.filter((item) => item.sourceType === "real"), "term");
-  $("continueModeCount").textContent = `${memory.new} 未做`;
-  $("reviewModeCount").textContent = `${memory.due} 到期`;
+  $("continueModeCount").textContent = `${state.bank.choices.length} 题 / ${memory.new} 未做`;
+  $("reviewModeCount").textContent = `${Math.min(memory.due, state.dailyCount)} 题 / ${memory.due} 到期`;
   $("specialModeCount").textContent = `${uniqueSorted(state.bank.choices, "module").length} 模块`;
   $("examModeCount").textContent = `${terms.length} 套`;
   $("wrongModeCount").textContent = `${memory.wrong} 错题`;
@@ -391,6 +408,9 @@ function renderPractice() {
   syncChapterButtons();
   $("queueSummary").textContent = `${state.filteredQuestions.length} 道题`;
   $("modeLabel").textContent = modeLabel(state.mode);
+  const examTermWrap = $("examTermWrap");
+  examTermWrap.hidden = state.mode !== "exam";
+  if (state.mode === "exam") $("examTermSelect").value = state.filters.term;
   renderQueue();
   const question = currentQuestion();
   if (!question) {
@@ -471,7 +491,7 @@ function renderQueue() {
   state.queuePage = Math.min(Math.max(0, state.queuePage), pageCount - 1);
   const start = state.queuePage * state.queuePageSize;
   const end = Math.min(start + state.queuePageSize, state.filteredQuestions.length);
-  $("queueSummary").textContent = `${state.filteredQuestions.length} 道题 · 已答 ${queueAttempts.length}`;
+  $("queueSummary").textContent = `${state.filteredQuestions.length} 道题 · 已答 ${queueAttempts.length} · 未答 ${unanswered}`;
   $("queuePageLabel").textContent = state.filteredQuestions.length ? `${start + 1}-${end} / ${state.filteredQuestions.length}` : "0 / 0";
   $("queuePrevPage").disabled = state.queuePage === 0;
   $("queueNextPage").disabled = state.queuePage >= pageCount - 1;
@@ -1091,6 +1111,7 @@ function syncFilterControls() {
 
 function runMode(mode) {
   state.mode = mode;
+  state.filters = { ...emptyFilters };
   if (mode === "continue") {
     state.filters.status = "all";
   }
@@ -1102,6 +1123,7 @@ function runMode(mode) {
   }
   if (mode === "exam") {
     state.filters.sourceType = "real";
+    state.filters.term = uniqueSorted(state.bank.choices.filter((item) => item.sourceType === "real"), "term").at(-1) || "all";
     state.filters.module = "all";
     state.filters.status = "all";
     state.filters.keyword = "";

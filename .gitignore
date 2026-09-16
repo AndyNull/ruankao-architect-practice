@@ -7,4 +7,8 @@ data/exam-materials/**/*.docx
 data/exam-materials/**/*.png
 data/exam-materials/**/*.jpg
 data/exam-materials/**/*.jpeg
+data/exam-materials/**/raw/
 **/__pycache__/
+tmp/
+data/banks/lightsoft-subjective-errors.json
+data/banks/subjective-correction-errors.json

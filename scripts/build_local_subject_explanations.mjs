@@ -2,14 +2,20 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { createCaseExplanationRecord, createExplanationRecord } from "../src/ai.mjs";
+import { createCaseExplanationRecord, createExplanationRecord, getLocalCaseExplanation } from "../src/ai.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const subjects = ["planner", "itpm", "analyst", "network"];
+const subjects = ["architect", "planner", "itpm", "analyst", "network"];
 
 for (const subject of subjects) {
-  const bank = JSON.parse(readFileSync(path.join(root, "data", "banks", `${subject}.json`), "utf8"));
-  const explanations = Object.fromEntries(bank.choices.map((question) => {
+  const isArchitect = subject === "architect";
+  const bankPath = isArchitect ? path.join(root, "data", "bank.json") : path.join(root, "data", "banks", `${subject}.json`);
+  const bank = JSON.parse(readFileSync(bankPath, "utf8"));
+  const choicePath = path.join(root, isArchitect ? "data" : "data/banks", isArchitect ? "ai-explanations.json" : `ai-explanations-${subject}.json`);
+  const casePath = path.join(root, isArchitect ? "data" : "data/banks", isArchitect ? "ai-case-explanations.json" : `ai-case-explanations-${subject}.json`);
+  const existingChoicePayload = isArchitect ? JSON.parse(readFileSync(choicePath, "utf8")) : null;
+  const existingCasePayload = isArchitect ? JSON.parse(readFileSync(casePath, "utf8")) : null;
+  const explanations = isArchitect ? existingChoicePayload.explanations : Object.fromEntries(bank.choices.map((question) => {
     const content = [
       "核心考点",
       question.analysis && question.analysis !== "暂无详细解析。" ? question.analysis : `${question.module || "综合知识"}相关基础概念与应用。`,
@@ -22,9 +28,11 @@ for (const subject of subjects) {
     ].join("\n");
     return [question.id, createExplanationRecord(question, content)];
   }));
-  writeFileSync(path.join(root, "data", "banks", `ai-explanations-${subject}.json`), `${JSON.stringify({ schemaVersion: 1, generatedAt: new Date().toISOString(), model: "grounded-local-template", totalQuestions: bank.choices.length, explanations })}\n`);
+  if (!isArchitect) writeFileSync(choicePath, `${JSON.stringify({ schemaVersion: 1, generatedAt: new Date().toISOString(), model: "grounded-local-template", totalQuestions: bank.choices.length, explanations })}\n`);
 
   const caseExplanations = Object.fromEntries(bank.cases.map((item) => {
+    const existing = getLocalCaseExplanation(item, existingCasePayload?.explanations);
+    if (existing) return [item.id, existing];
     const content = item.subQuestions.map((subQuestion, index) => {
       const label = String(subQuestion.question_label || `问题${index + 1}`).trim();
       const answer = String(subQuestion.reference_answer || "暂无参考答案").trim();
@@ -32,6 +40,6 @@ for (const subject of subjects) {
     }).join("\n\n");
     return [item.id, createCaseExplanationRecord(item, content)];
   }));
-  writeFileSync(path.join(root, "data", "banks", `ai-case-explanations-${subject}.json`), `${JSON.stringify({ schemaVersion: 1, generatedAt: new Date().toISOString(), model: "grounded-local-template", totalCases: bank.cases.length, explanations: caseExplanations })}\n`);
+  writeFileSync(casePath, `${JSON.stringify({ schemaVersion: 1, generatedAt: new Date().toISOString(), model: isArchitect ? existingCasePayload.model || "grounded-local-template" : "grounded-local-template", totalCases: bank.cases.length, explanations: caseExplanations })}\n`);
   console.log(`${subject}: ${Object.keys(explanations).length} choice, ${Object.keys(caseExplanations).length} case explanations`);
 }
