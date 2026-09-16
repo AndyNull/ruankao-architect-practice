@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const outputPath = path.join(root, "data", "banks", "subjective-corrections.json");
 const errorPath = path.join(root, "data", "banks", "subjective-correction-errors.json");
+const analyst51ctoPath = path.join(root, "data", "banks", "analyst-51cto-subjective.json");
 const options = readOptions(process.argv.slice(2));
 const subjects = ["architect", "planner", "itpm", "analyst", "network"];
 const current = await readJson(outputPath, { corrections: {} });
@@ -17,20 +18,11 @@ const tasks = [];
 for (const code of subjects) {
   const file = code === "architect" ? "data/bank.json" : `data/banks/${code}.json`;
   const bank = JSON.parse(await readFile(path.join(root, file), "utf8"));
-  for (const item of bank.cases) {
-    const missing = item.subQuestions.map((question, index) => ({ question, index })).filter(({ question }) => isPlaceholder(question.reference_answer));
-    if (missing.length && casePrompt(item, missing).length >= 80 && missing.every(({ question }) => question.prompt.trim().length >= 8)) {
-      tasks.push({ id: item.id, code, type: "case", term: item.term, title: item.title, description: item.description, missing });
-    }
-  }
-  for (const item of bank.essays) {
-    if (isPlaceholder(item.writingPoints) && item.prompt.trim().length >= 80 && !/待补充完整题目/u.test(item.title)) {
-      tasks.push({ id: item.id, code, type: "essay", term: item.term, title: item.title, prompt: item.prompt });
-    }
-  }
+  addTasks(code, bank);
 }
+addTasks("analyst", await readJson(analyst51ctoPath, { cases: [], essays: [] }));
 
-const pending = tasks.filter((item) => !isValidCorrection(item, corrections[item.id]));
+const pending = [...new Map(tasks.map((item) => [item.id, item])).values()].filter((item) => !isValidCorrection(item, corrections[item.id]));
 console.log(`可修正 ${tasks.filter((item) => item.type === "case").length} 案例、${tasks.filter((item) => item.type === "essay").length} 论文；待生成 ${pending.length}`);
 if (options.dryRun) process.exit(0);
 
@@ -41,6 +33,20 @@ await Promise.all(Array.from({ length: options.concurrency }, worker));
 await save();
 console.log(`GLM 成功 ${completed}，失败 ${failed}，累计 ${Object.keys(corrections).length}`);
 if (failed) process.exitCode = 1;
+
+function addTasks(code, bank) {
+  for (const item of bank.cases || []) {
+    const missing = item.subQuestions.map((question, index) => ({ question, index })).filter(({ question }) => isPlaceholder(question.reference_answer));
+    if (missing.length && casePrompt(item, missing).length >= 80 && missing.every(({ question }) => question.prompt.trim().length >= 8)) {
+      tasks.push({ id: item.id, code, type: "case", term: item.term, title: item.title, description: item.description, missing });
+    }
+  }
+  for (const item of bank.essays || []) {
+    if (isPlaceholder(item.writingPoints) && item.prompt.trim().length >= 80 && !/待补充完整题目/u.test(item.title)) {
+      tasks.push({ id: item.id, code, type: "essay", term: item.term, title: item.title, prompt: item.prompt });
+    }
+  }
+}
 
 async function worker() {
   while (cursor < pending.length) {

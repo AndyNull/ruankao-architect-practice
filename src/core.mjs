@@ -65,7 +65,7 @@ export function buildPracticeSet(questions, attempts, options = {}) {
 
   if (mode === "exam") {
     const term = filters.term === "all" ? latestRealTerm(questions) : filters.term;
-    return sortQuestionsForPractice(filterQuestions(questions, attempts, { ...filters, sourceType: "real", term, status: "all" })).slice(0, 75);
+    return sortQuestionsForPractice(filterQuestions(questions, attempts, { ...filters, sourceType: "real", term, status: "all" }));
   }
 
   if (mode === "wrong") {

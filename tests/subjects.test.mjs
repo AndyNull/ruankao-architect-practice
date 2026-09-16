@@ -72,8 +72,8 @@ test("all subjects build isolated continue and switchable exam queues", () => {
     assert.ok(terms.length >= 2, `${subject.id} real exam terms`);
     const current = buildPracticeSet(bank.choices, [], { mode: "exam" });
     const selected = buildPracticeSet(bank.choices, [], { mode: "exam", filters: { term: terms[0] } });
-    const latestSize = Math.min(75, bank.choices.filter((item) => item.sourceType === "real" && item.term === terms.at(-1)).length);
-    const selectedSize = Math.min(75, bank.choices.filter((item) => item.sourceType === "real" && item.term === terms[0]).length);
+    const latestSize = bank.choices.filter((item) => item.sourceType === "real" && item.term === terms.at(-1)).length;
+    const selectedSize = bank.choices.filter((item) => item.sourceType === "real" && item.term === terms[0]).length;
     assert.equal(current.length, latestSize, `${subject.id} latest exam queue`);
     assert.equal(selected.length, selectedSize, `${subject.id} selected exam queue`);
     assert.notEqual(current[0]?.id, selected[0]?.id, `${subject.id} exam switch`);
@@ -110,6 +110,8 @@ test("new supplements are visible in the subject manifests", () => {
   assert.equal(network.choices.filter((item) => item.term === "2021年下半年").length, 75);
   assert.deepEqual(network.manifest.choice_real_missing_by_term["2010年上半年"], [48, 54, 70]);
   assert.equal(itpmPending.choices.length, 0);
+  assert.equal(itpm.choices.filter((item) => item.term === "2025年上半年 第1批次").length, 75);
+  assert.equal(itpm.choices.filter((item) => item.term === "2025年上半年 第2批次").length, 75);
 });
 
 test("network legacy case and essay papers remain imported", () => {

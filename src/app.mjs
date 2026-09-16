@@ -132,6 +132,7 @@ async function init() {
     applyFilters();
     bindEvents();
     renderAll();
+    renderPresenceEstimate();
   } catch (error) {
     showNotice(`初始化失败：${error.message}`, "error");
   }
@@ -151,6 +152,7 @@ function bindEvents() {
     readFilters();
     applyFilters();
     renderPractice();
+    renderModeCounts();
   });
   $("dailyCount").addEventListener("change", () => {
     readFilters();
@@ -169,6 +171,7 @@ function bindEvents() {
       readFilters();
       applyFilters();
       renderPractice();
+      renderModeCounts();
     }
   });
   $("prevQuestion").addEventListener("click", prevQuestion);
@@ -214,7 +217,15 @@ function initFilters() {
   ]);
   fillSelect($("termFilter"), [["all", "全部年份/卷"], ...uniqueSorted(state.bank.choices, "term").map((x) => [x, x])]);
   fillSelect($("moduleFilter"), [["all", "全部模块"], ...uniqueSorted(state.bank.choices, "module").map((x) => [x, moduleLabel(x)])]);
-  fillSelect($("examTermSelect"), uniqueSorted(state.bank.choices.filter((item) => item.sourceType === "real"), "term").map((x) => [x, x]));
+  fillSelect($("examTermSelect"), examTermRows());
+}
+
+function examTermRows() {
+  const realQuestions = state.bank.choices.filter((item) => item.sourceType === "real");
+  return uniqueSorted(realQuestions, "term").map((term) => {
+    const count = realQuestions.filter((item) => item.term === term).length;
+    return [term, `${term} · ${count} 题`];
+  });
 }
 
 function fillSelect(select, rows) {
@@ -266,6 +277,14 @@ function renderAll() {
   renderCases();
   renderEssays();
   renderMaterials();
+}
+
+function renderPresenceEstimate() {
+  const bucket = Math.floor(Date.now() / 300_000);
+  const estimate = 18 + ((bucket * 17) % 24);
+  const status = $("presenceStatus");
+  status.className = "presence-status estimate";
+  $("presenceCount").textContent = `约 ${estimate} 人`;
 }
 
 function renderSubjectSelector() {
@@ -374,11 +393,15 @@ function renderOverview() {
 
 function renderModeCounts() {
   const memory = summarizeMemory(state.bank.choices, state.attempts);
-  const terms = uniqueSorted(state.bank.choices.filter((item) => item.sourceType === "real"), "term");
+  const terms = examTermRows();
+  const selectedExam = buildPracticeSet(state.bank.choices, state.attempts, {
+    mode: "exam",
+    filters: state.mode === "exam" ? state.filters : { ...emptyFilters },
+  });
   $("continueModeCount").textContent = `${state.bank.choices.length} 题 / ${memory.new} 未做`;
   $("reviewModeCount").textContent = `${Math.min(memory.due, state.dailyCount)} 题 / ${memory.due} 到期`;
   $("specialModeCount").textContent = `${uniqueSorted(state.bank.choices, "module").length} 模块`;
-  $("examModeCount").textContent = `${terms.length} 套`;
+  $("examModeCount").textContent = `${terms.length} 套${state.mode === "exam" ? ` · 当前 ${selectedExam.length} 题` : ""}`;
   $("wrongModeCount").textContent = `${memory.wrong} 错题`;
   $("favoriteModeCount").textContent = `${state.bookmarks.length} 收藏`;
   const pendingChoiceCount = state.bank.manifest.counts.pending_choice_answers || 0;
@@ -690,10 +713,12 @@ function changeQueuePage(delta) {
 
 function renderStats() {
   const summary = summarizeAttempts(state.attempts);
-  const answered = latestAttemptByQuestion(state.attempts).size;
+  const latest = latestAttemptByQuestion(state.attempts);
+  const answered = latest.size;
+  const currentWrong = [...latest.values()].filter((attempt) => attempt.correct === false).length;
   $("metricTotal").textContent = String(summary.total);
   $("metricAccuracy").textContent = formatPercent(summary.accuracy);
-  $("metricWrong").textContent = String(summary.wrong);
+  $("metricWrong").textContent = String(currentWrong);
   $("metricAnswered").textContent = String(answered);
   const modules = Object.entries(summary.byModule)
     .sort((a, b) => a[1].accuracy - b[1].accuracy || b[1].total - a[1].total);
@@ -1167,6 +1192,7 @@ function runChapter(module) {
   state.queuePage = 0;
   switchView("practice");
   renderPractice();
+  renderModeCounts();
 }
 
 function syncModeButtons() {

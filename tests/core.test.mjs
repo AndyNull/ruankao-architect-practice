@@ -123,6 +123,16 @@ test("sorts exam terms chronologically and defaults to the newest paper", () => 
   assert.deepEqual(latest.map((question) => question.id), ["q4"]);
 });
 
+test("keeps every question from the selected exam paper", () => {
+  const paper = Array.from({ length: 79 }, (_, index) => ({
+    ...questions[0],
+    id: `paper-${index + 1}`,
+    questionNo: index + 1,
+    term: "2025年下半年",
+  }));
+  assert.equal(buildPracticeSet(paper, [], { mode: "exam", filters: { term: "2025年下半年" } }).length, 79);
+});
+
 test("summarizes multi-subject progress exports", () => {
   const summary = summarizeProgressPayload({
     schemaVersion: 2,

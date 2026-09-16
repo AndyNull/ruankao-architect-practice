@@ -21,6 +21,7 @@ const lightsoftSource = loadJson(path.join(outputRoot, "lightsoft-subjective-sup
 const lightsoftAnswers = loadJson(path.join(outputRoot, "lightsoft-subjective-answers.json"), { answers: {} }).answers;
 const subjectiveCorrections = loadJson(path.join(outputRoot, "subjective-corrections.json"), { corrections: {} }).corrections;
 const qicoderSupplements = loadJson(path.join(outputRoot, "qicoder-supplements.json"), {});
+const analyst51ctoSupplement = loadJson(path.join(outputRoot, "analyst-51cto-subjective.json"), { cases: [], essays: [] });
 const pdfSupplements = {
   planner: loadJson(path.join(outputRoot, "planner-pdf-supplement.json"), { choices: [], cases: [], essays: [] }),
   network: loadJson(path.join(outputRoot, "network-pdf-supplement.json"), { choices: [], cases: [], essays: [] }),
@@ -89,8 +90,9 @@ function buildBank(code, name) {
   choices = choices.map((item) => item.module === "other"
     ? { ...item, module: inferModule(`${item.stem} ${item.analysis}`) }
     : item);
-  cases = mergeBy(cases, [...markdown.cases, ...supplement.cases], (item) => `${item.term}|${normalizeKey(item.title)}|${normalizeKey(item.description).slice(0, 80)}`);
-  essays = mergeBy(essays, [...markdown.essays, ...supplement.essays], (item) => `${item.term}|${normalizeKey(item.title)}`);
+  const directSubjectiveSupplement = code === "analyst" ? analyst51ctoSupplement : { cases: [], essays: [] };
+  cases = mergeBy(cases, [...markdown.cases, ...supplement.cases, ...directSubjectiveSupplement.cases], (item) => `${item.term}|${normalizeKey(item.title)}|${normalizeKey(item.description).slice(0, 80)}`);
+  essays = mergeBy(essays, [...markdown.essays, ...supplement.essays, ...directSubjectiveSupplement.essays], (item) => `${item.term}|${normalizeKey(item.title)}`);
   ({ cases, essays } = applySubjectiveCorrections(mergeLightsoftBank(code, { cases, essays })));
 
   const pendingChoices = markdown.pendingChoices;
@@ -486,11 +488,12 @@ function parseItpmChoices(code, file) {
     if (!/^[A-D]$/.test(answer) || Object.keys(options).length !== 4) return [];
     const paper = String(question.paper || "").trim();
     const isReal = (/^20\d{2}(?:年)?(?:[上下]|年(?:0?5|11)月)/u.test(paper) || /历年真题/u.test(question.src || "")) && !/押题|密卷|模拟/u.test(paper);
-    const term = isReal ? normalizeTerm(paper) : paper || "章节练习";
+    const term = isReal ? normalizeItpmTerm(paper) : paper || "章节练习";
+    const idTerm = isReal ? normalizeTerm(paper) : term;
     const questionNo = (termCounts.get(term) || 0) + 1;
     termCounts.set(term, questionNo);
     return [{
-      id: `${code}-${isReal ? "real" : "mock"}-${slug(term)}-${question.id || index + 1}`,
+      id: `${code}-${isReal ? "real" : "mock"}-${slug(idTerm)}-${question.id || index + 1}`,
       sourceType: isReal ? "real" : "mock",
       term,
       paper: term,
@@ -644,6 +647,15 @@ function normalizeTerm(value) {
   const short = text.match(/(20\d{2})([上下])/u);
   if (short) return `${short[1]}年${short[2]}半年`;
   return text.match(/20\d{2}年(?:上|下)半年/u)?.[0] || text.trim() || "案例练习";
+}
+
+function normalizeItpmTerm(value) {
+  const term = normalizeTerm(value);
+  const match = String(value || "").match(/第?\s*([一二三四五六七八九十]|\d+)\s*批(?:次)?/u);
+  if (!match) return term;
+  const chineseIndex = "一二三四五六七八九十".indexOf(match[1]);
+  const batch = chineseIndex >= 0 ? chineseIndex + 1 : Number(match[1]);
+  return Number.isInteger(batch) && batch > 0 ? `${term} 第${batch}批次` : term;
 }
 
 function inferModule(text) {

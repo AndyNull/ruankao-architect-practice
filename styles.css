@@ -137,12 +137,46 @@ button:disabled {
   padding-top: 14px;
 }
 
+.sidebar-bottom {
+  display: grid;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.presence-status {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.presence-status i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #98a2b3;
+}
+
+.presence-status.estimate i {
+  background: var(--green);
+}
+
+.presence-status strong {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
 .sidebar-github {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
-  margin-top: auto;
+  margin-top: 0;
   color: #475467;
   font-size: 11px;
   font-weight: 700;
@@ -1541,6 +1575,15 @@ th {
   .brand p,
   .side-stat {
     display: none;
+  }
+
+  .sidebar-bottom {
+    margin-top: 0;
+  }
+
+  .presence-status {
+    border-top: 0;
+    padding-top: 0;
   }
 
   .sidebar-github {
