@@ -47,7 +47,8 @@ export function buildPracticeSet(questions, attempts, options = {}) {
   const bookmarked = new Set(options.bookmarkedIds || []);
 
   if (mode === "continue" || mode === "daily") {
-    return continueFromLatest(pool, attempts);
+    const attempted = latestAttemptByQuestion(attempts);
+    return continueFromLatest(pool, attempts).filter((question) => !attempted.has(question.id));
   }
 
   if (mode === "review") {

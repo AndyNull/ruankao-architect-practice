@@ -37,7 +37,7 @@ test("builds deterministic continue, review, and exam practice sets", () => {
   const continued = buildPracticeSet(questions, [
     { questionId: "q3", correct: true, answeredAt: "2026-06-21T01:00:00.000Z" },
   ], { mode: "continue" });
-  assert.deepEqual(continued.map((q) => q.id), ["q1", "q2", "q3"]);
+  assert.deepEqual(continued.map((q) => q.id), ["q1", "q2"]);
   const review = buildPracticeSet(questions, [
     { questionId: "q1", correct: false, answeredAt: "2026-06-21T01:00:00.000Z" },
   ], { mode: "review", now: "2026-06-21T01:01:00.000Z" });

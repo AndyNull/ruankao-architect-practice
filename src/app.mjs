@@ -133,7 +133,6 @@ async function init() {
     bindEvents();
     renderAll();
     renderPresenceEstimate();
-    window.setInterval(renderPresenceEstimate, 60_000);
   } catch (error) {
     showNotice(`初始化失败：${error.message}`, "error");
   }
@@ -281,12 +280,9 @@ function renderAll() {
 }
 
 function renderPresenceEstimate() {
-  const bucket = Math.floor(Date.now() / 60_000);
-  const subjectSeed = [...state.subjectId].reduce((sum, char) => sum + char.charCodeAt(0), 0);
-  const estimate = 16 + Math.abs((bucket * 17 + subjectSeed * 13) % 33);
   const status = $("presenceStatus");
   status.className = "presence-status estimate";
-  $("presenceCount").textContent = `约 ${estimate} 人`;
+  $("presenceCount").textContent = "未接入实时统计";
 }
 
 function renderSubjectSelector() {

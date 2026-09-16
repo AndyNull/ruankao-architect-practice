@@ -1151,6 +1151,10 @@ input {
   padding: 8px 10px;
 }
 
+.exam-term-wrap[hidden] {
+  display: none !important;
+}
+
 .queue-legend {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
