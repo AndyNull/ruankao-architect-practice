@@ -68,6 +68,12 @@ test("all subjects build isolated continue and switchable exam queues", () => {
     const bank = JSON.parse(readFileSync(new URL(`../${subject.bankUrl.replace(/^\.\//, "")}`, import.meta.url), "utf8"));
     const continued = buildPracticeSet(bank.choices, [], { mode: "continue" });
     assert.equal(continued.length, bank.choices.length, `${subject.id} continue queue`);
+    const attempts = [{ questionId: continued[0].id, correct: false, answeredAt: "2026-09-16T01:00:00.000Z" }];
+    const unanswered = buildPracticeSet(bank.choices, attempts, { mode: "continue" });
+    assert.equal(unanswered.length, bank.choices.length - 1, `${subject.id} unanswered count`);
+    assert.ok(unanswered.every((question) => question.id !== attempts[0].questionId), `${subject.id} excludes answered`);
+    assert.equal(buildPracticeSet(bank.choices, attempts, { mode: "wrong" }).length, 1, `${subject.id} wrong count`);
+    assert.equal(buildPracticeSet(bank.choices, bank.choices.map((question) => ({ questionId: question.id, correct: true, answeredAt: attempts[0].answeredAt })), { mode: "continue" }).length, 0, `${subject.id} completed queue`);
     const terms = uniqueSorted(bank.choices.filter((item) => item.sourceType === "real"), "term");
     assert.ok(terms.length >= 2, `${subject.id} real exam terms`);
     const current = buildPracticeSet(bank.choices, [], { mode: "exam" });

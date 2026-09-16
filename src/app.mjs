@@ -132,7 +132,6 @@ async function init() {
     applyFilters();
     bindEvents();
     renderAll();
-    renderPresenceEstimate();
   } catch (error) {
     showNotice(`初始化失败：${error.message}`, "error");
   }
@@ -279,12 +278,6 @@ function renderAll() {
   renderMaterials();
 }
 
-function renderPresenceEstimate() {
-  const status = $("presenceStatus");
-  status.className = "presence-status estimate";
-  $("presenceCount").textContent = "未接入实时统计";
-}
-
 function renderSubjectSelector() {
   const select = $("subjectSelect");
   select.innerHTML = state.catalog.map((subject) => `<option value="${escapeHtml(subject.id)}">${escapeHtml(subject.name)}</option>`).join("");
@@ -400,7 +393,7 @@ function renderModeCounts() {
     mode: "continue",
     filters: state.mode === "continue" ? state.filters : { ...emptyFilters },
   });
-  const continueUnanswered = continueQueue.filter((question) => !latestAttemptByQuestion(state.attempts).has(question.id)).length;
+  const continueUnanswered = continueQueue.length;
   const reviewQueue = buildPracticeSet(state.bank.choices, state.attempts, {
     mode: "review",
     filters: state.mode === "review" ? state.filters : { ...emptyFilters },
